@@ -7,7 +7,6 @@ import {
   Activity
 } from 'lucide-react';
 
-// CORREÇÃO: Mantido o 'export const' para alinhar com o App.tsx
 export const Home: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const heroImages = [
@@ -111,20 +110,20 @@ export const Home: React.FC = () => {
               <div className="bg-antares-slate/60 p-14 md:p-20 rounded-[4rem] border border-white/10 backdrop-blur-3xl text-left shadow-[0_40px_100px_rgba(0,0,0,0.7)]">
                 <h3 className="text-white font-black text-2xl mb-16 flex items-center uppercase tracking-widest"><Calculator className="mr-6 text-antares-cyan" size={36} /> Painel de Diagnóstico</h3>
                 <div className="mb-24">
-                  <div className="flex justify-between text-[11px] font-black uppercase tracking-[0.5em] text-gray-500 mb-10">
+                  <div className="flex justify-between items-center text-[11px] font-black uppercase tracking-[0.5em] text-gray-500 mb-10">
                     <span>Faturamento Mensal</span>
                     <span className="text-white bg-antares-cyan/10 border border-antares-cyan/30 px-8 py-3 rounded-full text-sm">R$ {billValue.toLocaleString()}</span>
                   </div>
                   <input type="range" min="300" max="25000" step="100" value={billValue} onChange={(e) => setBillValue(Number(e.target.value))} className="w-full h-3 bg-white/10 rounded-full appearance-none cursor-pointer accent-antares-cyan" />
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10 text-left">
-                   <div className="bg-white/5 p-12 rounded-[3rem] border border-white/5 hover:border-antares-cyan/40 transition-all group">
-                      <div className="text-antares-cyan text-[11px] font-black uppercase tracking-[0.4em] mb-6">Economia Anual</div>
-                      <p className="text-4xl md:text-5xl font-black text-white group-hover:scale-105 transition-transform">{annualPerformance}</p>
+                   <div className="bg-white/5 p-8 md:p-10 rounded-[3rem] border border-white/5 hover:border-antares-cyan/40 transition-all group min-h-[160px] flex flex-col justify-between">
+                      <div className="text-antares-cyan text-[11px] font-black uppercase tracking-[0.4em] mb-4">Economia Anual</div>
+                      <p className="text-2xl md:text-3xl lg:text-4xl font-black text-white group-hover:scale-105 transition-transform break-words">{annualPerformance}</p>
                    </div>
-                   <div className="bg-white/5 p-12 rounded-[3rem] border border-white/5 hover:border-green-400/40 transition-all group">
-                      <div className="text-green-400 text-[11px] font-black uppercase tracking-[0.4em] mb-6">Valor Ativo</div>
-                      <p className="text-4xl md:text-5xl font-black text-white group-hover:scale-105 transition-transform">{assetValuation}</p>
+                   <div className="bg-white/5 p-8 md:p-10 rounded-[3rem] border border-white/5 hover:border-green-400/40 transition-all group min-h-[160px] flex flex-col justify-between">
+                      <div className="text-green-400 text-[11px] font-black uppercase tracking-[0.4em] mb-4">Valor Ativo</div>
+                      <p className="text-2xl md:text-3xl lg:text-4xl font-black text-white group-hover:scale-105 transition-transform break-words">{assetValuation}</p>
                    </div>
                 </div>
               </div>
