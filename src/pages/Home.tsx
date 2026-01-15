@@ -7,7 +7,7 @@ import {
   Activity
 } from 'lucide-react';
 
-// Alterado de const para export const para resolver o erro TS2614
+// CORREÇÃO: Adicionado o 'export' aqui
 export const Home: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const heroImages = [
@@ -31,7 +31,7 @@ export const Home: React.FC = () => {
 
   return (
     <div className="w-full">
-      {/* 1. HERO SECTION - pt aumentado para liberar espaço do logo */}
+      {/* 1. HERO SECTION */}
       <section className="relative min-h-screen w-full flex items-center overflow-hidden bg-antares-dark pt-[180px] md:pt-[240px] pb-32">
         {heroImages.map((img, index) => (
           <div 
@@ -135,3 +135,5 @@ export const Home: React.FC = () => {
     </div>
   );
 };
+
+// CORREÇÃO: O export default foi REMOVIDO pois usamos Named Export acima
