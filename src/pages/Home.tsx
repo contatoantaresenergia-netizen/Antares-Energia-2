@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { 
   ArrowRight,
@@ -8,7 +7,8 @@ import {
   Activity
 } from 'lucide-react';
 
-const Home: React.FC = () => {
+// Alterado de const para export const para resolver o erro TS2614
+export const Home: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const heroImages = [
     "https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=1920&auto=format&fit=crop", 
@@ -135,5 +135,3 @@ const Home: React.FC = () => {
     </div>
   );
 };
-
-export default Home;
