@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-cyan-400 via-blue-400 to-cyan-300 bg-clip-text text-transparent;
+  }
+  
+  .animate-in {
+    animation: fadeIn 0.5s ease-in;
+  }
+  
+  .slide-in-from-left {
+    animation: slideInFromLeft 0.7s ease-out;
+  }
+  
+  .slide-in-from-bottom-12 {
+    animation: slideInFromBottom 0.7s ease-out;
+  }
+  
+  .slide-in-from-bottom-8 {
+    animation: slideInFromBottom 0.7s ease-out;
+  }
+  
+  .fade-in {
+    animation: fadeIn 1s ease-in;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
