@@ -4,8 +4,26 @@
 
 @layer base {
   html {
-    font-size: 16px;
+    font-size: 14px;
     scroll-behavior: smooth;
+  }
+  
+  @media (min-width: 768px) {
+    html {
+      font-size: 15px;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    html {
+      font-size: 16px;
+    }
+  }
+  
+  @media (min-width: 1920px) {
+    html {
+      font-size: 17px;
+    }
   }
   
   body {
@@ -26,6 +44,32 @@
     @apply bg-gradient-to-r from-cyan-400 via-blue-400 to-cyan-300 bg-clip-text text-transparent;
   }
   
+  /* Títulos Hero - escala fluida */
+  .hero-title {
+    font-size: clamp(3rem, 10vw, 7.5rem);
+    line-height: 0.88;
+    letter-spacing: -0.04em;
+  }
+  
+  /* Títulos de Seção */
+  .section-title {
+    font-size: clamp(2rem, 5vw, 3.75rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+  
+  /* Stats grandes */
+  .stat-number {
+    font-size: clamp(3rem, 6vw, 5rem);
+    line-height: 1;
+  }
+  
+  /* Valores da calculadora */
+  .calculator-value {
+    font-size: clamp(1.25rem, 3vw, 2rem);
+    line-height: 1.2;
+  }
+  
   .animate-in {
     animation: fadeIn 0.5s ease-in;
   }
@@ -44,12 +88,6 @@
   
   .fade-in {
     animation: fadeIn 1s ease-in;
-  }
-  
-  /* Ajuste de containers para melhor responsividade */
-  .calculator-value {
-    font-size: clamp(1.5rem, 4vw, 2.5rem);
-    line-height: 1.2;
   }
 }
 
@@ -77,18 +115,5 @@
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-/* Media queries para ajuste fino em diferentes telas */
-@media (max-width: 768px) {
-  html {
-    font-size: 14px;
-  }
-}
-
-@media (min-width: 1920px) {
-  html {
-    font-size: 18px;
   }
 }
