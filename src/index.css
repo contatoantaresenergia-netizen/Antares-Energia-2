@@ -4,25 +4,26 @@
 
 @layer base {
   html {
-    font-size: 14px;
+    /* Aumentado a base para a logo e menu não ficarem pequenos */
+    font-size: 16px; 
     scroll-behavior: smooth;
   }
   
   @media (min-width: 768px) {
     html {
-      font-size: 15px;
+      font-size: 17px;
     }
   }
   
   @media (min-width: 1024px) {
     html {
-      font-size: 16px;
+      font-size: 18px;
     }
   }
   
   @media (min-width: 1920px) {
     html {
-      font-size: 17px;
+      font-size: 20px;
     }
   }
   
@@ -44,30 +45,31 @@
     @apply bg-gradient-to-r from-cyan-400 via-blue-400 to-cyan-300 bg-clip-text text-transparent;
   }
   
-  /* Títulos Hero - escala fluida */
+  /* Títulos Hero - Ajustado para não sufocar o header */
   .hero-title {
-    font-size: clamp(3rem, 10vw, 7.5rem);
-    line-height: 0.88;
+    font-size: clamp(2.5rem, 8vw, 5.5rem);
+    line-height: 1.05;
     letter-spacing: -0.04em;
   }
   
   /* Títulos de Seção */
   .section-title {
-    font-size: clamp(2rem, 5vw, 3.75rem);
+    font-size: clamp(2rem, 5vw, 3.5rem);
     line-height: 1.1;
     letter-spacing: -0.02em;
   }
   
-  /* Stats grandes */
+  /* Stats grandes - Ajustado para não encostar um no outro */
   .stat-number {
-    font-size: clamp(3rem, 6vw, 5rem);
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
     line-height: 1;
   }
   
-  /* Valores da calculadora */
+  /* Valores da calculadora - Ajustado para evitar quebra de linha */
   .calculator-value {
-    font-size: clamp(1.25rem, 3vw, 2rem);
+    font-size: clamp(1.1rem, 2.5vw, 1.7rem);
     line-height: 1.2;
+    white-space: nowrap;
   }
   
   .animate-in {
