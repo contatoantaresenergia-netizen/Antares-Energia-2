@@ -2,8 +2,14 @@ import React from 'react';
 
 export interface LogoProps {
   className?: string;
-  variant?: string; // Isso impede o erro de "Property variant does not exist"
+  variant?: string; 
 }
 
 export const Logo: React.FC<LogoProps> = ({ className, variant }) => {
-  // ... resto do seu código do SVG
+  return (
+    <div className={className}>
+      {/* O texto ou SVG do seu logo aqui */}
+      <span style={{ color: variant === 'white' ? '#FFF' : 'inherit' }}>ANTARES</span>
+    </div>
+  );
+};
