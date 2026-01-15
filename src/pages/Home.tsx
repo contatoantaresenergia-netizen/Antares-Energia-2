@@ -7,7 +7,7 @@ import {
   Activity
 } from 'lucide-react';
 
-// CORREÇÃO: Adicionado o 'export' aqui
+// CORREÇÃO: Mantido o 'export const' para alinhar com o App.tsx
 export const Home: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const heroImages = [
@@ -135,5 +135,3 @@ export const Home: React.FC = () => {
     </div>
   );
 };
-
-// CORREÇÃO: O export default foi REMOVIDO pois usamos Named Export acima
