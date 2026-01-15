@@ -52,7 +52,7 @@ export const Home: React.FC = () => {
               <span className="text-antares-cyan text-[11px] font-black tracking-[0.5em] uppercase">Engenharia de Energia Integrada</span>
             </header>
 
-            <h1 className="text-[12vw] md:text-[8vw] lg:text-[7.5rem] font-heading font-extrabold text-white leading-[0.88] mb-12 animate-in slide-in-from-bottom-12 duration-700 tracking-[-0.04em]">
+            <h1 className="hero-title font-heading font-extrabold text-white mb-12 animate-in slide-in-from-bottom-12 duration-700">
               Arquitetura de <br/>
               <span className="text-gradient">Alta Performance.</span>
             </h1>
@@ -79,7 +79,7 @@ export const Home: React.FC = () => {
               { val: "R$ 20M", label: "Economia Gerada" }
             ].map((stat, i) => (
               <div key={i} className="group">
-                <p className={`text-6xl md:text-7xl font-black mb-5 group-hover:scale-110 transition-transform duration-500 ${i%2===0 ? 'text-antares-cyan' : 'text-white'}`}>{stat.val}</p>
+                <p className={`stat-number font-black mb-5 group-hover:scale-110 transition-transform duration-500 ${i%2===0 ? 'text-antares-cyan' : 'text-white'}`}>{stat.val}</p>
                 <p className="text-gray-500 text-[10px] font-black uppercase tracking-[0.5em]">{stat.label}</p>
               </div>
             ))}
@@ -94,7 +94,7 @@ export const Home: React.FC = () => {
             <div className="lg:col-span-5 text-left">
               <header>
                 <span className="text-antares-cyan font-black tracking-[0.6em] uppercase text-[11px] mb-8 block">Projeção Estratégica</span>
-                <h2 className="text-5xl md:text-6xl font-heading font-bold text-white mb-10 tracking-tight leading-tight">Decisões técnicas baseadas em <span className="text-gradient">dados reais.</span></h2>
+                <h2 className="section-title font-heading font-bold text-white mb-10 tracking-tight">Decisões técnicas baseadas em <span className="text-gradient">dados reais.</span></h2>
               </header>
               <p className="text-gray-400 text-xl mb-14 font-light leading-relaxed">Quantifique o impacto financeiro da migração para uma matriz de alta performance através do nosso simulador de ROI.</p>
               <ul className="space-y-8">
@@ -107,23 +107,44 @@ export const Home: React.FC = () => {
               </ul>
             </div>
             <div className="lg:col-span-7">
-              <div className="bg-antares-slate/60 p-8 md:p-12 lg:p-16 rounded-[3rem] border border-white/10 backdrop-blur-3xl text-left shadow-[0_40px_100px_rgba(0,0,0,0.7)]">
-                <h3 className="text-white font-black text-xl md:text-2xl mb-12 flex items-center uppercase tracking-widest"><Calculator className="mr-4 text-antares-cyan" size={32} /> Painel de Diagnóstico</h3>
-                <div className="mb-16">
-                  <div className="flex justify-between items-center text-[10px] font-black uppercase tracking-[0.4em] text-gray-500 mb-8">
+              <div className="bg-antares-slate/60 p-6 md:p-10 lg:p-12 rounded-3xl border border-white/10 backdrop-blur-3xl text-left shadow-[0_40px_100px_rgba(0,0,0,0.7)]">
+                <h3 className="text-white font-black text-lg md:text-xl mb-10 flex items-center uppercase tracking-widest">
+                  <Calculator className="mr-4 text-antares-cyan" size={28} /> 
+                  Painel de Diagnóstico
+                </h3>
+                <div className="mb-12">
+                  <div className="flex justify-between items-center text-[9px] font-black uppercase tracking-[0.3em] text-gray-500 mb-6">
                     <span>Faturamento Mensal</span>
-                    <span className="text-white bg-antares-cyan/10 border border-antares-cyan/30 px-6 py-2 rounded-full text-xs">R$ {billValue.toLocaleString()}</span>
+                    <span className="text-white bg-antares-cyan/10 border border-antares-cyan/30 px-5 py-2 rounded-full text-[10px]">
+                      R$ {billValue.toLocaleString()}
+                    </span>
                   </div>
-                  <input type="range" min="300" max="25000" step="100" value={billValue} onChange={(e) => setBillValue(Number(e.target.value))} className="w-full h-3 bg-white/10 rounded-full appearance-none cursor-pointer accent-antares-cyan" />
+                  <input 
+                    type="range" 
+                    min="300" 
+                    max="25000" 
+                    step="100" 
+                    value={billValue} 
+                    onChange={(e) => setBillValue(Number(e.target.value))} 
+                    className="w-full h-2 bg-white/10 rounded-full appearance-none cursor-pointer accent-antares-cyan" 
+                  />
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
-                   <div className="bg-white/5 p-6 md:p-8 rounded-[2rem] border border-white/5 hover:border-antares-cyan/40 transition-all group min-h-[130px] flex flex-col justify-between">
-                      <div className="text-antares-cyan text-[9px] font-black uppercase tracking-[0.3em] mb-3">Economia Anual</div>
-                      <p className="text-xl md:text-2xl lg:text-3xl font-black text-white group-hover:scale-105 transition-transform break-words leading-tight">{annualPerformance}</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5 text-left">
+                   <div className="bg-white/5 p-5 md:p-6 rounded-2xl border border-white/5 hover:border-antares-cyan/40 transition-all group min-h-[110px] flex flex-col justify-between">
+                      <div className="text-antares-cyan text-[8px] font-black uppercase tracking-[0.25em] mb-2">
+                        Economia Anual
+                      </div>
+                      <p className="calculator-value font-black text-white group-hover:scale-105 transition-transform">
+                        {annualPerformance}
+                      </p>
                    </div>
-                   <div className="bg-white/5 p-6 md:p-8 rounded-[2rem] border border-white/5 hover:border-green-400/40 transition-all group min-h-[130px] flex flex-col justify-between">
-                      <div className="text-green-400 text-[9px] font-black uppercase tracking-[0.3em] mb-3">Valor Ativo</div>
-                      <p className="text-xl md:text-2xl lg:text-3xl font-black text-white group-hover:scale-105 transition-transform break-words leading-tight">{assetValuation}</p>
+                   <div className="bg-white/5 p-5 md:p-6 rounded-2xl border border-white/5 hover:border-green-400/40 transition-all group min-h-[110px] flex flex-col justify-between">
+                      <div className="text-green-400 text-[8px] font-black uppercase tracking-[0.25em] mb-2">
+                        Valor Ativo
+                      </div>
+                      <p className="calculator-value font-black text-white group-hover:scale-105 transition-transform">
+                        {assetValuation}
+                      </p>
                    </div>
                 </div>
               </div>
