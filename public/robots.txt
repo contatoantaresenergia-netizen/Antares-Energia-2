@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-# Sitemap: https://antares-energia.vercel.app/sitemap.xml
