@@ -76,7 +76,7 @@ export const About: React.FC = () => {
           <div className="bg-antares-dark p-12 text-white transition-colors hover:bg-antares-dark/95">
             <Award className="w-12 h-12 text-antares-cyan mb-8" />
             <h3 className="text-xl font-bold mb-4 uppercase tracking-widest">Visão</h3>
-            <p className="text-gray-400 leading-relaxed">Ser o padrão ouro em instalação fotográfica e pós-venda especializado em todo o território nacional.</p>
+            <p className="text-gray-400 leading-relaxed">Ser o padrão ouro em instalação fotovoltaica e pós-venda especializado em todo o território nacional.</p>
           </div>
         </div>
 
