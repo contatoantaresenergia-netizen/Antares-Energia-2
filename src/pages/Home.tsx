@@ -4,7 +4,9 @@ import {
   Calculator,
   ShieldCheck,
   TrendingUp,
-  Activity
+  Activity,
+  ChevronDown,
+  ChevronUp
 } from 'lucide-react';
 
 export const Home: React.FC = () => {
@@ -23,10 +25,47 @@ export const Home: React.FC = () => {
   }, [heroImages.length]);
 
   const [billValue, setBillValue] = useState(850);
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
+
   const efficiencyIndex = 0.92;
   const monthlyImpact = billValue * efficiencyIndex;
   const annualPerformance = (monthlyImpact * 12).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
   const assetValuation = (monthlyImpact * 12 * 25 * 1.15).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+  const faqData = [
+    {
+      question: "Quantos KW tem um sistema solar comercial?",
+      answer: "A potência de um sistema comercial é variável, geralmente iniciando em 50 kWp para pequenas empresas e podendo ultrapassar 1 MWp em grandes complexos industriais, dependendo da demanda energética."
+    },
+    {
+      question: "Qual é o maior painel solar comercial?",
+      answer: "Atualmente, os maiores módulos utilizam células de alta eficiência que entregam entre 600W e 700W+ de potência nominal, otimizando a geração por metro quadrado."
+    },
+    {
+      question: "As centrais fotovoltaicas flutuantes são seguras?",
+      answer: "Sim, são extremamente seguras. Utilizam flutuantes de polietileno de alta densidade e sistemas de ancoragem redundantes, oferecendo alta resistência ambiental."
+    },
+    {
+      question: "Posso monitorizar o desempenho do meu sistema solar comercial?",
+      answer: "Sim. Implementamos monitoramento digital completo que permite acompanhar em tempo real a geração, o consumo e a saúde dos ativos via aplicativo ou dashboard."
+    },
+    {
+      question: "Qual é a dimensão de um sistema solar de 100 kW?",
+      answer: "Um sistema de 100 kW ocupa aproximadamente 500m² a 650m², dependendo da tecnologia dos painéis e do tipo de estrutura de fixação utilizada."
+    },
+    {
+      question: "Que tamanho de sistema solar comercial é adequado para a minha empresa?",
+      answer: "O dimensionamento ideal é determinado pelo seu histórico de consumo e disponibilidade de área, buscando sempre o melhor ROI (Retorno sobre Investimento)."
+    },
+    {
+      question: "Existe uma garantia para os painéis solares comerciais?",
+      answer: "Sim. Trabalhamos com equipamentos de primeira linha que oferecem garantias de até 25 anos de performance linear, garantindo a longevidade do investimento."
+    },
+    {
+      question: "Existe algum parâmetro de módulo solar especializado para os sistemas da Antares?",
+      answer: "Sim. Nossos sistemas fotovoltaicos utilizam módulos com alta resistência mecânica e coeficientes de temperatura otimizados para garantir máxima eficiência em climas tropicais."
+    }
+  ];
 
   return (
     <div className="w-full">
@@ -149,6 +188,52 @@ export const Home: React.FC = () => {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. FAQ SECTION */}
+      <section className="py-48 bg-antares-dark border-b border-white/5 relative">
+        <div className="max-w-4xl mx-auto px-8 relative z-10">
+          <header className="text-center mb-24">
+            <span className="text-antares-cyan font-black tracking-[0.6em] uppercase text-[11px] mb-8 block">FAQ / Suporte</span>
+            <h2 className="section-title font-heading font-bold text-white mb-6">Perguntas <span className="text-gradient">Frequentes.</span></h2>
+          </header>
+
+          <div className="space-y-6">
+            {faqData.map((item, index) => (
+              <div 
+                key={index}
+                className="border border-white/10 rounded-2xl overflow-hidden bg-antares-slate/30 backdrop-blur-3xl transition-all duration-500 hover:border-antares-cyan/30"
+              >
+                <button
+                  onClick={() => setOpenFaqIndex(openFaqIndex === index ? null : index)}
+                  className="w-full px-8 py-8 text-left flex justify-between items-center group"
+                >
+                  <span className="text-white font-bold md:text-xl tracking-wide group-hover:text-antares-cyan transition-colors">
+                    <span className="text-antares-cyan/50 mr-6 font-mono">0{index + 1}</span>
+                    {item.question}
+                  </span>
+                  {openFaqIndex === index ? (
+                    <ChevronUp className="text-antares-cyan shrink-0" size={28} />
+                  ) : (
+                    <ChevronDown className="text-white/20 group-hover:text-white shrink-0" size={28} />
+                  )}
+                </button>
+                
+                <div 
+                  className={`px-8 overflow-hidden transition-all duration-500 ease-in-out ${
+                    openFaqIndex === index ? 'max-h-[500px] pb-10 opacity-100' : 'max-h-0 opacity-0'
+                  }`}
+                >
+                  <div className="pt-6 border-t border-white/5">
+                    <p className="text-gray-400 leading-relaxed text-lg font-light">
+                      {item.answer}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
