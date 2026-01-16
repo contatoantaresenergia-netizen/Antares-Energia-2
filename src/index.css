@@ -4,7 +4,7 @@
 
 @layer base {
   html {
-    /* Aumentado a base para a logo e menu não ficarem pequenos */
+    /* Aumentado a base para que a logo e menu (rem) subam de tamanho proporcionalmente */
     font-size: 16px; 
     scroll-behavior: smooth;
   }
@@ -45,7 +45,7 @@
     @apply bg-gradient-to-r from-cyan-400 via-blue-400 to-cyan-300 bg-clip-text text-transparent;
   }
   
-  /* Títulos Hero - Ajustado para não sufocar o header */
+  /* Títulos Hero - Ajustado para equilíbrio visual com o Header */
   .hero-title {
     font-size: clamp(2.5rem, 8vw, 5.5rem);
     line-height: 1.05;
@@ -59,17 +59,26 @@
     letter-spacing: -0.02em;
   }
   
-  /* Stats grandes - Ajustado para não encostar um no outro */
+  /* Stats grandes - Ajustado para centralização e espaçamento */
   .stat-number {
     font-size: clamp(2.2rem, 5vw, 3.8rem);
     line-height: 1;
   }
   
-  /* Valores da calculadora - Ajustado para evitar quebra de linha */
+  /* Valores da calculadora - Ajustado para evitar quebras de linha */
   .calculator-value {
     font-size: clamp(1.1rem, 2.5vw, 1.7rem);
     line-height: 1.2;
     white-space: nowrap;
+  }
+
+  /* NOVA CLASSE: Para centralizar o texto dentro do botão Solicitar Diagnóstico */
+  .btn-center {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    line-height: 1 !important;
   }
   
   .animate-in {
