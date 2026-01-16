@@ -40,7 +40,7 @@ export const About: React.FC = () => {
             
             <div className="grid grid-cols-2 gap-8 border-t border-gray-100 pt-10">
               <div>
-                <span className="block text-5xl font-black text-antares-cyan mb-2">2018</span>
+                <span className="block text-5xl font-black text-antares-cyan mb-2">2011</span>
                 <span className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em]">Ano de Fundação</span>
               </div>
               <div>
