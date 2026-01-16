@@ -108,9 +108,9 @@ export const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* 2. STATS */}
-      <section className="bg-antares-dark py-32 border-b border-white/5">
-        <div className="max-w-7xl mx-auto px-8 grid grid-cols-2 md:grid-cols-4 gap-20 text-center">
+      {/* 2. STATS - AJUSTADO PARA TAMANHOS ELEGANTES */}
+      <section className="bg-antares-dark py-24 border-b border-white/5">
+        <div className="max-w-7xl mx-auto px-8 grid grid-cols-2 md:grid-cols-4 gap-12 md:gap-20 text-center">
             {[
               { val: "500+", label: "Usinas Instaladas" },
               { val: "15MW", label: "Potência Total" },
@@ -118,8 +118,12 @@ export const Home: React.FC = () => {
               { val: "R$ 20M", label: "Economia Gerada" }
             ].map((stat, i) => (
               <div key={i} className="group">
-                <p className={`stat-number font-black mb-5 group-hover:scale-110 transition-transform duration-500 ${i%2===0 ? 'text-antares-cyan' : 'text-white'}`}>{stat.val}</p>
-                <p className="text-gray-500 text-[10px] font-black uppercase tracking-[0.5em]">{stat.label}</p>
+                <p className={`text-4xl md:text-5xl font-black mb-4 tracking-tighter group-hover:scale-105 transition-transform duration-500 ${i%2===0 ? 'text-antares-cyan' : 'text-white'}`}>
+                  {stat.val}
+                </p>
+                <p className="text-gray-500 text-[9px] md:text-[10px] font-black uppercase tracking-[0.4em] leading-relaxed">
+                  {stat.label}
+                </p>
               </div>
             ))}
         </div>
