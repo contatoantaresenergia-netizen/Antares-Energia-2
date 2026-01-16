@@ -11,7 +11,10 @@ import {
   ShieldCheck,
   Factory,
   Activity,
-  TrendingUp
+  TrendingUp,
+  Droplets,
+  BatteryCharging,
+  Sun
 } from 'lucide-react';
 
 export const Home: React.FC = () => {
@@ -66,6 +69,47 @@ export const Home: React.FC = () => {
 
     return () => observerRef.current?.disconnect();
   }, []);
+
+  const solutionsData = [
+    {
+      title: "Sistemas Fotovoltaicos On-Grid",
+      desc: [
+        "Redução e previsibilidade de custos energéticos",
+        "Decisão econômica estratégica"
+      ],
+      img: "https://images.unsplash.com/photo-1509391366360-fe5bb58583bb?q=80&w=800&auto=format&fit=crop",
+      icon: <Sun className="w-8 h-8" />
+    },
+    {
+      title: "Sistemas Híbridos com Armazenamento",
+      desc: [
+        "Continuidade operacional",
+        "Segurança energética",
+        "Aplicações corporativas e residenciais críticas"
+      ],
+      img: "https://images.unsplash.com/photo-1594318728952-b892a0e28f23?q=80&w=800&auto=format&fit=crop",
+      icon: <BatteryCharging className="w-8 h-8" />
+    },
+    {
+      title: "Sistemas Off-Grid com Armazenamento",
+      desc: [
+        "Autonomia energética total",
+        "Aplicações remotas, rurais ou críticas",
+        "Engenharia dedicada para operação contínua"
+      ],
+      img: "https://images.unsplash.com/photo-1566094758224-acc2ce0c5ad2?q=80&w=800&auto=format&fit=crop",
+      icon: <Cpu className="w-8 h-8" />
+    },
+    {
+      title: "Bombeamento Solar de Água e Irrigação",
+      desc: [
+        "Abastecimento hídrico e irrigação de médio e grande porte",
+        "Integração energia + hidráulica"
+      ],
+      img: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=800&auto=format&fit=crop",
+      icon: <Droplets className="w-8 h-8" />
+    }
+  ];
 
   return (
     <div className="w-full bg-antares-dark">
@@ -263,6 +307,64 @@ export const Home: React.FC = () => {
                  className="relative w-full h-[450px] object-cover rounded-3xl shadow-2xl border border-white/10 grayscale hover:grayscale-0 transition-all duration-1000"
                />
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* NOvA SEÇÃO: Soluções Especializadas (Sistemas Fotovoltaicos) */}
+      <section id="solucoes-tecnicas" className="section-reveal py-32 bg-antares-dark">
+        <div className="max-w-7xl mx-auto px-8">
+          <header className="mb-20 text-center">
+            <span className="text-antares-cyan text-[10px] font-black tracking-[0.4em] uppercase mb-4 block">Nossa Expertise</span>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              Sistemas e <span className="text-gradient">Tecnologias Fotovoltaicas</span>
+            </h2>
+            <div className="w-24 h-1 bg-antares-cyan mx-auto rounded-full"></div>
+          </header>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {solutionsData.map((item, idx) => (
+              <div 
+                key={idx} 
+                className="group relative flex flex-col h-full bg-antares-slate/20 border border-white/5 rounded-2xl overflow-hidden hover:border-antares-cyan/50 transition-all duration-500"
+              >
+                {/* Imagem Banner */}
+                <div className="relative h-48 overflow-hidden">
+                  <div className="absolute inset-0 bg-antares-dark/40 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
+                  <img 
+                    src={item.img} 
+                    alt={item.title} 
+                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700"
+                  />
+                  <div className="absolute bottom-4 left-4 z-20 bg-antares-cyan p-2 rounded shadow-lg">
+                    <div className="text-antares-dark">{item.icon}</div>
+                  </div>
+                </div>
+
+                {/* Conteúdo */}
+                <div className="p-8 flex flex-col flex-grow">
+                  <h3 className="text-white font-bold text-lg mb-6 leading-tight min-h-[3rem] group-hover:text-antares-cyan transition-colors">
+                    {item.title}
+                  </h3>
+                  <ul className="space-y-4 flex-grow">
+                    {item.desc.map((bullet, bIdx) => (
+                      <li key={bIdx} className="flex items-start gap-3">
+                        <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-antares-cyan flex-shrink-0"></span>
+                        <p className="text-gray-400 text-sm leading-relaxed font-light">
+                          {bullet}
+                        </p>
+                      </li>
+                    ))}
+                  </ul>
+                  
+                  <div className="mt-8 pt-6 border-t border-white/5">
+                    <a href="#contato" className="inline-flex items-center text-[10px] font-black uppercase tracking-widest text-antares-cyan group/link">
+                      Saiba mais <ArrowRight className="ml-2 w-4 h-4 group-hover/link:translate-x-2 transition-transform" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
