@@ -1,10 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <link rel="shortcut icon" type="image/png" href="https://agzxythrwhlpvptlsepv.supabase.co/storage/v1/object/public/Orlando%20Air%20cond/07770D59-C479-4AE7-890B-E3359337430D.png" />
     <link rel="icon" type="image/png" href="https://agzxythrwhlpvptlsepv.supabase.co/storage/v1/object/public/Orlando%20Air%20cond/07770D59-C479-4AE7-890B-E3359337430D.png" />
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <title>Antares Energia | Engenharia Solar em Nova Odessa - SP</title>
@@ -13,95 +13,9 @@
     <meta name="geo.region" content="BR-SP" />
     <meta name="geo.placename" content="Nova Odessa" />
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Configuração Customizada do Tailwind -->
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              antares: {
-                dark: '#020617',
-                slate: '#0f172a',
-                cyan: '#00D1FF',
-                blue: '#002B49',
-              }
-            },
-            fontFamily: {
-              heading: ['Inter', 'sans-serif'],
-              sans: ['Inter', 'sans-serif'],
-            },
-            animation: {
-              'spin-slow': 'spin 12s linear infinite',
-              'fade-in': 'fadeIn 1s ease-out forwards',
-            },
-            keyframes: {
-              fadeIn: {
-                '0%': { opacity: '0', transform: 'translateY(15px)' },
-                '100%': { opacity: '1', transform: 'translateY(0)' },
-              }
-            }
-          }
-        }
-      }
-    </script>
-
-    <!-- Estilos Globais para UX/SEO -->
-    <style>
-      body {
-        font-family: 'Inter', sans-serif;
-        scroll-behavior: smooth;
-        background-color: #020617;
-        color: white;
-      }
-      .text-gradient {
-        background: linear-gradient(90deg, #fff 0%, #00D1FF 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
-      .hero-title {
-        font-size: clamp(2.5rem, 8vw, 5rem);
-        line-height: 1.1;
-      }
-      /* Animação de revelação no scroll usada na Home.tsx */
-      .section-reveal {
-        opacity: 0;
-        transform: translateY(40px);
-        transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1);
-      }
-      .section-reveal.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-      /* Custom Scrollbar para estética high-end */
-      ::-webkit-scrollbar { width: 6px; }
-      ::-webkit-scrollbar-track { background: #020617; }
-      ::-webkit-scrollbar-thumb { background: #0f172a; border-radius: 10px; }
-      ::-webkit-scrollbar-thumb:hover { background: #00D1FF; }
-    </style>
-
-    <!-- Import Map para gerenciar dependências sem erro -->
-    <script type="importmap">
-{
-  "imports": {
-    "react": "https://esm.sh/react@19.0.0",
-    "react-dom": "https://esm.sh/react-dom@19.0.0",
-    "react-dom/client": "https://esm.sh/react-dom@19.0.0/client",
-    "lucide-react": "https://esm.sh/lucide-react@0.460.0",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "react/": "https://esm.sh/react@^19.2.3/"
-  }
-}
-</script>
   </head>
   <body>
     <div id="root"></div>
-    <!-- Referência ao index.tsx como ponto de entrada -->
-    <script type="module" src="index.tsx"></script>
+    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
