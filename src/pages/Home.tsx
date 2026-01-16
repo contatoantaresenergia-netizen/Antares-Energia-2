@@ -100,8 +100,9 @@ export const Home: React.FC = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-8">
+              {/* Ajustado para âncora interna evitando erro 404 */}
               <a 
-                href="/contato" 
+                href="#contato" 
                 className="px-14 py-6 bg-antares-cyan text-antares-dark font-black uppercase tracking-[0.2em] hover:bg-white transition-all duration-500 rounded-sm shadow-[0_20px_60px_rgba(0,209,255,0.4)] text-center text-[12px]"
               >
                 Solicitar Diagnóstico
