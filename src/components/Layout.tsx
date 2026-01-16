@@ -1,7 +1,6 @@
-
 import React, { useState, useEffect } from 'react';
 import { Outlet, Link, useLocation } from 'react-router-dom';
-import { Menu, X, Facebook, Instagram, Linkedin, Mail, Phone, MapPin, ChevronRight, MessageCircle, ArrowRight } from 'lucide-react';
+import { Menu, X, Facebook, Instagram, Mail, Phone, MapPin, ChevronRight, MessageCircle, ArrowRight } from 'lucide-react';
 import { Logo } from './Logo';
 import { Chatbot } from './Chatbot';
 
@@ -106,9 +105,10 @@ export const Layout: React.FC = () => {
               <p className="text-gray-500 text-lg font-light leading-relaxed max-w-sm mb-12">
                 A Antares Energia redefine os padrões de engenharia solar no Brasil, entregando independência através de tecnologia Tier-1.
               </p>
+              {/* Ajustado: Somente Instagram e Facebook */}
               <div className="flex space-x-6">
                 <a href="#" className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-antares-cyan hover:text-antares-dark transition-all duration-500"><Instagram size={20} /></a>
-                <a href="#" className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-antares-cyan hover:text-antares-dark transition-all duration-500"><Linkedin size={20} /></a>
+                <a href="#" className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-antares-cyan hover:text-antares-dark transition-all duration-500"><Facebook size={20} /></a>
               </div>
             </div>
 
