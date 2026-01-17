@@ -1,15 +1,13 @@
 import React, { useEffect } from 'react';
 import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
 
-// Importações usando chaves (Named Exports)
+// Importações com chaves { } para bater com o seu código
+import { Layout } from './components/Layout';
 import { Home } from './pages/Home';
 import { About } from './pages/About';
 import { Services } from './pages/Services';
 import { Projects } from './pages/Projects';
 import { Contact } from './pages/Contact';
-
-// IMPORTANTE: O arquivo Layout.tsx PRECISA estar dentro da pasta src/components
-import { Layout } from './components/Layout'; 
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
