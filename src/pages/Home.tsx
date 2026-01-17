@@ -106,7 +106,7 @@ export const Home: React.FC = () => {
         "Abastecimento hídrico e irrigação de médio e grande porte",
         "Integração energia + hidráulica"
       ],
-      img: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=800&auto=format&fit=crop",
+      img: "https://agzxythrwhlpvptlsepv.supabase.co/storage/v1/object/public/Orlando%20Air%20cond/Bombamento%20Antares.jpg",
       icon: <Droplets className="w-8 h-8" />
     }
   ];
