@@ -302,7 +302,7 @@ export const Home: React.FC = () => {
             <div className="lg:w-1/2 relative">
                <div className="absolute inset-0 bg-antares-cyan/10 blur-[100px] animate-pulse"></div>
                <img 
-                 src="https://images.unsplash.com/photo-1548518014-97ca08a82b55?q=80&w=1200&auto=format&fit=crop" 
+                 src="https://agzxythrwhlpvptlsepv.supabase.co/storage/v1/object/public/Orlando%20Air%20cond/Foto%20banner%20Antares%203.jpg" 
                  alt="Energia solar em sistemas críticos para mercado livre em Nova Odessa" 
                  className="relative w-full h-[450px] object-cover rounded-3xl shadow-2xl border border-white/10 grayscale hover:grayscale-0 transition-all duration-1000"
                />
