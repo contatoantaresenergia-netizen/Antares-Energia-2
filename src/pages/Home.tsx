@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useAnimations } from '../hooks/useAnimations'; // 👈 ADICIONADO
 import { 
   ArrowRight,
   ChevronDown,
@@ -17,6 +18,9 @@ import {
 } from 'lucide-react';
 
 export const Home: React.FC = () => {
+  // 👇 ADICIONADO: Inicializa animações GSAP
+  useAnimations();
+
   const [currentSlide, setCurrentSlide] = useState(0);
   const heroImages = [
     "https://indigo-goat-999288.hostingersite.com/wp-content/uploads/2025/11/transferir-2.jpeg", 
@@ -112,11 +116,11 @@ export const Home: React.FC = () => {
   return (
     <div className="w-full bg-antares-dark">
       {/* 1. HERO SECTION */}
-      <section className="relative min-h-screen w-full flex items-center overflow-hidden bg-antares-dark pt-[180px] md:pt-[240px] pb-32">
+      <section className="hero relative min-h-screen w-full flex items-center overflow-hidden bg-antares-dark pt-[180px] md:pt-[240px] pb-32">
         {heroImages.map((img, index) => (
           <div 
             key={index}
-            className={`absolute inset-0 transition-opacity duration-[3000ms] ease-in-out ${
+            className={`hero-background absolute inset-0 transition-opacity duration-[3000ms] ease-in-out ${
               index === currentSlide ? 'opacity-30' : 'opacity-0'
             }`}
           >
@@ -137,15 +141,15 @@ export const Home: React.FC = () => {
               <span className="text-gradient">Alta Performance.</span>
             </h1>
 
-            <p className="text-xl md:text-2xl text-gray-400 mb-14 font-light max-w-2xl leading-relaxed animate-fade-in">
+            <p className="hero-subtitle text-xl md:text-2xl text-gray-400 mb-14 font-light max-w-2xl leading-relaxed animate-fade-in">
               Engenharia de precisão que integra diagnóstico estratégico, gestão de ativos e soluções energéticas sob medida.
             </p>
 
-            {/* BOTÕES DO HERO: Tamanho reduzido para design mais fino */}
+            {/* BOTÕES DO HERO */}
             <div className="flex flex-col sm:flex-row gap-6 animate-fade-in">
               <a 
                 href="#contato" 
-                className="px-8 py-3.5 bg-antares-cyan text-antares-dark font-black uppercase tracking-[0.15em] hover:bg-white transition-all duration-500 rounded-full shadow-lg text-center text-[11px] flex items-center justify-center"
+                className="btn-magnetic px-8 py-3.5 bg-antares-cyan text-antares-dark font-black uppercase tracking-[0.15em] hover:bg-white transition-all duration-500 rounded-full shadow-lg text-center text-[11px] flex items-center justify-center"
               >
                 Solicitar Diagnóstico
               </a>
@@ -153,7 +157,7 @@ export const Home: React.FC = () => {
                 href="https://wa.me/5519996162688"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-8 py-3.5 border border-white/20 text-white font-black uppercase tracking-[0.15em] hover:border-antares-cyan hover:text-antares-cyan transition-all duration-500 backdrop-blur-md rounded-full flex items-center justify-center group text-[11px]"
+                className="btn-magnetic px-8 py-3.5 border border-white/20 text-white font-black uppercase tracking-[0.15em] hover:border-antares-cyan hover:text-antares-cyan transition-all duration-500 backdrop-blur-md rounded-full flex items-center justify-center group text-[11px]"
               >
                 Consultoria Executiva 
                 <div className="ml-3 bg-antares-cyan p-1 rounded-full group-hover:bg-white transition-colors">
@@ -165,18 +169,23 @@ export const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* 2. STATS */}
+      {/* 2. STATS - 👇 ATUALIZADO COM ANIMAÇÃO */}
       <section className="bg-antares-dark py-24 border-b border-white/5">
         <div className="max-w-7xl mx-auto px-8 grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
             {[
-              { val: "500+", label: "Usinas Instaladas" },
-              { val: "15MW", label: "Potência Total" },
-              { val: "98%", label: "Eficiência Média" },
-              { val: "R$ 20M", label: "Economia Gerada" }
+              { val: 500, suffix: "+", label: "Usinas Instaladas" },
+              { val: 15, suffix: "MW", label: "Potência Total" },
+              { val: 98, suffix: "%", label: "Eficiência Média" },
+              { val: 20, suffix: "M", prefix: "R$ ", label: "Economia Gerada" }
             ].map((stat, i) => (
               <div key={i} className="group">
-                <p className={`text-4xl md:text-5xl font-black mb-4 tracking-tighter ${i%2===0 ? 'text-antares-cyan' : 'text-white'}`}>
-                  {stat.val}
+                <p 
+                  className={`stat-number text-4xl md:text-5xl font-black mb-4 tracking-tighter ${i%2===0 ? 'text-antares-cyan' : 'text-white'}`}
+                  data-target={stat.val}
+                  data-suffix={stat.suffix}
+                  data-prefix={stat.prefix || ''}
+                >
+                  {stat.prefix || ''}0{stat.suffix}
                 </p>
                 <p className="text-gray-500 text-[10px] font-black uppercase tracking-[0.4em] leading-relaxed">
                   {stat.label}
@@ -187,7 +196,7 @@ export const Home: React.FC = () => {
       </section>
 
       {/* SEÇÃO 1: Nova Odessa */}
-      <section id="engenharia" className="section-reveal py-32 bg-antares-dark overflow-hidden border-b border-white/5">
+      <section id="engenharia" className="section-reveal animate-section py-32 bg-antares-dark overflow-hidden border-b border-white/5">
         <div className="max-w-7xl mx-auto px-8">
           <div className="grid lg:grid-cols-2 gap-20 items-center">
             <div className="relative group">
@@ -234,7 +243,7 @@ export const Home: React.FC = () => {
       </section>
 
       {/* SEÇÃO 3: Mercado Livre */}
-      <section id="mercado-livre" className="section-reveal py-32 bg-antares-dark relative overflow-hidden">
+      <section id="mercado-livre" className="section-reveal animate-section py-32 bg-antares-dark relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-8 relative z-10">
           <div className="bg-gradient-to-br from-antares-slate to-antares-dark p-12 md:p-20 rounded-[40px] border border-white/5 flex flex-col lg:flex-row gap-16 items-center shadow-2xl">
             <div className="lg:w-1/2">
@@ -248,8 +257,7 @@ export const Home: React.FC = () => {
                 Especialistas em migração estratégica. Integramos sua usina fotovoltaica à operação no Mercado Livre.
               </p>
               
-              {/* BOTÃO MERCADO LIVRE: Mais fino e elegante */}
-              <button className="group flex items-center gap-4 bg-white text-antares-dark px-8 py-4 font-black uppercase tracking-[0.1em] rounded-full hover:bg-antares-cyan transition-all text-[11px]">
+              <button className="btn-magnetic group flex items-center gap-4 bg-white text-antares-dark px-8 py-4 font-black uppercase tracking-[0.1em] rounded-full hover:bg-antares-cyan transition-all text-[11px]">
                 Estudo de Viabilidade Técnico 
                 <div className="bg-antares-dark/10 p-1 rounded-full group-hover:bg-white/20 transition-colors">
                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -267,8 +275,8 @@ export const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* SEÇÃO 4: Soluções Especializadas */}
-      <section id="solucoes-tecnicas" className="section-reveal py-32 bg-antares-dark">
+      {/* SEÇÃO 4: Soluções Especializadas - 👇 ATUALIZADO COM ANIMAÇÃO */}
+      <section id="solucoes-tecnicas" className="section-reveal animate-section py-32 bg-antares-dark">
         <div className="max-w-7xl mx-auto px-8">
           <header className="mb-20 text-center">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
@@ -277,11 +285,11 @@ export const Home: React.FC = () => {
             <div className="w-24 h-1 bg-antares-cyan mx-auto rounded-full"></div>
           </header>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="tech-section grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {solutionsData.map((item, idx) => (
               <div 
                 key={idx} 
-                className="group relative flex flex-col h-full bg-antares-slate/20 border border-white/5 rounded-2xl overflow-hidden hover:border-antares-cyan/50 transition-all duration-500"
+                className="tech-card group relative flex flex-col h-full bg-antares-slate/20 border border-white/5 rounded-2xl overflow-hidden hover:border-antares-cyan/50 transition-all duration-500"
               >
                 <div className="relative h-48 overflow-hidden">
                   <img src={item.img} alt={item.title} className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" />
@@ -299,7 +307,6 @@ export const Home: React.FC = () => {
                     ))}
                   </ul>
                   
-                  {/* BOTÃO "SAIBA MAIS" PROPORCIONAL AO CARD */}
                   <div className="mt-8 pt-6 border-t border-white/5">
                     <a href="#contato" className="inline-flex items-center text-[10px] font-black uppercase tracking-widest text-antares-cyan group/link bg-antares-cyan/5 px-5 py-2.5 rounded-full hover:bg-antares-cyan hover:text-antares-dark transition-all">
                       Saiba mais 
@@ -316,7 +323,7 @@ export const Home: React.FC = () => {
       </section>
 
       {/* FAQ SECTION */}
-      <section className="section-reveal py-32 bg-antares-dark border-t border-white/5">
+      <section className="section-reveal animate-section py-32 bg-antares-dark border-t border-white/5">
         <div className="max-w-4xl mx-auto px-8">
           <div className="space-y-6">
             {faqData.map((item, index) => (
