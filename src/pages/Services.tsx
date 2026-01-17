@@ -1,104 +1,205 @@
 import React from 'react';
-import { Home, Building2, Zap, Car, Store, ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
 
-export const Services: React.FC = () => {
-  const services = [
-    {
-      icon: <Home size={40} />,
-      title: "Solar Residencial",
-      desc: "Transforme sua casa em uma geradora de energia. Projetos que valorizam a arquitetura do imóvel e reduzem a conta em até 95%.",
-      image: "https://indigo-goat-999288.hostingersite.com/wp-content/uploads/2025/11/transferir-3.jpeg" 
-    },
-    {
-      icon: <Store size={40} />,
-      title: "Solar Comercial",
-      desc: "Ideal para comércios, lojas e centros automotivos. Proteja sua margem de lucro blindando seu negócio contra aumentos na tarifa de energia.",
-      image: "https://kjtuhxfrdcyhydkesxzw.supabase.co/storage/v1/object/public/Imagens/solar%20comercial%20800x800.png" 
-    },
-    {
-      icon: <Building2 size={40} />,
-      title: "Solar Industrial",
-      desc: "Soluções robustas para grandes telhados e indústrias. Reduza custos fixos operacionais com alta potência instalada.",
-      image: "https://kjtuhxfrdcyhydkesxzw.supabase.co/storage/v1/object/public/Imagens/Industrial%20.png" 
-    },
-    {
-      icon: <Zap size={40} />,
-      title: "Usinas de Solo",
-      desc: "Investimento de alto retorno. Projetamos e construímos usinas fotovoltaicas de solo para geração distribuída ou autoconsumo remoto.",
-      image: "https://agzxythrwhlpvptlsepv.supabase.co/storage/v1/object/public/Orlando%20Air%20cond/Usina%20de%20Solo.jpg" 
-    },
-    {
-      icon: <Car size={40} />,
-      title: "Mobilidade Elétrica",
-      desc: "Prepare-se para o futuro. Instalação de carregadores para veículos elétricos (Wallbox) integrados ao seu sistema solar.",
-      image: "https://agzxythrwhlpvptlsepv.supabase.co/storage/v1/object/public/Orlando%20Air%20cond/antarescarro.jpeg" 
-    }
-  ];
+import { Target, Heart, Zap, Award } from 'lucide-react';
+
+import { Logo } from '../components/Logo';
+
+
+
+export const About: React.FC = () => {
 
   return (
-    <div className="pt-40 pb-20 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
+
+    /* AJUSTE: pt-40 para alinhar com o Header fixo */
+
+    <div className="pt-40 pb-12 min-h-screen bg-white">
+
+      
+
+      {/* HEADER DA PÁGINA (HERO) */}
+
+      <div className="bg-antares-dark py-24 mb-20 relative overflow-hidden">
+
+        {/* Background decorativo sutil */}
+
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-antares-cyan/5 via-transparent to-transparent"></div>
+
         
-        {/* CABEÇALHO DA PÁGINA */}
-        <div className="mb-24 text-center animate-in fade-in slide-in-from-bottom-4 duration-700">
-          <h1 className="text-4xl md:text-6xl font-bold text-[#0D1B2A] mb-6">
-            Nossas <span className="text-[#00C2FF]">Soluções</span>
+
+        <div className="max-w-7xl mx-auto px-6 text-center relative z-10 animate-fade-up">
+
+          <Logo className="h-16 md:h-24 w-auto mx-auto mb-10" />
+
+          <h1 className="text-4xl md:text-6xl font-heading font-bold text-white mb-6">
+
+            Nossa <span className="text-antares-cyan">História</span>
+
           </h1>
-          <div className="w-20 h-1 bg-[#00C2FF] mx-auto mb-6"></div>
-          <p className="text-gray-500 max-w-2xl mx-auto text-lg">
-            Tecnologia de ponta a ponta: do telhado da sua casa às grandes usinas de investimento.
+
+          <div className="w-20 h-1 bg-antares-cyan mx-auto mb-8"></div>
+
+          <p className="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
+
+            Combinando engenharia de precisão com o compromisso inegociável de transformar o futuro da energia no Brasil.
+
           </p>
+
         </div>
 
-        {/* LISTA DE SERVIÇOS */}
-        <div className="flex flex-col gap-24">
-          {services.map((service, index) => (
-            <div 
-              key={index} 
-              className={`flex flex-col md:flex-row gap-12 items-center ${
-                index % 2 !== 0 ? 'md:flex-row-reverse' : ''
-              }`}
-            >
-              {/* IMAGEM COM EFEITO - Ajustado para rounded-2xl para suavizar */}
-              <div className="w-full md:w-1/2 h-[300px] md:h-[450px] overflow-hidden shadow-2xl relative group rounded-2xl">
-                <img 
-                  src={service.image} 
-                  alt={service.title} 
-                  className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" 
-                />
-                <div className="absolute inset-0 bg-[#0D1B2A]/20 group-hover:bg-transparent transition-colors duration-500"></div>
-              </div>
-
-              {/* TEXTO */}
-              <div className="w-full md:w-1/2 flex flex-col items-start">
-                <div className="text-[#00C2FF] mb-6 p-4 bg-[#0D1B2A] rounded-2xl shadow-lg">
-                  {service.icon}
-                </div>
-                <h2 className="text-3xl md:text-4xl font-bold text-[#0D1B2A] mb-6">
-                  {service.title}
-                </h2>
-                <p className="text-gray-600 leading-relaxed mb-8 text-lg font-light">
-                  {service.desc}
-                </p>
-
-                {/* BOTÃO ATUALIZADO: PADRÃO FINO E ARREDONDADO */}
-                <Link 
-                  to="/contato" 
-                  className="inline-flex items-center px-8 py-3.5 bg-[#0D1B2A] text-white font-black uppercase tracking-[0.15em] hover:bg-[#00C2FF] hover:text-[#0D1B2A] transition-all duration-500 rounded-full group text-[11px]"
-                >
-                  Saiba Mais
-                  <div className="ml-3 bg-[#00C2FF] p-1 rounded-full group-hover:bg-[#0D1B2A] group-hover:text-[#00C2FF] transition-colors">
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </div>
-                </Link>
-              </div>
-            </div>
-          ))}
-        </div>
       </div>
-    </div>
-  );
-};
 
-export default Services;
+
+
+      <div className="max-w-7xl mx-auto px-6">
+
+        {/* CONTEÚDO PRINCIPAL */}
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center mb-32">
+
+          <div className="animate-fade-up" style={{ animationDelay: '0.2s' }}>
+
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-antares-dark mb-8 leading-tight">
+
+              Liderando a <br /> revolução solar
+
+            </h2>
+
+            <p className="text-gray-600 mb-6 text-lg leading-relaxed">
+
+              Fundada com a missão de tornar a energia limpa acessível e esteticamente agradável, a Antares Energia se destaca no mercado brasileiro pela atenção obsessiva aos detalhes técnicos.
+
+            </p>
+
+            <p className="text-gray-600 mb-10 text-lg leading-relaxed">
+
+              Não vendemos apenas equipamentos; entregamos liberdade. Nossa engenharia é inspirada nos mais altos padrões globais, garantindo que sua instalação seja tão eficiente quanto duradoura.
+
+            </p>
+
+            
+
+            <div className="grid grid-cols-2 gap-8 border-t border-gray-100 pt-10">
+
+              <div>
+
+                <span className="block text-5xl font-black text-antares-cyan mb-2">2011</span>
+
+                <span className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em]">Ano de Fundação</span>
+
+              </div>
+
+              <div>
+
+                <span className="block text-5xl font-black text-antares-cyan mb-2">SP/PE</span>
+
+                <span className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em]">Sedes de Atuação</span>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+
+          <div className="relative group">
+
+            {/* Moldura Decorativa */}
+
+            <div className="absolute -top-6 -right-6 w-full h-full border-2 border-antares-cyan/30 -z-10 transition-transform duration-500 group-hover:translate-x-2 group-hover:translate-y-2"></div>
+
+            <img 
+
+              src="https://images.unsplash.com/photo-1594818379496-da1e345b0ded?q=80&w=800&auto=format&fit=crop" 
+
+              alt="Engenharia Antares" 
+
+              className="w-full h-auto shadow-2xl rounded-sm" 
+
+            />
+
+          </div>
+
+        </div>
+
+
+
+        {/* VALORES - Grid Estilizado */}
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-1 mb-32 shadow-2xl">
+
+          <div className="bg-antares-dark p-12 text-white border-b md:border-b-0 md:border-r border-white/5 transition-colors hover:bg-antares-dark/95">
+
+            <Target className="w-12 h-12 text-antares-cyan mb-8" />
+
+            <h3 className="text-xl font-bold mb-4 uppercase tracking-widest">Missão</h3>
+
+            <p className="text-gray-400 leading-relaxed">Acelerar a transição energética através de soluções premium, confiáveis e que gerem impacto econômico real.</p>
+
+          </div>
+
+          <div className="bg-antares-cyan p-12 text-antares-dark">
+
+            <Heart className="w-12 h-12 text-antares-dark mb-8" />
+
+            <h3 className="text-xl font-bold mb-4 uppercase tracking-widest">Valores</h3>
+
+            <p className="font-medium leading-relaxed">Transparência total em cada kWh gerado, segurança técnica inquestionável e foco na experiência do cliente.</p>
+
+          </div>
+
+          <div className="bg-antares-dark p-12 text-white transition-colors hover:bg-antares-dark/95">
+
+            <Award className="w-12 h-12 text-antares-cyan mb-8" />
+
+            <h3 className="text-xl font-bold mb-4 uppercase tracking-widest">Visão</h3>
+
+            <p className="text-gray-400 leading-relaxed">Ser o padrão ouro em instalação fotovoltaica e pós-venda especializado em todo o território nacional.</p>
+
+          </div>
+
+        </div>
+
+
+
+        {/* DNA SECTION */}
+
+        <div className="relative mb-24 h-[600px] overflow-hidden group rounded-sm shadow-2xl">
+
+          <img 
+
+            src="https://images.unsplash.com/photo-1497440001374-f26997328c1b?q=80&w=1920&auto=format&fit=crop" 
+
+            alt="Excelência Antares" 
+
+            className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110" 
+
+          />
+
+          <div className="absolute inset-0 bg-gradient-to-r from-antares-dark via-antares-dark/80 to-transparent flex items-center p-8 md:p-20">
+
+            <div className="max-w-2xl">
+
+              <span className="text-antares-cyan font-black tracking-[0.4em] uppercase mb-6 block text-xs">Nosso DNA Técnico</span>
+
+              <h2 className="text-4xl md:text-6xl font-heading font-bold text-white mb-8 leading-tight">Excelência em cada detalhe.</h2>
+
+              <p className="text-gray-300 text-lg md:text-xl leading-relaxed">
+
+                Cada parafuso, cada conexão e cada ângulo de inclinação é calculado para extrair o máximo de performance. Não aceitamos o comum; buscamos a perfeição técnica.
+
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  );
+
+};
