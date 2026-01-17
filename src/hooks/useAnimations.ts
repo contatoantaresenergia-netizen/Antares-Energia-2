@@ -4,8 +4,24 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 export const initHeroAnimations = () => {
-  // Desabilitado - usando animações CSS
-  console.log('Hero animations with CSS');
+  // Force hero elements to be visible
+  const heroTitle = document.querySelector('.hero-title');
+  const heroSubtitle = document.querySelector('.hero-subtitle');
+  const fadeInElements = document.querySelectorAll('.animate-fade-in');
+  
+  if (heroTitle) {
+    gsap.set(heroTitle, { opacity: 1, y: 0, clearProps: 'all' });
+  }
+  
+  if (heroSubtitle) {
+    gsap.set(heroSubtitle, { opacity: 1, y: 0, clearProps: 'all' });
+  }
+  
+  fadeInElements.forEach((el) => {
+    gsap.set(el, { opacity: 1, y: 0, clearProps: 'all' });
+  });
+  
+  console.log('Hero visibility enforced with GSAP.set');
 };
 
 export const initStatsAnimation = () => {
@@ -64,6 +80,9 @@ export const initMagneticButtons = () => {
   
   buttons.forEach((button) => {
     const btn = button as HTMLElement;
+    
+    // Garantir que o botão esteja visível primeiro
+    gsap.set(btn, { opacity: 1, scale: 1 });
     
     btn.addEventListener('mouseenter', () => {
       gsap.to(btn, { scale: 1.05, duration: 0.3 });
