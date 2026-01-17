@@ -1,14 +1,14 @@
-
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
-import { Layout } from './components/Layout';
+
+// Importações ajustadas para os caminhos das suas pastas
+import { Layout } from './components/Layout'; 
 import { Home } from './pages/Home';
 import { About } from './pages/About';
 import { Services } from './pages/Services';
 import { Projects } from './pages/Projects';
 import { Contact } from './pages/Contact';
 
-// Scroll to top component
 const ScrollToTop = () => {
   const { pathname } = useLocation();
   useEffect(() => {
