@@ -191,7 +191,7 @@ export const Home: React.FC = () => {
             <div className="relative group">
               <div className="absolute -inset-4 bg-antares-cyan/10 rounded-2xl transition-all blur-xl group-hover:bg-antares-cyan/20"></div>
               <img 
-                src="https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?q=80&w=1200&auto=format&fit=crop" 
+                src="https://agzxythrwhlpvptlsepv.supabase.co/storage/v1/object/public/Orlando%20Air%20cond/anatres%20banner%20site.jpg" 
                 alt="Engenharia de sistemas fotovoltaicos empresariais em Nova Odessa" 
                 className="relative rounded-xl shadow-2xl grayscale hover:grayscale-0 transition-all duration-700 w-full aspect-video object-cover"
               />
