@@ -1,3 +1,49 @@
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import SplitType from 'split-type';
+
+gsap.registerPlugin(ScrollTrigger);
+
+export const initHeroAnimations = () => {
+  const heroBackground = document.querySelector('.hero-background');
+  if (heroBackground) {
+    gsap.to(heroBackground, {
+      yPercent: 40,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '.hero',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: 1,
+      },
+    });
+  }
+
+  const heroTitle = document.querySelector('.hero-title');
+  if (heroTitle) {
+    const split = new SplitType(heroTitle as HTMLElement, { types: 'words' });
+    gsap.from(split.words, {
+      opacity: 0,
+      y: 50,
+      duration: 0.8,
+      stagger: 0.1,
+      ease: 'power3.out',
+      delay: 0.2,
+    });
+  }
+
+  const heroSubtitle = document.querySelector('.hero-subtitle');
+  if (heroSubtitle) {
+    gsap.from(heroSubtitle, {
+      opacity: 0,
+      y: 30,
+      duration: 1,
+      delay: 0.8,
+      ease: 'power3.out',
+    });
+  }
+};
+
 export const initStatsAnimation = () => {
   const stats = document.querySelectorAll('.stat-number');
   
@@ -12,8 +58,8 @@ export const initStatsAnimation = () => {
       onEnter: () => {
         gsap.to(stat, {
           textContent: target,
-          duration: 2.5,
-          ease: 'power2.out',
+          duration: 2,
+          ease: 'power1.out',
           snap: { textContent: 1 },
           onUpdate: function() {
             const current = Math.floor(parseFloat((stat as HTMLElement).textContent || '0'));
@@ -24,4 +70,81 @@ export const initStatsAnimation = () => {
       once: true,
     });
   });
+};
+
+export const initCardsAnimation = () => {
+  const cards = document.querySelectorAll('.tech-card');
+  
+  if (cards.length > 0) {
+    gsap.from(cards, {
+      y: 100,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.15,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '.tech-section',
+        start: 'top 70%',
+      },
+    });
+  }
+};
+
+export const initSectionsAnimation = () => {
+  const sections = document.querySelectorAll('.animate-section');
+  
+  sections.forEach((section) => {
+    gsap.from(section, {
+      opacity: 0,
+      y: 50,
+      duration: 1,
+      scrollTrigger: {
+        trigger: section,
+        start: 'top 75%',
+      },
+    });
+  });
+};
+
+export const initMagneticButtons = () => {
+  const buttons = document.querySelectorAll('.btn-magnetic');
+  
+  buttons.forEach((button) => {
+    const btn = button as HTMLElement;
+    
+    btn.addEventListener('mousemove', (e: MouseEvent) => {
+      const rect = btn.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      
+      gsap.to(btn, {
+        x: x * 0.3,
+        y: y * 0.3,
+        duration: 0.3,
+        ease: 'power2.out',
+      });
+    });
+    
+    btn.addEventListener('mouseleave', () => {
+      gsap.to(btn, {
+        x: 0,
+        y: 0,
+        duration: 0.5,
+        ease: 'elastic.out(1, 0.3)',
+      });
+    });
+  });
+};
+
+export const initAllAnimations = () => {
+  setTimeout(() => {
+    initHeroAnimations();
+    initStatsAnimation();
+    initCardsAnimation();
+    initSectionsAnimation();
+    
+    if (window.innerWidth > 768) {
+      initMagneticButtons();
+    }
+  }, 100);
 };
