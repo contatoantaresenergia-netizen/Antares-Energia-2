@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
 
-// Importações com chaves { } para bater com o seu código
+// Importações CORRIGIDAS com chaves { } para encontrar os componentes
 import { Layout } from './components/Layout';
 import { Home } from './pages/Home';
 import { About } from './pages/About';
