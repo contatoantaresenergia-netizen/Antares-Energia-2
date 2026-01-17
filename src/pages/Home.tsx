@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { 
   ArrowRight,
@@ -53,7 +52,6 @@ export const Home: React.FC = () => {
     }
   ];
 
-  // Observer para animações de scroll
   const observerRef = useRef<IntersectionObserver | null>(null);
   useEffect(() => {
     observerRef.current = new IntersectionObserver((entries) => {
@@ -144,26 +142,31 @@ export const Home: React.FC = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-8 animate-fade-in">
+              {/* BOTÃO PRINCIPAL HERO ATUALIZADO */}
               <a 
                 href="#contato" 
-                className="px-14 py-6 bg-antares-cyan text-antares-dark font-black uppercase tracking-[0.2em] hover:bg-white transition-all duration-500 rounded-sm shadow-[0_20px_60px_rgba(0,209,255,0.4)] text-center text-[12px]"
+                className="px-14 py-6 bg-antares-cyan text-antares-dark font-black uppercase tracking-[0.2em] hover:bg-white transition-all duration-500 rounded-full shadow-[0_20px_60px_rgba(0,209,255,0.4)] text-center text-[12px] flex items-center justify-center"
               >
                 Solicitar Diagnóstico
               </a>
+              {/* BOTÃO SECUNDÁRIO HERO ATUALIZADO */}
               <a 
                 href="https://wa.me/5519996162688"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-14 py-6 border-2 border-white/20 text-white font-black uppercase tracking-[0.2em] hover:border-white/60 hover:bg-white/5 transition-all duration-500 backdrop-blur-md rounded-sm flex items-center justify-center group text-[12px]"
+                className="px-14 py-6 border-2 border-white/20 text-white font-black uppercase tracking-[0.2em] hover:border-antares-cyan hover:text-antares-cyan transition-all duration-500 backdrop-blur-md rounded-full flex items-center justify-center group text-[12px]"
               >
-                Consultoria Executiva <ArrowRight className="ml-4 w-6 h-6 group-hover:translate-x-3 transition-transform" />
+                Consultoria Executiva 
+                <div className="ml-4 bg-antares-cyan p-1.5 rounded-full group-hover:bg-white transition-colors">
+                  <ArrowRight className="w-4 h-4 text-antares-dark" />
+                </div>
               </a>
             </div>
           </article>
         </div>
       </section>
 
-      {/* 2. STATS (AS LETRAS) */}
+      {/* 2. STATS */}
       <section className="bg-antares-dark py-24 border-b border-white/5">
         <div className="max-w-7xl mx-auto px-8 grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
             {[
@@ -184,7 +187,7 @@ export const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* SEÇÃO 1: Engenharia Energética Nova Odessa */}
+      {/* SEÇÃO 1: Nova Odessa */}
       <section id="engenharia" className="section-reveal py-32 bg-antares-dark overflow-hidden border-b border-white/5">
         <div className="max-w-7xl mx-auto px-8">
           <div className="grid lg:grid-cols-2 gap-20 items-center">
@@ -231,7 +234,7 @@ export const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* SEÇÃO 2: Autonomia e Continuidade */}
+      {/* SEÇÃO 2: Autonomia */}
       <section id="autonomia" className="section-reveal py-32 bg-antares-slate/20 border-b border-white/5">
         <div className="max-w-7xl mx-auto px-8">
           <div className="text-center max-w-4xl mx-auto mb-20">
@@ -295,8 +298,12 @@ export const Home: React.FC = () => {
                     Sistemas de Irrigação e Água
                  </div>
               </div>
-              <button className="group flex items-center gap-4 bg-white text-antares-dark px-10 py-5 font-black uppercase tracking-[0.1em] rounded-sm hover:bg-antares-cyan transition-all text-[12px]">
-                Estudo de Viabilidade Técnico <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
+              {/* BOTÃO MERCADO LIVRE ATUALIZADO */}
+              <button className="group flex items-center gap-4 bg-white text-antares-dark px-10 py-5 font-black uppercase tracking-[0.1em] rounded-full hover:bg-antares-cyan transition-all text-[12px]">
+                Estudo de Viabilidade Técnico 
+                <div className="bg-antares-dark/10 p-1 rounded-full group-hover:bg-white/20 transition-colors">
+                   <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
+                </div>
               </button>
             </div>
             <div className="lg:w-1/2 relative">
@@ -311,7 +318,7 @@ export const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* NOvA SEÇÃO: Soluções Especializadas (Sistemas Fotovoltaicos) */}
+      {/* SEÇÃO 4: Soluções Especializadas */}
       <section id="solucoes-tecnicas" className="section-reveal py-32 bg-antares-dark">
         <div className="max-w-7xl mx-auto px-8">
           <header className="mb-20 text-center">
@@ -328,7 +335,6 @@ export const Home: React.FC = () => {
                 key={idx} 
                 className="group relative flex flex-col h-full bg-antares-slate/20 border border-white/5 rounded-2xl overflow-hidden hover:border-antares-cyan/50 transition-all duration-500"
               >
-                {/* Imagem Banner */}
                 <div className="relative h-48 overflow-hidden">
                   <div className="absolute inset-0 bg-antares-dark/40 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
                   <img 
@@ -341,7 +347,6 @@ export const Home: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Conteúdo */}
                 <div className="p-8 flex flex-col flex-grow">
                   <h3 className="text-white font-bold text-lg mb-6 leading-tight min-h-[3rem] group-hover:text-antares-cyan transition-colors">
                     {item.title}
@@ -357,9 +362,13 @@ export const Home: React.FC = () => {
                     ))}
                   </ul>
                   
+                  {/* BOTÃO "SAIBA MAIS" ATUALIZADO PARA O PADRÃO ARREDONDADO */}
                   <div className="mt-8 pt-6 border-t border-white/5">
-                    <a href="#contato" className="inline-flex items-center text-[10px] font-black uppercase tracking-widest text-antares-cyan group/link">
-                      Saiba mais <ArrowRight className="ml-2 w-4 h-4 group-hover/link:translate-x-2 transition-transform" />
+                    <a href="#contato" className="inline-flex items-center text-[10px] font-black uppercase tracking-widest text-antares-cyan group/link bg-antares-cyan/5 px-4 py-2 rounded-full hover:bg-antares-cyan hover:text-antares-dark transition-all">
+                      Saiba mais 
+                      <div className="ml-2 bg-antares-cyan/20 p-1 rounded-full group-hover/link:bg-white transition-colors">
+                        <ArrowRight className="w-3 h-3 group-hover/link:translate-x-1 transition-transform" />
+                      </div>
                     </a>
                   </div>
                 </div>
