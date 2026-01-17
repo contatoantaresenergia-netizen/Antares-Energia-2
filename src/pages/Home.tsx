@@ -77,7 +77,7 @@ export const Home: React.FC = () => {
         "Redução e previsibilidade de custos energéticos",
         "Decisão econômica estratégica"
       ],
-      img: "https://images.unsplash.com/photo-1509391366360-fe5bb58583bb?q=80&w=800&auto=format&fit=crop",
+      img: "https://agzxythrwhlpvptlsepv.supabase.co/storage/v1/object/public/Orlando%20Air%20cond/On%20grid.jpg",
       icon: <Sun className="w-8 h-8" />
     },
     {
