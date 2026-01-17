@@ -1,80 +1,42 @@
-/* GSAP Animation Overrides - Garantir visibilidade */
-.hero-title,
-.hero-subtitle,
-.animate-fade-in {
-  opacity: 1 !important;
-  transform: translateY(0) !important;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* EMERGENCY FIX - Header */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(10px);
 }
 
-/* Fix hero title - garantir que apareça completo */
-.hero-title {
-  display: block !important;
-  visibility: visible !important;
-  white-space: normal !important;
-  overflow: visible !important;
-  max-width: 100% !important;
-  line-height: 1.1 !important;
-}
-
-/* Garantir que o gradiente apareça */
-.text-gradient {
-  display: inline-block !important;
-  background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%) !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  background-clip: text !important;
-  opacity: 1 !important;
-}
-
-/* Animação suave de fade-in CSS */
-@keyframes fade-in-css {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-fade-in {
-  animation: fade-in-css 0.8s ease-out forwards;
-}
-
-/* Spin lento para ícones */
-@keyframes spin-slow {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.animate-spin-slow {
-  animation: spin-slow 8s linear infinite;
-}
-
-/* Garantir que os botões magnéticos não quebrem */
-.btn-magnetic {
-  white-space: nowrap;
-  display: inline-flex;
+nav {
+  display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
-/* Garantir visibilidade de todas as seções */
-.section-reveal,
-.animate-section,
-.tech-section,
-.tech-card {
-  opacity: 1 !important;
-  visibility: visible !important;
-  transform: translateY(0) !important;
+nav img {
+  max-width: 150px;
+  height: auto;
 }
 
-/* Garantir que o grid funcione */
-.tech-section {
-  display: grid !important;
+/* Menu links */
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Main content push down */
+main {
+  padding-top: 100px;
 }
