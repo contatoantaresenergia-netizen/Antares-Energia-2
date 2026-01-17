@@ -1,4 +1,6 @@
-export default function EngineeringSection() {
+import React from 'react';
+
+export const EngineeringSection: React.FC = () => {
   return (
     <section className="animate-section py-20 bg-gray-800">
       <div className="container mx-auto px-4">
@@ -30,4 +32,4 @@ export default function EngineeringSection() {
       </div>
     </section>
   );
-}
+};
