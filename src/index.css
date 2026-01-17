@@ -18,11 +18,13 @@ html.lenis {
   will-change: transform;
 }
 
+/* Parallax no hero background */
 .hero-title,
 .hero-subtitle {
   will-change: transform, opacity;
 }
 
+/* Stats animation */
 .stat-number {
   display: inline-block;
 }
