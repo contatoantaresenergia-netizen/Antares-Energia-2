@@ -141,24 +141,23 @@ export const Home: React.FC = () => {
               Engenharia de precisão que integra diagnóstico estratégico, gestão de ativos e soluções energéticas sob medida.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-8 animate-fade-in">
-              {/* BOTÃO PRINCIPAL HERO ATUALIZADO */}
+            {/* BOTÕES DO HERO: Tamanho reduzido para design mais fino */}
+            <div className="flex flex-col sm:flex-row gap-6 animate-fade-in">
               <a 
                 href="#contato" 
-                className="px-14 py-6 bg-antares-cyan text-antares-dark font-black uppercase tracking-[0.2em] hover:bg-white transition-all duration-500 rounded-full shadow-[0_20px_60px_rgba(0,209,255,0.4)] text-center text-[12px] flex items-center justify-center"
+                className="px-8 py-3.5 bg-antares-cyan text-antares-dark font-black uppercase tracking-[0.15em] hover:bg-white transition-all duration-500 rounded-full shadow-lg text-center text-[11px] flex items-center justify-center"
               >
                 Solicitar Diagnóstico
               </a>
-              {/* BOTÃO SECUNDÁRIO HERO ATUALIZADO */}
               <a 
                 href="https://wa.me/5519996162688"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-14 py-6 border-2 border-white/20 text-white font-black uppercase tracking-[0.2em] hover:border-antares-cyan hover:text-antares-cyan transition-all duration-500 backdrop-blur-md rounded-full flex items-center justify-center group text-[12px]"
+                className="px-8 py-3.5 border border-white/20 text-white font-black uppercase tracking-[0.15em] hover:border-antares-cyan hover:text-antares-cyan transition-all duration-500 backdrop-blur-md rounded-full flex items-center justify-center group text-[11px]"
               >
                 Consultoria Executiva 
-                <div className="ml-4 bg-antares-cyan p-1.5 rounded-full group-hover:bg-white transition-colors">
-                  <ArrowRight className="w-4 h-4 text-antares-dark" />
+                <div className="ml-3 bg-antares-cyan p-1 rounded-full group-hover:bg-white transition-colors">
+                  <ArrowRight className="w-3.5 h-3.5 text-antares-dark" />
                 </div>
               </a>
             </div>
@@ -195,7 +194,7 @@ export const Home: React.FC = () => {
               <div className="absolute -inset-4 bg-antares-cyan/10 rounded-2xl transition-all blur-xl group-hover:bg-antares-cyan/20"></div>
               <img 
                 src="https://agzxythrwhlpvptlsepv.supabase.co/storage/v1/object/public/Orlando%20Air%20cond/anatres%20banner%20site.jpg" 
-                alt="Engenharia de sistemas fotovoltaicos empresariais em Nova Odessa" 
+                alt="Engenharia de sistemas fotovoltaicos empresariais" 
                 className="relative rounded-xl shadow-2xl grayscale hover:grayscale-0 transition-all duration-700 w-full aspect-video object-cover"
               />
               <div className="absolute top-8 left-8 bg-antares-cyan p-4 rounded-sm shadow-2xl">
@@ -211,7 +210,7 @@ export const Home: React.FC = () => {
                 </h2>
               </header>
               <p className="text-xl text-gray-400 font-light leading-relaxed mb-10">
-                A Antares Energia lidera a transformação energética industrial em <strong>Nova Odessa e região</strong>. Através de um diagnóstico energético rigoroso e engenharia dedicada, transformamos radiação solar em confiabilidade operacional para indústrias.
+                A Antares Energia lidera a transformação energética industrial em <strong>Nova Odessa e região</strong>. Através de um diagnóstico energético rigoroso e engenharia dedicada.
               </p>
               <ul className="grid sm:grid-cols-2 gap-8">
                 <li className="flex items-start gap-4">
@@ -234,50 +233,10 @@ export const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* SEÇÃO 2: Autonomia */}
-      <section id="autonomia" className="section-reveal py-32 bg-antares-slate/20 border-b border-white/5">
-        <div className="max-w-7xl mx-auto px-8">
-          <div className="text-center max-w-4xl mx-auto mb-20">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
-              Autonomia energética e continuidade operacional com <span className="text-gradient">energia solar.</span>
-            </h2>
-            <p className="text-xl text-gray-400 font-light">
-              Reduza a dependência da rede elétrica e garanta previsibilidade total de custos em operações remotas, condomínios e residências de alta demanda energética.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              { 
-                title: "Operações Críticas", 
-                desc: "Sistemas redundantes para operações que não admitem interrupções de fornecimento elétrico.", 
-                icon: <ShieldCheck className="w-10 h-10" /> 
-              },
-              { 
-                title: "Agronegócio", 
-                desc: "Autonomia para propriedades rurais, garantindo irrigação e processamento com custo zero de rede.", 
-                icon: <Globe className="w-10 h-10" /> 
-              },
-              { 
-                title: "Condomínios", 
-                desc: "Gestão inteligente de energia solar compartilhada para redução drástica de taxas condominiais.", 
-                icon: <Zap className="w-10 h-10" /> 
-              }
-            ].map((box, i) => (
-              <div key={i} className="group p-12 bg-antares-dark border border-white/5 rounded-2xl hover:border-antares-cyan/40 transition-all duration-500 hover:shadow-[0_20px_80px_rgba(0,209,255,0.05)]">
-                <div className="text-antares-cyan mb-10 group-hover:scale-110 transition-transform duration-500">{box.icon}</div>
-                <h3 className="text-white font-bold text-lg mb-6 uppercase tracking-[0.2em]">{box.title}</h3>
-                <p className="text-gray-500 leading-relaxed font-light text-sm">{box.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* SEÇÃO 3: Mercado Livre */}
       <section id="mercado-livre" className="section-reveal py-32 bg-antares-dark relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-8 relative z-10">
-          <div className="bg-gradient-to-br from-antares-slate to-antares-dark p-12 md:p-24 rounded-[40px] border border-white/5 flex flex-col lg:flex-row gap-16 items-center shadow-2xl">
+          <div className="bg-gradient-to-br from-antares-slate to-antares-dark p-12 md:p-20 rounded-[40px] border border-white/5 flex flex-col lg:flex-row gap-16 items-center shadow-2xl">
             <div className="lg:w-1/2">
               <header className="mb-10">
                 <span className="text-antares-cyan text-[10px] font-black tracking-[0.4em] uppercase mb-4 block">Estratégia e Operação</span>
@@ -286,32 +245,22 @@ export const Home: React.FC = () => {
                 </h2>
               </header>
               <p className="text-xl text-gray-400 font-light leading-relaxed mb-12">
-                Especialistas em migração estratégica. Integramos sua usina fotovoltaica à operação no Mercado Livre, garantindo a proteção de margens e a mitigação de riscos regulatórios em sistemas críticos.
+                Especialistas em migração estratégica. Integramos sua usina fotovoltaica à operação no Mercado Livre.
               </p>
-              <div className="grid gap-6 mb-12">
-                 <div className="flex items-center gap-4 text-white font-bold text-sm uppercase tracking-widest">
-                    <TrendingUp className="text-antares-cyan w-6 h-6" />
-                    Migração e Gestão de Contratos
-                 </div>
-                 <div className="flex items-center gap-4 text-white font-bold text-sm uppercase tracking-widest">
-                    <Zap className="text-antares-cyan w-6 h-6" />
-                    Sistemas de Irrigação e Água
-                 </div>
-              </div>
-              {/* BOTÃO MERCADO LIVRE ATUALIZADO */}
-              <button className="group flex items-center gap-4 bg-white text-antares-dark px-10 py-5 font-black uppercase tracking-[0.1em] rounded-full hover:bg-antares-cyan transition-all text-[12px]">
+              
+              {/* BOTÃO MERCADO LIVRE: Mais fino e elegante */}
+              <button className="group flex items-center gap-4 bg-white text-antares-dark px-8 py-4 font-black uppercase tracking-[0.1em] rounded-full hover:bg-antares-cyan transition-all text-[11px]">
                 Estudo de Viabilidade Técnico 
                 <div className="bg-antares-dark/10 p-1 rounded-full group-hover:bg-white/20 transition-colors">
-                   <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
+                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </div>
               </button>
             </div>
             <div className="lg:w-1/2 relative">
-               <div className="absolute inset-0 bg-antares-cyan/10 blur-[100px] animate-pulse"></div>
                <img 
                  src="https://agzxythrwhlpvptlsepv.supabase.co/storage/v1/object/public/Orlando%20Air%20cond/Foto%20banner%20Antares%203.jpg" 
-                 alt="Energia solar em sistemas críticos para mercado livre em Nova Odessa" 
-                 className="relative w-full h-[450px] object-cover rounded-3xl shadow-2xl border border-white/10 grayscale hover:grayscale-0 transition-all duration-1000"
+                 alt="Energia solar Mercado Livre" 
+                 className="relative w-full h-[400px] object-cover rounded-3xl shadow-2xl grayscale hover:grayscale-0 transition-all duration-1000"
                />
             </div>
           </div>
@@ -322,9 +271,8 @@ export const Home: React.FC = () => {
       <section id="solucoes-tecnicas" className="section-reveal py-32 bg-antares-dark">
         <div className="max-w-7xl mx-auto px-8">
           <header className="mb-20 text-center">
-            <span className="text-antares-cyan text-[10px] font-black tracking-[0.4em] uppercase mb-4 block">Nossa Expertise</span>
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Sistemas e <span className="text-gradient">Tecnologias Fotovoltaicas</span>
+              Sistemas e <span className="text-gradient">Tecnologias</span>
             </h2>
             <div className="w-24 h-1 bg-antares-cyan mx-auto rounded-full"></div>
           </header>
@@ -336,37 +284,26 @@ export const Home: React.FC = () => {
                 className="group relative flex flex-col h-full bg-antares-slate/20 border border-white/5 rounded-2xl overflow-hidden hover:border-antares-cyan/50 transition-all duration-500"
               >
                 <div className="relative h-48 overflow-hidden">
-                  <div className="absolute inset-0 bg-antares-dark/40 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
-                  <img 
-                    src={item.img} 
-                    alt={item.title} 
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700"
-                  />
-                  <div className="absolute bottom-4 left-4 z-20 bg-antares-cyan p-2 rounded shadow-lg">
-                    <div className="text-antares-dark">{item.icon}</div>
-                  </div>
+                  <img src={item.img} alt={item.title} className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" />
+                  <div className="absolute bottom-4 left-4 z-20 bg-antares-cyan p-2 rounded shadow-lg text-antares-dark">{item.icon}</div>
                 </div>
 
                 <div className="p-8 flex flex-col flex-grow">
-                  <h3 className="text-white font-bold text-lg mb-6 leading-tight min-h-[3rem] group-hover:text-antares-cyan transition-colors">
-                    {item.title}
-                  </h3>
+                  <h3 className="text-white font-bold text-lg mb-6 leading-tight min-h-[3rem] group-hover:text-antares-cyan transition-colors">{item.title}</h3>
                   <ul className="space-y-4 flex-grow">
                     {item.desc.map((bullet, bIdx) => (
                       <li key={bIdx} className="flex items-start gap-3">
                         <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-antares-cyan flex-shrink-0"></span>
-                        <p className="text-gray-400 text-sm leading-relaxed font-light">
-                          {bullet}
-                        </p>
+                        <p className="text-gray-400 text-[13px] leading-relaxed font-light">{bullet}</p>
                       </li>
                     ))}
                   </ul>
                   
-                  {/* BOTÃO "SAIBA MAIS" ATUALIZADO PARA O PADRÃO ARREDONDADO */}
+                  {/* BOTÃO "SAIBA MAIS" PROPORCIONAL AO CARD */}
                   <div className="mt-8 pt-6 border-t border-white/5">
-                    <a href="#contato" className="inline-flex items-center text-[10px] font-black uppercase tracking-widest text-antares-cyan group/link bg-antares-cyan/5 px-4 py-2 rounded-full hover:bg-antares-cyan hover:text-antares-dark transition-all">
+                    <a href="#contato" className="inline-flex items-center text-[10px] font-black uppercase tracking-widest text-antares-cyan group/link bg-antares-cyan/5 px-5 py-2.5 rounded-full hover:bg-antares-cyan hover:text-antares-dark transition-all">
                       Saiba mais 
-                      <div className="ml-2 bg-antares-cyan/20 p-1 rounded-full group-hover/link:bg-white transition-colors">
+                      <div className="ml-2 bg-antares-cyan/20 p-0.5 rounded-full group-hover/link:bg-white transition-colors">
                         <ArrowRight className="w-3 h-3 group-hover/link:translate-x-1 transition-transform" />
                       </div>
                     </a>
@@ -379,25 +316,20 @@ export const Home: React.FC = () => {
       </section>
 
       {/* FAQ SECTION */}
-      <section className="section-reveal py-48 bg-antares-dark border-t border-white/5 relative">
+      <section className="section-reveal py-32 bg-antares-dark border-t border-white/5">
         <div className="max-w-4xl mx-auto px-8">
-          <header className="text-center mb-24">
-            <h2 className="font-heading font-bold text-white mb-6 text-4xl uppercase tracking-tighter">Perguntas <span className="text-gradient">Frequentes.</span></h2>
-          </header>
           <div className="space-y-6">
             {faqData.map((item, index) => (
-              <div key={index} className="border border-white/5 rounded-2xl overflow-hidden bg-antares-slate/30 hover:border-white/10 transition-colors">
+              <div key={index} className="border border-white/5 rounded-2xl overflow-hidden bg-antares-slate/30">
                 <button 
                   onClick={() => setOpenFaqIndex(openFaqIndex === index ? null : index)} 
-                  className="w-full px-10 py-8 text-left flex justify-between items-center group"
+                  className="w-full px-8 py-6 text-left flex justify-between items-center group"
                 >
-                  <span className="text-white font-bold md:text-lg tracking-wide group-hover:text-antares-cyan transition-colors">{item.question}</span>
-                  {openFaqIndex === index ? <ChevronUp className="text-antares-cyan w-6 h-6" /> : <ChevronDown className="text-white/20 w-6 h-6" />}
+                  <span className="text-white font-bold tracking-wide group-hover:text-antares-cyan transition-colors">{item.question}</span>
+                  {openFaqIndex === index ? <ChevronUp className="text-antares-cyan w-5 h-5" /> : <ChevronDown className="text-white/20 w-5 h-5" />}
                 </button>
                 {openFaqIndex === index && (
-                  <div className="px-10 pb-10 animate-fade-in">
-                    <p className="text-gray-400 leading-relaxed text-lg font-light pt-6 border-t border-white/5">{item.answer}</p>
-                  </div>
+                  <div className="px-8 pb-8 animate-fade-in text-gray-400 font-light border-t border-white/5 pt-4">{item.answer}</div>
                 )}
               </div>
             ))}
