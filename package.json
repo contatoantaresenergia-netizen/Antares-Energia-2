@@ -1,4 +1,4 @@
-{
+ {
   "name": "antares-energia",
   "private": true,
   "version": "1.0.0",
@@ -14,7 +14,8 @@
     "react-router-dom": "^6.22.0",
     "lucide-react": "^0.471.2",
     "gsap": "^3.12.5",
-    "@studio-freight/lenis": "^1.0.42"
+    "@studio-freight/lenis": "^1.0.42",
+    "split-type": "^0.3.4"
   },
   "devDependencies": {
     "@types/react": "^18.3.12",
