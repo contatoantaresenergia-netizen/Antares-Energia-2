@@ -6,18 +6,23 @@ import { About } from './pages/About';
 import { Services } from './pages/Services';
 import { Projects } from './pages/Projects';
 import { Contact } from './pages/Contact';
+import { useAnimations } from './hooks/useAnimations';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
+  
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
+  
   return null;
 };
 
-const App: React.FC = () => {
+const AppContent: React.FC = () => {
+  useAnimations(); // ← ADICIONE ESTA LINHA
+  
   return (
-    <HashRouter>
+    <>
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Layout />}>
@@ -28,6 +33,14 @@ const App: React.FC = () => {
           <Route path="contato" element={<Contact />} />
         </Route>
       </Routes>
+    </>
+  );
+};
+
+const App: React.FC = () => {
+  return (
+    <HashRouter>
+      <AppContent />
     </HashRouter>
   );
 };
