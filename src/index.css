@@ -1,42 +1,28 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-/* EMERGENCY FIX - Header */
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  background: rgba(15, 23, 42, 0.95);
-  backdrop-filter: blur(10px);
-}
-
-nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem 2rem;
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-nav img {
-  max-width: 150px;
+/* Smooth Scroll */
+html.lenis {
   height: auto;
 }
 
-/* Menu links */
-nav a {
-  color: white;
-  text-decoration: none;
-  font-size: 0.875rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
 }
 
-/* Main content push down */
-main {
-  padding-top: 100px;
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Performance */
+.hero-background,
+.tech-card,
+.btn-magnetic {
+  will-change: transform;
+}
+
+.hero-title,
+.hero-subtitle {
+  will-change: transform, opacity;
+}
+
+.stat-number {
+  display: inline-block;
 }
