@@ -20,7 +20,7 @@ export const Services: React.FC = () => {
       icon: <Building2 size={40} />,
       title: "Solar Industrial",
       desc: "Soluções robustas para grandes telhados e indústrias. Reduza custos fixos operacionais com alta potência instalada.",
-      image: "https://images.unsplash.com/photo-1624397640148-949b1732bb0a?q=80&w=800&auto=format&fit=crop" 
+      image: "https://kjtuhxfrdcyhydkesxzw.supabase.co/storage/v1/object/public/Imagens/Industrial%20.png" 
     },
     {
       icon: <Zap size={40} />,
