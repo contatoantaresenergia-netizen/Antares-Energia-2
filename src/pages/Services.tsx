@@ -1,5 +1,5 @@
 import React from 'react';
-import { Home, Building2, Zap, Car, Store } from 'lucide-react';
+import { Home, Building2, Zap, Car, Store, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export const Services: React.FC = () => {
@@ -60,8 +60,8 @@ export const Services: React.FC = () => {
                 index % 2 !== 0 ? 'md:flex-row-reverse' : ''
               }`}
             >
-              {/* IMAGEM COM EFEITO */}
-              <div className="w-full md:w-1/2 h-[300px] md:h-[450px] overflow-hidden shadow-2xl relative group rounded-sm">
+              {/* IMAGEM COM EFEITO - Ajustado para rounded-2xl para suavizar */}
+              <div className="w-full md:w-1/2 h-[300px] md:h-[450px] overflow-hidden shadow-2xl relative group rounded-2xl">
                 <img 
                   src={service.image} 
                   alt={service.title} 
@@ -72,21 +72,25 @@ export const Services: React.FC = () => {
 
               {/* TEXTO */}
               <div className="w-full md:w-1/2 flex flex-col items-start">
-                <div className="text-[#00C2FF] mb-6 p-4 bg-[#0D1B2A] rounded-sm shadow-lg">
+                <div className="text-[#00C2FF] mb-6 p-4 bg-[#0D1B2A] rounded-2xl shadow-lg">
                   {service.icon}
                 </div>
                 <h2 className="text-3xl md:text-4xl font-bold text-[#0D1B2A] mb-6">
                   {service.title}
                 </h2>
-                <p className="text-gray-600 leading-relaxed mb-8 text-lg">
+                <p className="text-gray-600 leading-relaxed mb-8 text-lg font-light">
                   {service.desc}
                 </p>
+
+                {/* BOTÃO ATUALIZADO: PADRÃO FINO E ARREDONDADO */}
                 <Link 
                   to="/contato" 
-                  className="inline-flex items-center px-10 py-4 bg-[#0D1B2A] text-white font-bold uppercase tracking-widest hover:bg-[#00C2FF] hover:text-[#0D1B2A] transition-all duration-500 rounded-sm group"
+                  className="inline-flex items-center px-8 py-3.5 bg-[#0D1B2A] text-white font-black uppercase tracking-[0.15em] hover:bg-[#00C2FF] hover:text-[#0D1B2A] transition-all duration-500 rounded-full group text-[11px]"
                 >
                   Saiba Mais
-                  <span className="ml-3 transform group-hover:translate-x-2 transition-transform">→</span>
+                  <div className="ml-3 bg-[#00C2FF] p-1 rounded-full group-hover:bg-[#0D1B2A] group-hover:text-[#00C2FF] transition-colors">
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </div>
                 </Link>
               </div>
             </div>
