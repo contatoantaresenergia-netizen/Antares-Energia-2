@@ -87,7 +87,7 @@ export const Home: React.FC = () => {
         "Segurança energética",
         "Aplicações corporativas e residenciais críticas"
       ],
-      img: "https://images.unsplash.com/photo-1594318728952-b892a0e28f23?q=80&w=800&auto=format&fit=crop",
+      img: "https://agzxythrwhlpvptlsepv.supabase.co/storage/v1/object/public/Orlando%20Air%20cond/banner%202:4.jpg",
       icon: <BatteryCharging className="w-8 h-8" />
     },
     {
