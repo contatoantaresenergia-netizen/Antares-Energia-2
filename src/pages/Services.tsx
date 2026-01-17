@@ -14,7 +14,7 @@ export const Services: React.FC = () => {
       icon: <Store size={40} />,
       title: "Solar Comercial",
       desc: "Ideal para comércios, lojas e centros automotivos. Proteja sua margem de lucro blindando seu negócio contra aumentos na tarifa de energia.",
-      image: "https://agzxythrwhlpvptlsepv.supabase.co/storage/v1/object/public/Orlando%20Air%20cond/6F749F03-F3AC-49D1-BB6B-A736080D8A0A.jpeg" 
+      image: "https://kjtuhxfrdcyhydkesxzw.supabase.co/storage/v1/object/public/Imagens/solar%20comercial%20800x800.png" 
     },
     {
       icon: <Building2 size={40} />,
