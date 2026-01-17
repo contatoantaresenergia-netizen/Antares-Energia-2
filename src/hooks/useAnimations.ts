@@ -6,17 +6,18 @@ import {
   initCardsAnimation,
   initMagneticButtons,
 } from '../utils/animations';
+import type Lenis from '@studio-freight/lenis';
 
 export const useAnimations = () => {
   useEffect(() => {
     const isMobile = window.innerWidth < 768;
     
     // Smooth scroll (desktop apenas)
-    let lenis;
+    let lenis: Lenis | undefined;
     if (!isMobile) {
       lenis = initSmoothScroll();
     }
-
+    
     // Pequeno delay para garantir que o DOM está pronto
     const timer = setTimeout(() => {
       initHeroAnimations();
@@ -27,7 +28,7 @@ export const useAnimations = () => {
         initMagneticButtons();
       }
     }, 100);
-
+    
     // Cleanup
     return () => {
       clearTimeout(timer);
