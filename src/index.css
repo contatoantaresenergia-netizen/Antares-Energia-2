@@ -6,6 +6,26 @@
   transform: translateY(0) !important;
 }
 
+/* Fix hero title - garantir que apareça completo */
+.hero-title {
+  display: block !important;
+  visibility: visible !important;
+  white-space: normal !important;
+  overflow: visible !important;
+  max-width: 100% !important;
+  line-height: 1.1 !important;
+}
+
+/* Garantir que o gradiente apareça */
+.text-gradient {
+  display: inline-block !important;
+  background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  opacity: 1 !important;
+}
+
 /* Animação suave de fade-in CSS */
 @keyframes fade-in-css {
   from {
@@ -42,4 +62,19 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+}
+
+/* Garantir visibilidade de todas as seções */
+.section-reveal,
+.animate-section,
+.tech-section,
+.tech-card {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) !important;
+}
+
+/* Garantir que o grid funcione */
+.tech-section {
+  display: grid !important;
 }
