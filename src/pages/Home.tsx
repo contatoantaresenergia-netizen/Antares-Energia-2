@@ -97,7 +97,7 @@ export const Home: React.FC = () => {
         "Aplicações remotas, rurais ou críticas",
         "Engenharia dedicada para operação contínua"
       ],
-      img: "https://images.unsplash.com/photo-1566094758224-acc2ce0c5ad2?q=80&w=800&auto=format&fit=crop",
+      img: "https://agzxythrwhlpvptlsepv.supabase.co/storage/v1/object/public/Orlando%20Air%20cond/On%20grid%203:4.jpg",
       icon: <Cpu className="w-8 h-8" />
     },
     {
