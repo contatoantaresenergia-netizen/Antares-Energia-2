@@ -1,47 +1,48 @@
-import React, { useEffect } from 'react';
-import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
+import React from 'react';
+import { Outlet, Link } from 'react-router-dom';
+import { Menu, X, Phone, Mail, Instagram, Linkedin } from 'lucide-react';
 
-// Importação do Layout (Certifique-se que o arquivo existe em src/components/Layout.tsx)
-import { Layout } from './components/Layout';
+export const Layout: React.FC = () => {
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
-// Importações das Páginas
-// Nota: O erro "vermelho" acontece se o nome dentro desses arquivos for diferente do nome aqui
-import { Home } from './pages/Home';
-import { About } from './pages/About';
-import { Services } from './pages/Services'; // Este é o que estava causando erro
-import { Projects } from './pages/Projects';
-import { Contact } from './pages/Contact';
-
-// Componente para resetar o scroll ao trocar de página
-const ScrollToTop = () => {
-  const { pathname } = useLocation();
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
-  return null;
-};
-
-const App: React.FC = () => {
   return (
-    <HashRouter>
-      <ScrollToTop />
-      <Routes>
-        {/* Rota Pai que contém o Menu e Rodapé (Layout) */}
-        <Route path="/" element={<Layout />}>
-          
-          {/* Página Inicial - renderiza no caminho "/" */}
-          <Route index element={<Home />} />
-          
-          {/* Outras páginas - caminhos em português conforme solicitado */}
-          <Route path="sobre" element={<About />} />
-          <Route path="servicos" element={<Services />} />
-          <Route path="projetos" element={<Projects />} />
-          <Route path="contato" element={<Contact />} />
-          
-        </Route>
-      </Routes>
-    </HashRouter>
+    <div className="min-h-screen bg-antares-dark flex flex-col">
+      {/* Navbar */}
+      <nav className="fixed w-full z-50 bg-antares-dark/80 backdrop-blur-md border-b border-white/5">
+        <div className="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
+          {/* Logo provisório (Texto) para não dar erro de arquivo ausente */}
+          <Link to="/" className="text-white font-black text-2xl tracking-tighter">
+            ANTARES<span className="text-antares-cyan">ENERGIA</span>
+          </Link>
+
+          {/* Desktop Menu */}
+          <div className="hidden md:flex items-center space-x-12">
+            <Link to="/" className="text-gray-400 hover:text-antares-cyan transition-colors text-xs font-black uppercase tracking-widest">Início</Link>
+            <Link to="/servicos" className="text-gray-400 hover:text-antares-cyan transition-colors text-xs font-black uppercase tracking-widest">Serviços</Link>
+            <Link to="/projetos" className="text-gray-400 hover:text-antares-cyan transition-colors text-xs font-black uppercase tracking-widest">Projetos</Link>
+            <Link to="/contato" className="px-8 py-3 bg-antares-cyan text-antares-dark text-xs font-black uppercase tracking-widest hover:bg-white transition-all rounded-sm">Contato</Link>
+          </div>
+
+          {/* Mobile Toggle */}
+          <button className="md:hidden text-white" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+            {isMenuOpen ? <X /> : <Menu />}
+          </button>
+        </div>
+      </nav>
+
+      {/* Conteúdo da Página */}
+      <main className="flex-grow">
+        <Outlet />
+      </main>
+
+      {/* Footer Simples */}
+      <footer className="bg-antares-dark border-t border-white/5 py-12">
+        <div className="max-w-7xl mx-auto px-6 text-center">
+          <p className="text-gray-500 text-xs font-black uppercase tracking-[0.5em]">
+            © 2026 Antares Energia - Engenharia de Alta Performance
+          </p>
+        </div>
+      </footer>
+    </div>
   );
 };
-
-export default App;
