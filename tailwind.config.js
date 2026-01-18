@@ -12,6 +12,16 @@ export default {
         'antares-slate': '#1a1f2e',
         'antares-white': '#ffffff',
       },
+      animation: {
+        'spin-slow': 'spin 8s linear infinite',
+        'fade-in': 'fadeIn 1s ease-out forwards',
+      },
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0', transform: 'translateY(10px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        }
+      },
       fontFamily: {
         'heading': ['Inter', 'system-ui', 'sans-serif'],
         'sans': ['Inter', 'system-ui', 'sans-serif'],
@@ -30,14 +40,6 @@ export default {
         '7xl': ['4.2rem', { lineHeight: '1' }],   
         '8xl': ['5rem', { lineHeight: '1' }],   
         '9xl': ['6.5rem', { lineHeight: '1' }], 
-      },
-      maxWidth: {
-        '8xl': '88rem',
-        '9xl': '96rem',
-      },
-      spacing: {
-        '128': '32rem',
-        '144': '36rem',
       },
     },
   },
