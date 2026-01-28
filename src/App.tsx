@@ -32,5 +32,4 @@ const App: React.FC = () => {
   );
 };
 
-// ESSA LINHA É A QUE ESTÁ FALTANDO OU ESTÁ COM ERRO:
 export default App;
