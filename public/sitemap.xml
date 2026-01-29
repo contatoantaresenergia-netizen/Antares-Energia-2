@@ -1,30 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
   <!-- Página inicial -->
   <url>
     <loc>https://www.antaresenergia.com/</loc>
-    <lastmod>2026-01-28</lastmod>
+    <lastmod>2025-01-29</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-
+  
+  <!-- Página Camaragibe PE - NOVA -->
+  <url>
+    <loc>https://www.antaresenergia.com/camaragibe</loc>
+    <lastmod>2025-01-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Página Nova Odessa (se existir) -->
+  <url>
+    <loc>https://www.antaresenergia.com/nova-odessa</loc>
+    <lastmod>2025-01-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
   <!-- Serviços -->
   <url>
     <loc>https://www.antaresenergia.com/#servicos</loc>
-    <lastmod>2026-01-28</lastmod>
+    <lastmod>2025-01-29</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
+  
   <!-- Planos / Preços -->
   <url>
     <loc>https://www.antaresenergia.com/#planos</loc>
-    <lastmod>2026-01-28</lastmod>
+    <lastmod>2025-01-29</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
+  
   <!-- Contato -->
   <url>
     <loc>https://www.antaresenergia.com/#contato</loc>
-    <lastmod>2026-01-28</lastmod>
+    <lastmod>2025-01-29</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  
 </urlset>
