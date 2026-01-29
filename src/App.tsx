@@ -1,13 +1,16 @@
 import React, { useEffect } from 'react';
-import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
+// Alterado para BrowserRouter para URLs limpas (melhor para SEO e Vercel)
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { Layout } from './components/Layout';
 import { Home } from './pages/Home';
 import { About } from './pages/About';
 import { Services } from './pages/Services';
 import { Projects } from './pages/Projects';
 import { Contact } from './pages/Contact';
-// 1. Importe sua nova página (ajuste o caminho se necessário)
-import { Camaragibe } from './pages/Camaragibe'; 
+
+// CORREÇÃO DO "X" VERMELHO: O caminho deve ser exatamente igual ao nome da pasta
+// Se a pasta é 'camaragibe' (minúsculo), o import deve ser assim:
+import { Camaragibe } from './pages/camaragibe'; 
 
 const ScrollToTop: React.FC = () => {
   const { pathname } = useLocation();
@@ -19,7 +22,7 @@ const ScrollToTop: React.FC = () => {
 
 const App: React.FC = () => {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Layout />}>
@@ -29,11 +32,11 @@ const App: React.FC = () => {
           <Route path="projetos" element={<Projects />} />
           <Route path="contato" element={<Contact />} />
           
-          {/* 2. Adicione a rota para Camaragibe aqui */}
+          {/* Rota para a página de Camaragibe */}
           <Route path="camaragibe" element={<Camaragibe />} />
         </Route>
       </Routes>
-    </HashRouter>
+    </BrowserRouter>
   );
 };
 
