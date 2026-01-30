@@ -18,6 +18,29 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
+// TYPEWRITER (LETREIRO)
+const Typewriter: React.FC<{ text: string }> = ({ text }) => {
+  const ref = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    let i = 0;
+    el.textContent = "";
+
+    const interval = setInterval(() => {
+      el.textContent += text[i];
+      i++;
+      if (i >= text.length) clearInterval(interval);
+    }, 60);
+
+    return () => clearInterval(interval);
+  }, [text]);
+
+  return <span ref={ref}></span>;
+};
+
 const Camaragibe: React.FC = () => {
 
   const heroTitleRef = useRef<HTMLHeadingElement>(null);
@@ -131,7 +154,7 @@ const Camaragibe: React.FC = () => {
             </div>
 
             <h1 ref={heroTitleRef} className="text-4xl md:text-6xl font-extrabold mb-6">
-              Energia Solar em Camaragibe
+              <Typewriter text="Energia Solar em Camaragibe" />
               <br />
               <span className="text-cyan-300">com Engenharia e Diagnóstico Técnico</span>
             </h1>
@@ -173,10 +196,12 @@ const Camaragibe: React.FC = () => {
               ].map((item, idx) => (
                 <div
                   key={idx}
-                  className="bg-white p-6 rounded-xl shadow border border-gray-100 flex gap-3"
+                  className="group bg-white p-6 rounded-xl shadow border border-gray-100 flex gap-3 hover:shadow-[0_20px_60px_rgba(56,189,248,0.25)] hover:-translate-y-2 transition-all duration-300 transform relative overflow-hidden"
                 >
-                  <CheckCircle2 className="w-6 h-6 text-cyan-600 flex-shrink-0" />
-                  <p className="text-gray-700">{item}</p>
+                  <div className="absolute -top-20 -left-20 w-40 h-40 bg-white/20 blur-3xl opacity-0 group-hover:opacity-100 transition-all duration-500 rotate-45"></div>
+
+                  <CheckCircle2 className="w-6 h-6 text-cyan-600 flex-shrink-0 relative z-10" />
+                  <p className="text-gray-700 relative z-10">{item}</p>
                 </div>
               ))}
             </div>
@@ -287,12 +312,18 @@ const Solution = ({
   title: string;
   text: string;
 }) => (
-  <div className="bg-gray-50 p-8 rounded-2xl border border-gray-100">
-    <div className="w-12 h-12 bg-cyan-600 text-white rounded-xl flex items-center justify-center mb-4">
+  <div className="group bg-gray-50 p-8 rounded-2xl border border-gray-100 hover:shadow-[0_20px_60px_rgba(56,189,248,0.25)] hover:-translate-y-2 transition-all duration-300 transform relative overflow-hidden">
+    <div className="absolute -top-20 -left-20 w-40 h-40 bg-white/20 blur-3xl opacity-0 group-hover:opacity-100 transition-all duration-500 rotate-45"></div>
+
+    <div className="relative z-10 w-12 h-12 bg-cyan-600 text-white rounded-xl flex items-center justify-center mb-4 group-hover:bg-cyan-500 transition-colors">
       {icon}
     </div>
-   <h3 className="text-xl font-bold mb-3 text-blue-500">{title}</h3>
-    <p className="text-gray-600">{text}</p>
+
+    <h3 className="relative z-10 text-xl font-bold mb-3 text-blue-500 group-hover:text-cyan-600 transition-colors">
+      {title}
+    </h3>
+
+    <p className="relative z-10 text-gray-600">{text}</p>
   </div>
 );
 
