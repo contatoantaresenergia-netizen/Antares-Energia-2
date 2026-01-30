@@ -238,7 +238,7 @@ const Solution = ({
     <div className="w-12 h-12 bg-cyan-600 text-white rounded-xl flex items-center justify-center mb-4">
       {icon}
     </div>
-    <h3 className="text-xl font-bold mb-3">{title}</h3>
+   <h3 className="text-xl font-bold mb-3 text-blue-500">{title}</h3>
     <p className="text-gray-600">{text}</p>
   </div>
 );
