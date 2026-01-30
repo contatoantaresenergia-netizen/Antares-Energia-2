@@ -42,54 +42,62 @@ const Typewriter: React.FC<{ text: string }> = ({ text }) => {
 };
 
 const Camaragibe: React.FC = () => {
-
   const heroTitleRef = useRef<HTMLHeadingElement>(null);
-  const sectionTitleRef = useRef<HTMLHeadingElement>(null); // ✔️ ref do título
-  const cardsRef = useRef<HTMLDivElement>(null); // ✔️ ref dos cards
+  const sectionTitleRef = useRef<HTMLHeadingElement>(null);
+  const cardsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // HERO
-    if (heroTitleRef.current) {
-      gsap.from(heroTitleRef.current, {
-        y: 40,
-        opacity: 0,
-        duration: 1,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: heroTitleRef.current,
-          start: 'top 80%',
-        },
-      });
-    }
+    // Usamos o gsap.context para garantir que tudo seja limpo quando o componente desmontar
+    const ctx = gsap.context(() => {
+      
+      // HERO
+      if (heroTitleRef.current) {
+        gsap.from(heroTitleRef.current, {
+          y: 40,
+          opacity: 0,
+          duration: 1,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: heroTitleRef.current,
+            start: 'top 90%',
+            toggleActions: 'play none none none',
+          },
+        });
+      }
 
-    // TITULO DA SESSÃO
-    if (sectionTitleRef.current) {
-      gsap.from(sectionTitleRef.current, {
-        y: 40,
-        opacity: 0,
-        duration: 1,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: sectionTitleRef.current,
-          start: 'top 80%',
-        },
-      });
-    }
+      // TITULO DA SESSÃO
+      if (sectionTitleRef.current) {
+        gsap.from(sectionTitleRef.current, {
+          y: 40,
+          opacity: 0,
+          duration: 1,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: sectionTitleRef.current,
+            start: 'top 90%',
+            toggleActions: 'play none none none',
+          },
+        });
+      }
 
-    // CARDS DE DIFERENCIAIS
-    if (cardsRef.current) {
-      gsap.from(cardsRef.current.children, {
-        y: 40,
-        opacity: 0,
-        duration: 1,
-        ease: 'power3.out',
-        stagger: 0.15,
-        scrollTrigger: {
-          trigger: cardsRef.current,
-          start: 'top 80%',
-        },
-      });
-    }
+      // CARDS DE DIFERENCIAIS
+      if (cardsRef.current) {
+        gsap.from(cardsRef.current.children, {
+          y: 40,
+          opacity: 0,
+          duration: 1,
+          ease: 'power3.out',
+          stagger: 0.15,
+          scrollTrigger: {
+            trigger: cardsRef.current,
+            start: 'top 85%', // Ajustado para disparar um pouco antes
+            toggleActions: 'play none none none',
+          },
+        });
+      }
+    });
+
+    return () => ctx.revert(); // Limpa as animações ao sair da página
   }, []);
 
   return (
@@ -107,12 +115,10 @@ const Camaragibe: React.FC = () => {
 
         <link rel="canonical" href="https://antaresenergia.com/camaragibe" />
 
-        {/* GEO */}
         <meta name="geo.region" content="BR-PE" />
         <meta name="geo.placename" content="Camaragibe" />
         <meta name="geo.position" content="-8.0239;-34.9772" />
 
-        {/* Schema */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
@@ -189,7 +195,7 @@ const Camaragibe: React.FC = () => {
                 "Empresa de engenharia energética desde 2011",
                 "Diagnóstico técnico obrigatório antes de qualquer proposta",
                 "Projetos validados em operação real",
-                "Entrega turn key com responsabilidade técnica integral",
+                "Entrega turn key with responsabilidade técnica integral",
                 "Soluções on-grid, híbridas e off-grid",
                 "Decisões energéticas orientadas ao longo prazo"
               ].map((item, idx) => (
