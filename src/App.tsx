@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-// Alterado para BrowserRouter para URLs limpas (melhor para SEO e Vercel)
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { Layout } from './components/Layout';
 import { Home } from './pages/Home';
@@ -8,10 +7,12 @@ import { Services } from './pages/Services';
 import { Projects } from './pages/Projects';
 import { Contact } from './pages/Contact';
 
-// CORREÇÃO DO "X" VERMELHO: O caminho deve ser exatamente igual ao nome da pasta
-// Se a pasta é 'camaragibe' (minúsculo), o import deve ser assim:
+// IMPORTAÇÕES DE CAMARAGIBE (Certifique-se de que os nomes dos arquivos estão corretos)
 import Camaragibe from './pages/Camaragibe';
-
+import CamaragibeSobre from './pages/CamaragibeSobre';
+import CamaragibeServices from './pages/CamaragibeServices';
+import CamaragibeProjects from './pages/CamaragibeProjects';
+import CamaragibeContact from './pages/CamaragibeContact';
 
 const ScrollToTop: React.FC = () => {
   const { pathname } = useLocation();
@@ -27,14 +28,19 @@ const App: React.FC = () => {
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Layout />}>
+          {/* ROTAS PADRÃO (NOVA ODESSA) */}
           <Route index element={<Home />} />
           <Route path="sobre" element={<About />} />
           <Route path="servicos" element={<Services />} />
           <Route path="projetos" element={<Projects />} />
           <Route path="contato" element={<Contact />} />
           
-          {/* Rota para a página de Camaragibe */}
+          {/* NOVAS ROTAS DE CAMARAGIBE (Isolamento para SEO e UX) */}
           <Route path="camaragibe" element={<Camaragibe />} />
+          <Route path="camaragibe/sobre" element={<CamaragibeSobre />} />
+          <Route path="camaragibe/servicos" element={<CamaragibeServices />} />
+          <Route path="camaragibe/projetos" element={<CamaragibeProjects />} />
+          <Route path="camaragibe/contato" element={<CamaragibeContact />} />
         </Route>
       </Routes>
     </BrowserRouter>
