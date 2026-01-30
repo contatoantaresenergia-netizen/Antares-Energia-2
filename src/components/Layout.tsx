@@ -21,13 +21,27 @@ export const Layout: React.FC = () => {
     setIsMobileMenuOpen(false);
   }, [location]);
 
-  const navLinks = [
+  // LÓGICA DE DETECÇÃO DE REGIÃO
+  const isCamaragibe = location.pathname.startsWith('/camaragibe');
+
+  // LINKS DINÂMICOS PARA EVITAR PLÁGIO DE SEO E UX HÍBRIDA
+  const navLinks = isCamaragibe ? [
+    { name: 'Início', path: '/camaragibe' },
+    { name: 'Sobre', path: '/camaragibe/sobre' },
+    { name: 'Serviços', path: '/camaragibe/servicos' },
+    { name: 'Projetos', path: '/camaragibe/projetos' },
+    { name: 'Contato', path: '/camaragibe/contato' },
+  ] : [
     { name: 'Home', path: '/' },
     { name: 'Sobre', path: '/sobre' },
     { name: 'Serviços', path: '/servicos' },
     { name: 'Projetos', path: '/projetos' },
     { name: 'Contato', path: '/contato' },
   ];
+
+  // Define para onde o botão "Simular Agora" e o Logo devem levar
+  const primaryPath = isCamaragibe ? '/camaragibe' : '/';
+  const contactPath = isCamaragibe ? '/camaragibe/contato' : '/contato';
 
   return (
     <div className="flex flex-col min-h-screen font-sans bg-antares-dark text-antares-white selection:bg-antares-cyan selection:text-antares-dark">
@@ -38,7 +52,8 @@ export const Layout: React.FC = () => {
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-          <Link to="/" className="relative z-[110]">
+          {/* Logo dinâmico: se estiver em Camaragibe, volta para a home de Camaragibe */}
+          <Link to={primaryPath} className="relative z-[110]">
             <Logo variant="white" className="h-10 md:h-11 w-auto" />
           </Link>
 
@@ -56,7 +71,7 @@ export const Layout: React.FC = () => {
               </Link>
             ))}
             <Link
-              to="/contato"
+              to={contactPath}
               className="px-8 py-3 bg-white text-antares-dark font-black text-[10px] uppercase tracking-[0.2em] hover:bg-antares-cyan transition-all duration-500 rounded-sm"
             >
               Simular Agora
@@ -105,7 +120,6 @@ export const Layout: React.FC = () => {
               <p className="text-gray-500 text-lg font-light leading-relaxed max-w-sm mb-12">
                 A Antares Energia redefine os padrões de engenharia solar no Brasil, entregando independência através de tecnologia Tier-1.
               </p>
-              {/* Ajustado: Somente Instagram e Facebook */}
               <div className="flex space-x-6">
                 <a href="#" className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-antares-cyan hover:text-antares-dark transition-all duration-500"><Instagram size={20} /></a>
                 <a href="#" className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-antares-cyan hover:text-antares-dark transition-all duration-500"><Facebook size={20} /></a>
@@ -115,10 +129,15 @@ export const Layout: React.FC = () => {
             <div className="md:col-span-3">
               <h4 className="text-antares-cyan font-bold uppercase tracking-[0.3em] text-[10px] mb-10">Explorar</h4>
               <ul className="space-y-6">
-                <li><Link to="/sobre" className="text-gray-400 hover:text-white transition-colors flex items-center group">Sobre a Companhia</Link></li>
-                <li><Link to="/servicos" className="text-gray-400 hover:text-white transition-colors flex items-center group">Soluções Corporativas</Link></li>
-                <li><Link to="/projetos" className="text-gray-400 hover:text-white transition-colors flex items-center group">Estudos de Caso</Link></li>
-                <li><Link to="/contato" className="text-gray-400 hover:text-white transition-colors flex items-center group">Central de Vendas</Link></li>
+                {navLinks.slice(1).map((link) => (
+                  <li key={link.name}>
+                    <Link to={link.path} className="text-gray-400 hover:text-white transition-colors flex items-center group">
+                      {link.name === 'Sobre' ? 'Sobre a Companhia' : 
+                       link.name === 'Serviços' ? 'Soluções Corporativas' :
+                       link.name === 'Projetos' ? 'Estudos de Caso' : 'Central de Vendas'}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
 
@@ -131,7 +150,7 @@ export const Layout: React.FC = () => {
                 </div>
                 <div>
                    <p className="text-white font-bold mb-2 uppercase tracking-widest text-xs">PERNAMBUCO</p>
-                   <p className="text-gray-500 text-sm font-light">Atendimento Consultivo Regional<br/>(81) 98110-2688</p>
+                   <p className="text-gray-500 text-sm font-light">Atendimento Consultivo Regional em Camaragibe<br/>(81) 98110-2688</p>
                 </div>
               </div>
             </div>
