@@ -1,111 +1,160 @@
 import React, { useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Link } from 'react-router-dom';
 import {
   ArrowRight,
   CheckCircle2,
+  Shield,
   MapPin,
+  Phone,
+  Clock,
+  Target,
   Zap,
   BatteryCharging,
-  Shield,
-  Droplets,
-  Clock,
-  Phone
+  Droplets
 } from 'lucide-react';
+
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Camaragibe: React.FC = () => {
-  const heroRef = useRef<HTMLDivElement>(null);
-  const cardsRef = useRef<HTMLDivElement>(null);
+// TYPEWRITER (LETREIRO)
+const Typewriter: React.FC<{ text: string }> = ({ text }) => {
+  const ref = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    let i = 0;
+    el.textContent = "";
+
+    const interval = setInterval(() => {
+      el.textContent += text[i];
+      i++;
+      if (i >= text.length) clearInterval(interval);
+    }, 60);
+
+    return () => clearInterval(interval);
+  }, [text]);
+
+  return <span ref={ref}></span>;
+};
+
+const Camaragibe: React.FC = () => {
+
+  const heroTitleRef = useRef<HTMLHeadingElement>(null);
+  const sectionTitleRef = useRef<HTMLHeadingElement>(null); 
+  const cardsRef = useRef<HTMLDivElement>(null); 
+
+  useEffect(() => {
+    // Scroll para o topo ao carregar
     window.scrollTo(0, 0);
-    
-    const ctx = gsap.context(() => {
-      // Animação de entrada do Hero
-      gsap.from(".hero-content", {
-        y: 60,
+
+    // HERO
+    if (heroTitleRef.current) {
+      gsap.from(heroTitleRef.current, {
+        y: 40,
         opacity: 0,
-        duration: 1.5,
-        ease: "power4.out"
+        duration: 1,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: heroTitleRef.current,
+          start: 'top 80%',
+        },
       });
+    }
 
-      // Animação dos cards de diferenciais
-      if (cardsRef.current) {
-        gsap.from(cardsRef.current.children, {
-          y: 50,
-          opacity: 0,
-          duration: 0.8,
-          stagger: 0.2,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: cardsRef.current,
-            start: "top 80%",
-          }
-        });
-      }
-    });
+    // TITULO DA SESSÃO
+    if (sectionTitleRef.current) {
+      gsap.from(sectionTitleRef.current, {
+        y: 40,
+        opacity: 0,
+        duration: 1,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: sectionTitleRef.current,
+          start: 'top 80%',
+        },
+      });
+    }
 
-    return () => ctx.revert();
+    // CARDS DE DIFERENCIAIS
+    if (cardsRef.current) {
+      gsap.from(cardsRef.current.children, {
+        y: 40,
+        opacity: 0,
+        duration: 1,
+        ease: 'power3.out',
+        stagger: 0.15,
+        scrollTrigger: {
+          trigger: cardsRef.current,
+          start: 'top 80%',
+        },
+      });
+    }
   }, []);
 
   return (
     <>
       <Helmet>
-        <title>Energia Solar em Camaragibe PE | Antares Energia</title>
-        <meta name="description" content="Engenharia fotovoltaica de alta performance em Camaragibe. Reduza custos com sistemas on-grid e híbridos projetados para Pernambuco." />
+        <title>Energia Solar em Camaragibe PE | Engenharia Energética | Antares</title>
+        <meta
+          name="description"
+          content="Energia solar em Camaragibe com engenharia dedicada. Sistemas fotovoltaicos on-grid, híbridos e off-grid com diagnóstico energético e entrega turn key."
+        />
+        <link rel="canonical" href="https://antaresenergia.com/camaragibe" />
       </Helmet>
 
-      <main className="bg-white overflow-x-hidden">
-        
-        {/* HERO SECTION - Personalizada para Camaragibe */}
-        <section className="relative min-h-screen flex items-center justify-center pt-20">
+      <main className="bg-white">
+        {/* HERO */}
+        <section className="relative min-h-[90vh] flex items-center justify-center">
           <div className="absolute inset-0">
-            <img 
-              src="https://images.unsplash.com/photo-1509391366360-2e959784a276" 
-              className="w-full h-full object-cover" 
-              alt="Energia Solar Alta Performance" 
+            <img
+              src="https://images.unsplash.com/photo-1509391366360-2e959784a276"
+              alt="Energia Solar em Camaragibe"
+              className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-blue-900/85 backdrop-blur-[2px]" />
+            <div className="absolute inset-0 bg-blue-900/90" />
           </div>
 
-          <div className="relative z-10 max-w-5xl mx-auto px-6 text-center text-white hero-content">
-            <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 px-6 py-2 rounded-full mb-8 backdrop-blur-md">
-              <MapPin className="w-4 h-4 text-cyan-400" />
-              <span className="text-sm font-bold tracking-widest uppercase text-cyan-100">Camaragibe PE</span>
+          <div className="relative z-10 max-w-5xl mx-auto px-6 text-center text-white">
+            <div className="inline-flex items-center gap-2 bg-white/10 px-5 py-2 rounded-full mb-8">
+              <MapPin className="w-4 h-4 text-cyan-300" />
+              <span className="text-sm">Atuação técnica em Camaragibe e Região Metropolitana</span>
             </div>
 
-            <h1 className="text-5xl md:text-8xl font-black mb-8 leading-tight tracking-tighter">
-              Energia Solar<br />
-              <span className="text-cyan-400 font-outline-2">Alta Performance</span>
+            <h1 ref={heroTitleRef} className="text-4xl md:text-6xl font-extrabold mb-6">
+              <Typewriter text="Energia Solar em Camaragibe" />
+              <br />
+              <span className="text-cyan-300">com Engenharia e Diagnóstico Técnico</span>
             </h1>
 
-            <p className="text-lg md:text-2xl text-blue-100/90 mb-12 max-w-3xl mx-auto leading-relaxed font-light">
-              Sistemas inteligentes com engenharia dedicada para quem busca 
-              confiabilidade energética em Pernambuco.
+            <p className="text-xl text-blue-100 mb-10 leading-relaxed">
+              Projetos fotovoltaicos, híbridos e off-grid com engenharia dedicada,
+              foco em confiabilidade energética e decisões bem fundamentadas —
+              não em venda de kits solares.
             </p>
 
-            <Link 
-              to="/camaragibe/contato" 
-              className="inline-flex items-center gap-3 bg-cyan-400 text-blue-900 px-12 py-6 rounded-full font-black text-xl hover:bg-white hover:scale-105 transition-all shadow-2xl shadow-cyan-500/20"
+            <a
+              href="https://wa.me/5519996162688?text=Olá! Gostaria de agendar um diagnóstico energético em Camaragibe"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 bg-cyan-400 text-blue-900 px-10 py-5 rounded-full font-bold text-lg hover:bg-cyan-300 transition"
             >
-              Solicitar Diagnóstico <ArrowRight className="w-6 h-6" />
-            </Link>
+              <Target className="w-6 h-6" />
+              Solicitar Diagnóstico Energético
+              <ArrowRight className="w-6 h-6" />
+            </a>
           </div>
         </section>
 
-        {/* SEÇÃO DIFERENCIAIS - RESTAURADA */}
-        <section className="py-32 bg-slate-50">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="text-center mb-20">
-              <h2 className="text-3xl md:text-5xl font-black text-blue-900 mb-6 uppercase tracking-tight">
-                Por que a Antares é diferente em Camaragibe?
-              </h2>
-              <div className="w-24 h-2 bg-cyan-500 mx-auto rounded-full"></div>
-            </div>
+        {/* DIFERENCIAIS */}
+        <section className="py-20 bg-blue-50">
+          <div className="max-w-6xl mx-auto px-6">
+            <h2 ref={sectionTitleRef} className="text-3xl md:text-4xl font-bold text-center mb-12 text-blue-500">
+              Por que a Antares é diferente em Camaragibe?
+            </h2>
 
             <div className="grid md:grid-cols-3 gap-8" ref={cardsRef}>
               {[
@@ -115,64 +164,68 @@ const Camaragibe: React.FC = () => {
                 "Entrega turn key com responsabilidade técnica integral",
                 "Soluções on-grid, híbridas e off-grid",
                 "Decisões energéticas orientadas ao longo prazo"
-              ].map((text, i) => (
-                <div key={i} className="bg-white p-10 rounded-2xl shadow-sm border border-blue-50 flex flex-col gap-6 hover:shadow-xl transition-all group hover:-translate-y-2 duration-300">
-                  <div className="w-12 h-12 bg-cyan-50 rounded-lg flex items-center justify-center group-hover:bg-cyan-500 transition-colors">
-                    <CheckCircle2 className="text-cyan-600 group-hover:text-white transition-colors" size={28} />
-                  </div>
-                  <p className="text-slate-700 font-bold text-lg leading-snug">
-                    {text}
-                  </p>
+              ].map((item, idx) => (
+                <div
+                  key={idx}
+                  className="group bg-white p-6 rounded-xl shadow border border-gray-100 flex gap-3 hover:shadow-[0_20px_60px_rgba(56,189,248,0.25)] hover:-translate-y-2 transition-all duration-300 transform relative overflow-hidden"
+                >
+                  <div className="absolute -top-20 -left-20 w-40 h-40 bg-white/20 blur-3xl opacity-0 group-hover:opacity-100 transition-all duration-500 rotate-45"></div>
+                  <CheckCircle2 className="w-6 h-6 text-cyan-600 flex-shrink-0 relative z-10" />
+                  <p className="text-gray-700 relative z-10">{item}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* SOLUÇÕES - */}
-        <section className="py-32 bg-blue-900 text-white">
+        {/* SOLUÇÕES */}
+        <section className="py-24 bg-blue-900">
           <div className="max-w-7xl mx-auto px-6">
-            <h2 className="text-4xl md:text-6xl font-black text-center mb-24 leading-tight">
-              Soluções Energéticas<br/>em Camaragibe
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 text-blue-100">
+              Soluções Energéticas em Camaragibe
             </h2>
 
-            <div className="grid md:grid-cols-2 gap-8">
-              <SolutionCard 
-                icon={<Zap size={32} />} 
-                title="Sistemas Fotovoltaicos On-Grid" 
-                text="Redução de custos drástica com previsibilidade e integração à rede da Neoenergia Pernambuco." 
+            <div className="grid md:grid-cols-2 gap-10">
+              <Solution
+                icon={<Zap />}
+                title="Sistemas Fotovoltaicos On-Grid"
+                text="Redução de custos com previsibilidade e integração ao sistema elétrico."
               />
-              <SolutionCard 
-                icon={<BatteryCharging size={32} />} 
-                title="Sistemas Híbridos" 
-                text="Segurança total com armazenamento para cargas críticas em residências e empresas." 
+              <Solution
+                icon={<BatteryCharging />}
+                title="Sistemas Híbridos com Armazenamento"
+                text="Continuidade operacional e segurança energética para cargas críticas."
               />
-              <SolutionCard 
-                icon={<Shield size={32} />} 
-                title="Autonomia Off-Grid" 
-                text="Energia disponível onde a rede não chega, com dimensionamento técnico rigoroso." 
+              <Solution
+                icon={<Shield />}
+                title="Sistemas Off-Grid"
+                text="Autonomia energética total para operações remotas, rurais ou críticas."
               />
-              <SolutionCard 
-                icon={<Droplets size={32} />} 
-                title="Bombeamento Solar" 
-                text="Engenharia aplicada para irrigação e abastecimento de água com custo zero de energia." 
+              <Solution
+                icon={<Droplets />}
+                title="Bombeamento Solar e Irrigação"
+                text="Integração energia + hidráulica com engenharia dedicada."
               />
             </div>
           </div>
         </section>
 
         {/* CTA FINAL */}
-        <section className="py-24 bg-cyan-500">
-          <div className="max-w-4xl mx-auto px-6 text-center">
-            <h2 className="text-3xl md:text-5xl font-black text-blue-900 mb-8">
-              Pronto para transformar sua conta de luz em investimento?
+        <section className="py-24 bg-blue-900 text-blue-100 text-center border-t border-white/10">
+          <div className="max-w-4xl mx-auto px-6">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              Energia solar exige decisão técnica, não impulso comercial
             </h2>
-            <Link 
-              to="/camaragibe/contato" 
-              className="inline-flex items-center gap-3 bg-blue-900 text-white px-10 py-5 rounded-full font-bold text-lg hover:bg-blue-800 transition-colors shadow-xl"
+            <a
+              href="https://wa.me/5519996162688?text=Olá! Quero agendar um diagnóstico energético em Camaragibe"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 bg-cyan-400 text-blue-900 px-10 py-5 rounded-full font-bold text-lg hover:bg-cyan-300 transition"
             >
-              Falar com Engenheiro em Camaragibe <ArrowRight size={20} />
-            </Link>
+              <Phone className="w-6 h-6" />
+              Agendar Diagnóstico
+              <ArrowRight className="w-6 h-6" />
+            </a>
           </div>
         </section>
       </main>
@@ -180,15 +233,16 @@ const Camaragibe: React.FC = () => {
   );
 };
 
-const SolutionCard = ({ icon, title, text }: { icon: React.ReactNode; title: string; text: string; }) => (
-  <div className="bg-white/5 backdrop-blur-sm p-12 rounded-3xl border border-white/10 hover:bg-white hover:text-blue-900 transition-all duration-500 group">
-    <div className="w-16 h-16 bg-cyan-500 text-blue-900 rounded-2xl flex items-center justify-center mb-8 shadow-lg group-hover:scale-110 transition-transform">
+const Solution = ({ icon, title, text }: { icon: React.ReactNode; title: string; text: string; }) => (
+  <div className="group bg-gray-50 p-8 rounded-2xl border border-gray-100 hover:shadow-[0_20px_60px_rgba(56,189,248,0.25)] hover:-translate-y-2 transition-all duration-300 transform relative overflow-hidden">
+    <div className="relative z-10 w-12 h-12 bg-cyan-600 text-white rounded-xl flex items-center justify-center mb-4 group-hover:bg-cyan-500 transition-colors">
       {icon}
     </div>
-    <h3 className="text-2xl font-black mb-4">{title}</h3>
-    <p className="text-blue-100 group-hover:text-slate-600 text-lg leading-relaxed font-light">{text}</p>
+    <h3 className="relative z-10 text-xl font-bold mb-3 text-blue-500 group-hover:text-cyan-600 transition-colors">
+      {title}
+    </h3>
+    <p className="relative z-10 text-gray-600">{text}</p>
   </div>
 );
 
-// EXPORT DEFAULT OBRIGATÓRIO PARA A VERCEL
 export default Camaragibe;
