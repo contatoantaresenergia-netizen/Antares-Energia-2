@@ -10,7 +10,8 @@ import { Contact } from './pages/Contact';
 
 // CORREÇÃO DO "X" VERMELHO: O caminho deve ser exatamente igual ao nome da pasta
 // Se a pasta é 'camaragibe' (minúsculo), o import deve ser assim:
-import { Camaragibe } from './pages/camaragibe'; 
+import Camaragibe from './pages/Camaragibe';
+
 
 const ScrollToTop: React.FC = () => {
   const { pathname } = useLocation();
