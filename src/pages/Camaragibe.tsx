@@ -66,17 +66,16 @@ const Camaragibe: React.FC = () => {
   return (
     <>
 <Helmet>
-  {/* Título da Aba */}
   <title>Antares Energia | Engenharia Solar em Camaragibe - PE</title>
-  <meta name="description" content="Engenharia fotovoltaica de alta performance em Camaragibe e região metropolitana." />
+  <meta name="description" content="Líder em engenharia fotovoltaica em Camaragibe. Projetos de alta performance para Pernambuco." />
 
-  {/* ESTO É O QUE O WHATSAPP LÊ (Open Graph) */}
+  {/* Tags que forçam o WhatsApp a mostrar Camaragibe */}
   <meta property="og:title" content="Antares Energia | Energia Solar em Camaragibe - PE" />
-  <meta property="og:description" content="Líder em engenharia fotovoltaica em Pernambuco. Solicite seu diagnóstico." />
+  <meta property="og:description" content="Engenharia de alta performance e diagnóstico técnico em Pernambuco." />
   <meta property="og:url" content="https://www.antaresenergia.com/camaragibe" />
   <meta property="og:site_name" content="Antares Energia" />
+  <meta property="og:type" content="website" />
   
-  {/* Evita que o Google ache que é plágio de Nova Odessa */}
   <link rel="canonical" href="https://www.antaresenergia.com/camaragibe" />
 </Helmet>
 
