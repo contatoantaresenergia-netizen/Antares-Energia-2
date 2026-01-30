@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
 import {
   ArrowRight,
@@ -8,14 +8,68 @@ import {
   Phone,
   Clock,
   Target,
-  Building2,
   Zap,
   BatteryCharging,
-  Droplets,
-  ChevronRight
+  Droplets
 } from 'lucide-react';
 
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
+
 const Camaragibe: React.FC = () => {
+
+  const heroTitleRef = useRef<HTMLHeadingElement>(null);
+  const sectionTitlesRef = useRef<HTMLDivElement>(null);
+  const cardsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // HERO
+    if (heroTitleRef.current) {
+      gsap.from(heroTitleRef.current, {
+        y: 40,
+        opacity: 0,
+        duration: 1,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: heroTitleRef.current,
+          start: 'top 80%',
+        },
+      });
+    }
+
+    // TITULOS DAS SEÇÕES
+    if (sectionTitlesRef.current) {
+      gsap.from(sectionTitlesRef.current.querySelectorAll('h2'), {
+        y: 40,
+        opacity: 0,
+        duration: 1,
+        ease: 'power3.out',
+        stagger: 0.2,
+        scrollTrigger: {
+          trigger: sectionTitlesRef.current,
+          start: 'top 80%',
+        },
+      });
+    }
+
+    // CARDS DE DIFERENCIAIS
+    if (cardsRef.current) {
+      gsap.from(cardsRef.current.children, {
+        y: 40,
+        opacity: 0,
+        duration: 1,
+        ease: 'power3.out',
+        stagger: 0.15,
+        scrollTrigger: {
+          trigger: cardsRef.current,
+          start: 'top 80%',
+        },
+      });
+    }
+  }, []);
+
   return (
     <>
       <Helmet>
@@ -76,7 +130,7 @@ const Camaragibe: React.FC = () => {
               <span className="text-sm">Atuação técnica em Camaragibe e Região Metropolitana</span>
             </div>
 
-            <h1 className="text-4xl md:text-6xl font-extrabold mb-6">
+            <h1 ref={heroTitleRef} className="text-4xl md:text-6xl font-extrabold mb-6">
               Energia Solar em Camaragibe
               <br />
               <span className="text-cyan-300">com Engenharia e Diagnóstico Técnico</span>
@@ -102,14 +156,13 @@ const Camaragibe: React.FC = () => {
         </section>
 
         {/* DIFERENCIAIS */}
-      <section className="py-20 bg-gray-50">
-  <div className="max-w-6xl mx-auto px-6">
-    <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-blue-500">
-      Por que a Antares é diferente em Camaragibe?
-    </h2>
+        <section className="py-20 bg-gray-50" ref={sectionTitlesRef}>
+          <div className="max-w-6xl mx-auto px-6">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-blue-500">
+              Por que a Antares é diferente em Camaragibe?
+            </h2>
 
-
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-3 gap-8" ref={cardsRef}>
               {[
                 "Empresa de engenharia energética desde 2011",
                 "Diagnóstico técnico obrigatório antes de qualquer proposta",
@@ -131,9 +184,9 @@ const Camaragibe: React.FC = () => {
         </section>
 
         {/* SOLUÇÕES */}
-        <section className="py-24 bg-blue">
+        <section className="py-24 bg-blue-900">
           <div className="max-w-7xl mx-auto px-6">
-             <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 text-blue-500">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 text-blue-100">
               Soluções Energéticas em Camaragibe
             </h2>
 
