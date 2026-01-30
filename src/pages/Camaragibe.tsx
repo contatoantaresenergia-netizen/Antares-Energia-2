@@ -104,7 +104,7 @@ const Camaragibe: React.FC = () => {
         {/* DIFERENCIAIS */}
       <section className="py-20 bg-gray-50">
   <div className="max-w-6xl mx-auto px-6">
-    <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-white">
+    <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-blue-100">
       Por que a Antares é diferente em Camaragibe?
     </h2>
 
@@ -186,7 +186,7 @@ const Camaragibe: React.FC = () => {
         </section>
 
         {/* CTA FINAL */}
-        <section className="py-24 bg-blue-900 text-white text-center">
+        <section className="py-24 bg-blue-900 text-blue-100 text-center">
           <div className="max-w-4xl mx-auto px-6">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
               Energia solar exige decisão técnica, não impulso comercial
