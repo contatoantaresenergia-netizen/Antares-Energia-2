@@ -104,7 +104,7 @@ export const Home: React.FC = () => {
         "Abastecimento hídrico e irrigação de médio e grande porte",
         "Integração energia + hidráulica"
       ],
-      img: "https://hnaezacbzcpmyfoupdec.supabase.co/storage/v1/object/public/ANTARES%20ENERGIA/antares1.png",
+      img: "https://hnaezacbzcpmyfoupdec.supabase.co/storage/v1/object/public/ANTARES%20ENERGIA/anatres2.png",
       icon: <Droplets className="w-8 h-8" />
     }
   ];
