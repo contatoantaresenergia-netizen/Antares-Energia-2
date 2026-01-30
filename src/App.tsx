@@ -8,11 +8,12 @@ import { Projects } from './pages/Projects';
 import { Contact } from './pages/Contact';
 
 // IMPORTAÇÕES DE CAMARAGIBE (Certifique-se de que os nomes dos arquivos estão corretos)
-import Camaragibe from './pages/Camaragibe';
-import CamaragibeSobre from './pages/CamaragibeSobre';
-import CamaragibeServices from './pages/CamaragibeServices';
-import CamaragibeProjects from './pages/CamaragibeProjects';
-import CamaragibeContact from './pages/CamaragibeContact';
+// Altere estas linhas no seu App.tsx
+import Camaragibe from './pages/Camaragibe'; // Se este já funciona, mantenha
+import { CamaragibeSobre } from './pages/CamaragibeSobre';
+import { CamaragibeServices } from './pages/CamaragibeServices';
+import { CamaragibeProjects } from './pages/CamaragibeProjects';
+import { CamaragibeContact } from './pages/CamaragibeContact';
 
 const ScrollToTop: React.FC = () => {
   const { pathname } = useLocation();
