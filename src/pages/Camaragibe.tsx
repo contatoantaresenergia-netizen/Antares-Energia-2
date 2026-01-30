@@ -131,7 +131,7 @@ const Camaragibe: React.FC = () => {
         </section>
 
         {/* SOLUÇÕES */}
-        <section className="py-24 bg-white">
+        <section className="py-24 bg-blue">
           <div className="max-w-7xl mx-auto px-6">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
               Soluções Energéticas em Camaragibe
