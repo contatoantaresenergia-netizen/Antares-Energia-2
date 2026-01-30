@@ -47,8 +47,10 @@ const Camaragibe: React.FC = () => {
   const cardsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Garante que o ScrollTrigger limpe caches antigos
+    ScrollTrigger.refresh();
+
     const ctx = gsap.context(() => {
-      
       // HERO
       if (heroTitleRef.current) {
         gsap.from(heroTitleRef.current, {
@@ -73,18 +75,22 @@ const Camaragibe: React.FC = () => {
         });
       }
 
-      // CARDS DE DIFERENCIAIS - AJUSTE DE SENSIBILIDADE
+      // CARDS DE DIFERENCIAIS
       if (cardsRef.current) {
         gsap.from(cardsRef.current.children, {
-          y: 50,
+          y: 40,
           opacity: 0,
           duration: 0.8,
-          stagger: 0.2,
+          stagger: 0.15,
           ease: 'power2.out',
           scrollTrigger: {
             trigger: cardsRef.current,
-            start: 'top 95%', // Dispara quase assim que aparece no fundo da tela
+            start: 'top 95%', // Dispara mais cedo para evitar que fique invisível
             toggleActions: 'play none none none',
+            onRefresh: (self) => {
+              // Se por algum erro o scroll disparar e sumir, forçamos o estado final
+              if (self.progress > 0) gsap.set(cardsRef.current!.children, { opacity: 1, y: 0 });
+            }
           },
         });
       }
@@ -206,7 +212,7 @@ const Camaragibe: React.FC = () => {
           </div>
         </section>
 
-        {/* SOLUÇÕES */}
+        {/* SOLUÇÕES (Adicionada cor base estável para evitar sumiço) */}
         <section className="py-24 bg-blue-900">
           <div className="max-w-7xl mx-auto px-6">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 text-blue-100">
@@ -301,26 +307,15 @@ const Camaragibe: React.FC = () => {
   );
 };
 
-const Solution = ({
-  icon,
-  title,
-  text
-}: {
-  icon: React.ReactNode;
-  title: string;
-  text: string;
-}) => (
+const Solution = ({ icon, title, text }: { icon: React.ReactNode; title: string; text: string; }) => (
   <div className="group bg-gray-50 p-8 rounded-2xl border border-gray-100 hover:shadow-[0_20px_60px_rgba(56,189,248,0.25)] hover:-translate-y-2 transition-all duration-300 transform relative overflow-hidden">
     <div className="absolute -top-20 -left-20 w-40 h-40 bg-white/20 blur-3xl opacity-0 group-hover:opacity-100 transition-all duration-500 rotate-45"></div>
-
     <div className="relative z-10 w-12 h-12 bg-cyan-600 text-white rounded-xl flex items-center justify-center mb-4 group-hover:bg-cyan-500 transition-colors">
       {icon}
     </div>
-
     <h3 className="relative z-10 text-xl font-bold mb-3 text-blue-500 group-hover:text-cyan-600 transition-colors">
       {title}
     </h3>
-
     <p className="relative z-10 text-gray-600">{text}</p>
   </div>
 );
