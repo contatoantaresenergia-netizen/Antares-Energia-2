@@ -44,8 +44,8 @@ const Typewriter: React.FC<{ text: string }> = ({ text }) => {
 const Camaragibe: React.FC = () => {
 
   const heroTitleRef = useRef<HTMLHeadingElement>(null);
-  const sectionTitlesRef = useRef<HTMLDivElement>(null);
-  const cardsRef = useRef<HTMLDivElement>(null);
+  const sectionTitleRef = useRef<HTMLHeadingElement>(null); // ✔️ ref do título
+  const cardsRef = useRef<HTMLDivElement>(null); // ✔️ ref dos cards
 
   useEffect(() => {
     // HERO
@@ -62,16 +62,15 @@ const Camaragibe: React.FC = () => {
       });
     }
 
-    // TITULOS DAS SEÇÕES
-    if (sectionTitlesRef.current) {
-      gsap.from(sectionTitlesRef.current.querySelectorAll('h2'), {
+    // TITULO DA SESSÃO
+    if (sectionTitleRef.current) {
+      gsap.from(sectionTitleRef.current, {
         y: 40,
         opacity: 0,
         duration: 1,
         ease: 'power3.out',
-        stagger: 0.2,
         scrollTrigger: {
-          trigger: sectionTitlesRef.current,
+          trigger: sectionTitleRef.current,
           start: 'top 80%',
         },
       });
@@ -177,36 +176,36 @@ const Camaragibe: React.FC = () => {
             </a>
           </div>
         </section>
-{/* DIFERENCIAIS */}
-<section className="py-20 bg-blue-50" ref={sectionTitlesRef}>
-  <div className="max-w-6xl mx-auto px-6">
-    <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-blue-500">
-      Por que a Antares é diferente em Camaragibe?
-    </h2>
 
-    <div className="grid md:grid-cols-3 gap-8" ref={cardsRef}>
-      {[
-        "Empresa de engenharia energética desde 2011",
-        "Diagnóstico técnico obrigatório antes de qualquer proposta",
-        "Projetos validados em operação real",
-        "Entrega turn key com responsabilidade técnica integral",
-        "Soluções on-grid, híbridas e off-grid",
-        "Decisões energéticas orientadas ao longo prazo"
-      ].map((item, idx) => (
-        <div
-          key={idx}
-          className="group bg-white p-6 rounded-xl shadow border border-gray-100 flex gap-3 hover:shadow-[0_20px_60px_rgba(56,189,248,0.25)] hover:-translate-y-2 transition-all duration-300 transform relative overflow-hidden"
-        >
-          <div className="absolute -top-20 -left-20 w-40 h-40 bg-white/20 blur-3xl opacity-0 group-hover:opacity-100 transition-all duration-500 rotate-45"></div>
+        {/* DIFERENCIAIS */}
+        <section className="py-20 bg-blue-50">
+          <div className="max-w-6xl mx-auto px-6">
+            <h2 ref={sectionTitleRef} className="text-3xl md:text-4xl font-bold text-center mb-12 text-blue-500">
+              Por que a Antares é diferente em Camaragibe?
+            </h2>
 
-          <CheckCircle2 className="w-6 h-6 text-cyan-600 flex-shrink-0 relative z-10" />
-          <p className="text-gray-700 relative z-10">{item}</p>
-        </div>
-      ))}
-    </div>
-  </div>
-</section>
+            <div className="grid md:grid-cols-3 gap-8" ref={cardsRef}>
+              {[
+                "Empresa de engenharia energética desde 2011",
+                "Diagnóstico técnico obrigatório antes de qualquer proposta",
+                "Projetos validados em operação real",
+                "Entrega turn key com responsabilidade técnica integral",
+                "Soluções on-grid, híbridas e off-grid",
+                "Decisões energéticas orientadas ao longo prazo"
+              ].map((item, idx) => (
+                <div
+                  key={idx}
+                  className="group bg-white p-6 rounded-xl shadow border border-gray-100 flex gap-3 hover:shadow-[0_20px_60px_rgba(56,189,248,0.25)] hover:-translate-y-2 transition-all duration-300 transform relative overflow-hidden"
+                >
+                  <div className="absolute -top-20 -left-20 w-40 h-40 bg-white/20 blur-3xl opacity-0 group-hover:opacity-100 transition-all duration-500 rotate-45"></div>
 
+                  <CheckCircle2 className="w-6 h-6 text-cyan-600 flex-shrink-0 relative z-10" />
+                  <p className="text-gray-700 relative z-10">{item}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
 
         {/* SOLUÇÕES */}
         <section className="py-24 bg-blue-900">
