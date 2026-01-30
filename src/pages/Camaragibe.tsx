@@ -102,11 +102,12 @@ const Camaragibe: React.FC = () => {
         </section>
 
         {/* DIFERENCIAIS */}
-        <section className="py-20 bg-gray-50">
-          <div className="max-w-6xl mx-auto px-6">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-              Por que a Antares é diferente em Camaragibe?
-            </h2>
+      <section className="py-20 bg-gray-50">
+  <div className="max-w-6xl mx-auto px-6">
+    <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-white">
+      Por que a Antares é diferente em Camaragibe?
+    </h2>
+
 
             <div className="grid md:grid-cols-3 gap-8">
               {[
