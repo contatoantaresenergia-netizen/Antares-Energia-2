@@ -66,9 +66,18 @@ const Camaragibe: React.FC = () => {
   return (
     <>
       <Helmet>
-        <title>Energia Solar em Camaragibe PE | Engenharia Energética | Antares</title>
-        <meta name="description" content="Energia solar em Camaragibe com engenharia dedicada." />
-      </Helmet>
+  {/* Título único para Camaragibe */}
+  <title>Energia Solar em Camaragibe PE | Engenharia de Alta Performance</title>
+  
+  {/* Descrição focada na região de Pernambuco */}
+  <meta 
+    name="description" 
+    content="Projetos fotovoltaicos com engenharia dedicada em Camaragibe. Sistemas on-grid e híbridos para máxima confiabilidade energética em Pernambuco." 
+  />
+  
+  {/* Link Canônico: O segredo para o Google saber que esta página é única */}
+  <link rel="canonical" href="https://antaresenergia.com/camaragibe" />
+</Helmet>
 
       <main className="bg-white">
         {/* HERO */}
