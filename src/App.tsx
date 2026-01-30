@@ -7,9 +7,11 @@ import { Services } from './pages/Services';
 import { Projects } from './pages/Projects';
 import { Contact } from './pages/Contact';
 
-// IMPORTAÇÕES DE CAMARAGIBE (Certifique-se de que os nomes dos arquivos estão corretos)
-// Altere estas linhas no seu App.tsx
-import Camaragibe from './pages/Camaragibe'; // Se este já funciona, mantenha
+// IMPORTAÇÃO DA PÁGINA 404 QUE VOCÊ CRIOU
+import { NotFound } from './pages/NotFound'; 
+
+// IMPORTAÇÕES DE CAMARAGIBE
+import Camaragibe from './pages/Camaragibe';
 import { CamaragibeSobre } from './pages/CamaragibeSobre';
 import { CamaragibeServices } from './pages/CamaragibeServices';
 import { CamaragibeProjects } from './pages/CamaragibeProjects';
@@ -29,19 +31,22 @@ const App: React.FC = () => {
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Layout />}>
-          {/* ROTAS PADRÃO (NOVA ODESSA) */}
+          {/* ROTAS PADRÃO */}
           <Route index element={<Home />} />
           <Route path="sobre" element={<About />} />
           <Route path="servicos" element={<Services />} />
           <Route path="projetos" element={<Projects />} />
           <Route path="contato" element={<Contact />} />
           
-          {/* NOVAS ROTAS DE CAMARAGIBE (Isolamento para SEO e UX) */}
+          {/* ROTAS DE CAMARAGIBE */}
           <Route path="camaragibe" element={<Camaragibe />} />
           <Route path="camaragibe/sobre" element={<CamaragibeSobre />} />
           <Route path="camaragibe/servicos" element={<CamaragibeServices />} />
           <Route path="camaragibe/projetos" element={<CamaragibeProjects />} />
           <Route path="camaragibe/contato" element={<CamaragibeContact />} />
+
+          {/* ROTA 404 - O "*" captura qualquer link que não esteja listado acima */}
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </BrowserRouter>
