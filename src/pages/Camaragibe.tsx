@@ -5,8 +5,6 @@ import {
   CheckCircle2,
   Shield,
   MapPin,
-  Phone,
-  Clock,
   Target,
   Zap,
   BatteryCharging,
@@ -94,7 +92,7 @@ const Camaragibe: React.FC = () => {
           </div>
         </section>
 
-        {/* SESSÃO ARRUMADA: DIFERENCIAIS */}
+        {/* DIFERENCIAIS RESTAURADOS */}
         <section className="py-24 bg-[#f8fbff]">
           <div className="max-w-7xl mx-auto px-6">
             <h2 ref={sectionTitleRef} className="text-3xl md:text-5xl font-bold text-center mb-20 text-[#3b82f6]">
@@ -121,13 +119,33 @@ const Camaragibe: React.FC = () => {
           </div>
         </section>
 
-        {/* SOLUÇÕES */}
+        {/* SOLUÇÕES COM OS 4 CARDS ORIGINAIS */}
         <section className="py-24 bg-[#1e293b]">
           <div className="max-w-7xl mx-auto px-6">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 text-white">Soluções Energéticas em Camaragibe</h2>
+            <h2 className="text-3xl md:text-5xl font-bold text-center mb-20 text-white">
+              Soluções Energéticas em Camaragibe
+            </h2>
             <div className="grid md:grid-cols-2 gap-8">
-              <SolutionCard icon={<Zap className="text-white w-6 h-6" />} title="Sistemas Fotovoltaicos On-Grid" text="Redução de custos com previsibilidade." />
-              <SolutionCard icon={<BatteryCharging className="text-white w-6 h-6" />} title="Sistemas Híbridos com Armazenamento" text="Segurança para cargas críticas." />
+              <SolutionCard 
+                icon={<Zap className="text-white w-6 h-6" />} 
+                title="Sistemas Fotovoltaicos On-Grid" 
+                text="Redução de custos com previsibilidade." 
+              />
+              <SolutionCard 
+                icon={<BatteryCharging className="text-white w-6 h-6" />} 
+                title="Sistemas Híbridos com Armazenamento" 
+                text="Segurança para cargas críticas." 
+              />
+              <SolutionCard 
+                icon={<Shield className="text-white w-6 h-6" />} 
+                title="Sistemas Off-Grid" 
+                text="Autonomia total para locais remotos ou operações críticas." 
+              />
+              <SolutionCard 
+                icon={<Droplets className="text-white w-6 h-6" />} 
+                title="Bombeamento Solar" 
+                text="Eficiência hidráulica com custo zero de energia." 
+              />
             </div>
           </div>
         </section>
@@ -137,10 +155,12 @@ const Camaragibe: React.FC = () => {
 };
 
 const SolutionCard = ({ icon, title, text }: { icon: React.ReactNode; title: string; text: string; }) => (
-  <div className="bg-white p-10 rounded-3xl flex flex-col gap-4">
-    <div className="w-12 h-12 bg-[#008eb4] rounded-xl flex items-center justify-center mb-2">{icon}</div>
-    <h3 className="text-xl font-bold text-[#1e293b]">{title}</h3>
-    <p className="text-slate-500 text-lg">{text}</p>
+  <div className="bg-white p-12 rounded-[2.5rem] flex flex-col gap-5 shadow-xl transition-transform hover:-translate-y-1">
+    <div className="w-14 h-14 bg-[#008eb4] rounded-2xl flex items-center justify-center mb-2">
+      {icon}
+    </div>
+    <h3 className="text-2xl font-bold text-[#1e293b] tracking-tight">{title}</h3>
+    <p className="text-slate-500 text-xl leading-relaxed font-light">{text}</p>
   </div>
 );
 
