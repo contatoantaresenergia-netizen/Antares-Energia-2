@@ -47,31 +47,24 @@ const Camaragibe: React.FC = () => {
   const cardsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Usamos o gsap.context para garantir que tudo seja limpo quando o componente desmontar
     const ctx = gsap.context(() => {
       
       // HERO
       if (heroTitleRef.current) {
         gsap.from(heroTitleRef.current, {
-          y: 40,
+          y: 30,
           opacity: 0,
-          duration: 1,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: heroTitleRef.current,
-            start: 'top 90%',
-            toggleActions: 'play none none none',
-          },
+          duration: 0.8,
+          ease: 'power2.out',
         });
       }
 
       // TITULO DA SESSÃO
       if (sectionTitleRef.current) {
         gsap.from(sectionTitleRef.current, {
-          y: 40,
+          y: 30,
           opacity: 0,
-          duration: 1,
-          ease: 'power3.out',
+          duration: 0.8,
           scrollTrigger: {
             trigger: sectionTitleRef.current,
             start: 'top 90%',
@@ -80,24 +73,24 @@ const Camaragibe: React.FC = () => {
         });
       }
 
-      // CARDS DE DIFERENCIAIS
+      // CARDS DE DIFERENCIAIS - AJUSTE DE SENSIBILIDADE
       if (cardsRef.current) {
         gsap.from(cardsRef.current.children, {
-          y: 40,
+          y: 50,
           opacity: 0,
-          duration: 1,
-          ease: 'power3.out',
-          stagger: 0.15,
+          duration: 0.8,
+          stagger: 0.2,
+          ease: 'power2.out',
           scrollTrigger: {
             trigger: cardsRef.current,
-            start: 'top 85%', // Ajustado para disparar um pouco antes
+            start: 'top 95%', // Dispara quase assim que aparece no fundo da tela
             toggleActions: 'play none none none',
           },
         });
       }
     });
 
-    return () => ctx.revert(); // Limpa as animações ao sair da página
+    return () => ctx.revert();
   }, []);
 
   return (
@@ -195,7 +188,7 @@ const Camaragibe: React.FC = () => {
                 "Empresa de engenharia energética desde 2011",
                 "Diagnóstico técnico obrigatório antes de qualquer proposta",
                 "Projetos validados em operação real",
-                "Entrega turn key with responsabilidade técnica integral",
+                "Entrega turn key com responsabilidade técnica integral",
                 "Soluções on-grid, híbridas e off-grid",
                 "Decisões energéticas orientadas ao longo prazo"
               ].map((item, idx) => (
