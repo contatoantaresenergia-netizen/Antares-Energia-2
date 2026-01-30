@@ -163,7 +163,7 @@ const Camaragibe: React.FC = () => {
         </section>
 
         {/* PROCESSO */}
-        <section className="py-24 bg-gray-50">
+        <section className="py-24 bg-blue-50">
           <div className="max-w-5xl mx-auto px-6">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
               Nosso Processo Técnico
