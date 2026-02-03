@@ -1,4 +1,8 @@
 // src/types/global.d.ts
-interface Window {
-  dataLayer: Record<string, any>[];
+export {}; // garante que o arquivo seja tratado como módulo
+
+declare global {
+  interface Window {
+    dataLayer: Record<string, any>[];
+  }
 }
