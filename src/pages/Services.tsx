@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 export const Services: React.FC = () => {
   return (
@@ -23,7 +23,7 @@ export const Services: React.FC = () => {
           <div className="w-full md:w-1/2 p-6">
             <h2 className="text-3xl font-bold text-white mb-4">Solar Residencial</h2>
             <p className="text-gray-400 text-lg mb-8">Projetos que valorizam seu imóvel e zeram sua conta de luz.</p>
-            <Link to="/contact" className="px-8 py-3 bg-antares-cyan text-antares-dark font-black uppercase hover:bg-white transition-all rounded-sm">
+            <Link href="/contact" className="px-8 py-3 bg-antares-cyan text-antares-dark font-black uppercase hover:bg-white transition-all rounded-sm">
               Saiba Mais
             </Link>
           </div>
@@ -40,13 +40,4 @@ export const Services: React.FC = () => {
           </div>
           <div className="w-full md:w-1/2 p-6">
             <h2 className="text-3xl font-bold text-white mb-4">Solar Industrial</h2>
-            <p className="text-gray-400 text-lg mb-8">Alta potência para grandes indústrias e redução de custos operacionais.</p>
-            <Link to="/contact" className="px-8 py-3 bg-antares-cyan text-antares-dark font-black uppercase hover:bg-white transition-all rounded-sm">
-              Saiba Mais
-            </Link>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
+            <p cl
