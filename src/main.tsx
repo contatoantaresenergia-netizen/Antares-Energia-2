@@ -1,13 +1,12 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
+// pages/_app.tsx
+import '@/styles/globals.css'
+import type { AppProps } from 'next/app'
 import { HelmetProvider } from 'react-helmet-async'
-import App from './App'
-import './index.css'
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
+export default function App({ Component, pageProps }: AppProps) {
+  return (
     <HelmetProvider>
-      <App />
+      <Component {...pageProps} />
     </HelmetProvider>
-  </React.StrictMode>,
-)
+  )
+}
