@@ -1,341 +1,201 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { 
-  ArrowRight,
-  ChevronDown,
-  ChevronUp,
-  Cpu,
-  Zap,
-  Globe,
-  Settings,
-  ShieldCheck,
-  Factory,
-  Activity,
-  TrendingUp,
-  Droplets,
-  BatteryCharging,
-  Sun
-} from 'lucide-react';
+// src/pages/nova-odessa.tsx
+import React, { useRef, useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
+import { ArrowRight, MapPin, Target, CheckCircle2, Shield, Droplets, BatteryCharging, Zap, Factory, Activity } from 'lucide-react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-export const Home: React.FC = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const heroImages = [
-    "https://indigo-goat-999288.hostingersite.com/wp-content/uploads/2025/11/transferir-2.jpeg", 
-    "https://images.unsplash.com/photo-1624397640148-949b1732bb0a?q=80&w=1920&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1613665813446-82a78c468a1d?q=80&w=1920&auto=format&fit=crop"
-  ];
+gsap.registerPlugin(ScrollTrigger);
+
+const Typewriter: React.FC<{ text: string }> = ({ text }) => {
+  const ref = useRef<HTMLSpanElement>(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    let i = 0;
+    el.textContent = "";
+    const interval = setInterval(() => {
+      el.textContent += text[i];
+      i++;
+      if (i >= text.length) clearInterval(interval);
+    }, 60);
+    return () => clearInterval(interval);
+  }, [text]);
+  return <span ref={ref}></span>;
+};
+
+const NovaOdessa: React.FC = () => {
+  const heroTitleRef = useRef<HTMLHeadingElement>(null);
+  const sectionTitleRef = useRef<HTMLHeadingElement>(null); 
+  const cardsRef = useRef<HTMLDivElement>(null); 
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % heroImages.length);
-    }, 7000);
-    return () => clearInterval(timer);
-  }, [heroImages.length]);
+    window.scrollTo(0, 0);
 
-  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
-
-  const faqData = [
-    {
-      question: "Quantos KW tem um sistema solar comercial?",
-      answer: "A potência de um sistema comercial é variável, geralmente iniciando em 50 kWp para pequenas empresas e podendo ultrapassar 1 MWp em grandes complexos industriais."
-    },
-    {
-      question: "Qual é o maior painel solar comercial?",
-      answer: "Atualmente, os maiores módulos utilizam células de alta eficiência que entregam entre 600W e 700W+ de potência nominal."
-    },
-    {
-      question: "As centrais fotovoltaicas flutuantes são seguras?",
-      answer: "Sim, são extremamente seguras. Utilizam flutuantes de polietileno de alta densidade e sistemas de ancoragem redundantes."
-    },
-    {
-      question: "Posso monitorizar o desempenho do meu sistema solar comercial?",
-      answer: "Sim. Implementamos monitoramento digital completo que permite acompanhar em tempo real a geração via aplicativo."
-    }
-  ];
-
-  const observerRef = useRef<IntersectionObserver | null>(null);
-  useEffect(() => {
-    observerRef.current = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
+    if (heroTitleRef.current) {
+      gsap.from(heroTitleRef.current, {
+        y: 40, opacity: 0, duration: 1, ease: 'power3.out',
+        scrollTrigger: { trigger: heroTitleRef.current, start: 'top 80%' },
       });
-    }, { threshold: 0.1 });
+    }
 
-    const elements = document.querySelectorAll('.section-reveal');
-    elements.forEach(el => observerRef.current?.observe(el));
+    if (sectionTitleRef.current) {
+      gsap.from(sectionTitleRef.current, {
+        y: 40, opacity: 0, duration: 1, ease: 'power3.out',
+        scrollTrigger: { trigger: sectionTitleRef.current, start: 'top 80%' },
+      });
+    }
 
-    return () => observerRef.current?.disconnect();
+    if (cardsRef.current) {
+      gsap.from(cardsRef.current.children, {
+        y: 40, opacity: 0, duration: 1, ease: 'power3.out', stagger: 0.15,
+        scrollTrigger: { trigger: cardsRef.current, start: 'top 80%' },
+      });
+    }
   }, []);
 
-  const solutionsData = [
-    {
-      title: "Sistemas Fotovoltaicos On-Grid",
-      desc: [
-        "Redução e previsibilidade de custos energéticos",
-        "Decisão econômica estratégica"
-      ],
-      img: "https://agzxythrwhlpvptlsepv.supabase.co/storage/v1/object/public/Orlando%20Air%20cond/On%20grid.jpg",
-      icon: <Sun className="w-8 h-8" />
-    },
-    {
-      title: "Sistemas Híbridos com Armazenamento",
-      desc: [
-        "Continuidade operacional",
-        "Segurança energética",
-        "Aplicações corporativas e residenciais críticas"
-      ],
-      img: "https://hnaezacbzcpmyfoupdec.supabase.co/storage/v1/object/public/ANTARES%20ENERGIA/antares1.png",
-      icon: <BatteryCharging className="w-8 h-8" />
-    },
-    {
-      title: "Sistemas Off-Grid com Armazenamento",
-      desc: [
-        "Autonomia energética total",
-        "Aplicações remotas, rurais ou críticas",
-        "Engenharia dedicada para operação contínua"
-      ],
-      img: "https://agzxythrwhlpvptlsepv.supabase.co/storage/v1/object/public/Orlando%20Air%20cond/On%20grid%203:4.jpg",
-      icon: <Cpu className="w-8 h-8" />
-    },
-    {
-      title: "Bombeamento Solar de Água e Irrigação",
-      desc: [
-        "Abastecimento hídrico e irrigação de médio e grande porte",
-        "Integração energia + hidráulica"
-      ],
-      img: "https://hnaezacbzcpmyfoupdec.supabase.co/storage/v1/object/public/ANTARES%20ENERGIA/anatres2.png",
-      icon: <Droplets className="w-8 h-8" />
-    }
-  ];
-
   return (
-    <div className="w-full bg-antares-dark">
-      {/* 1. HERO SECTION */}
-      <section className="relative min-h-screen w-full flex items-center overflow-hidden bg-antares-dark pt-[180px] md:pt-[240px] pb-32">
-        {heroImages.map((img, index) => (
-          <div 
-            key={index}
-            className={`absolute inset-0 transition-opacity duration-[3000ms] ease-in-out ${
-              index === currentSlide ? 'opacity-30' : 'opacity-0'
-            }`}
-          >
-            <img src={img} className="w-full h-full object-cover" alt="" />
-            <div className="absolute inset-0 bg-gradient-to-r from-antares-dark via-antares-dark/60 to-transparent"></div>
+    <>
+      <Helmet>
+        {/* SEO */}
+        <title>Antares Energia | Energia Solar em Nova Odessa - SP</title>
+        <meta name="description" content="Engenharia solar de alta performance em Nova Odessa. Projetos customizados para São Paulo." />
+        
+        {/* Open Graph */}
+        <meta property="og:title" content="Antares Energia | Energia Solar em Nova Odessa - SP" />
+        <meta property="og:description" content="Engenharia de alta performance e diagnóstico técnico em Nova Odessa. Reduza custos com segurança." />
+        <meta property="og:url" content="https://www.antaresenergia.com/nova-odessa" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://agzxythrwhlpvptlsepv.supabase.co/storage/v1/object/public/Orlando%20Air%20cond/anatres%20banner%20site.jpg" />
+
+        {/* Canônico */}
+        <link rel="canonical" href="https://www.antaresenergia.com/nova-odessa" />
+
+        {/* JSON-LD LocalBusiness */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "Antares Energia",
+            "image": "https://agzxythrwhlpvptlsepv.supabase.co/storage/v1/object/public/Orlando%20Air%20cond/anatres%20banner%20site.jpg",
+            "@id": "https://www.antaresenergia.com/nova-odessa",
+            "url": "https://www.antaresenergia.com/nova-odessa",
+            "telephone": "+5519996162688",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Av. Rodolfo Kivitz, 2625",
+              "addressLocality": "Nova Odessa",
+              "addressRegion": "SP",
+              "postalCode": "",
+              "addressCountry": "BR"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": -22.784, 
+              "longitude": -47.320
+            },
+            "openingHours": "Mo-Fr 08:00-18:00",
+            "sameAs": [
+              "https://www.facebook.com/antaresenergia",
+              "https://www.instagram.com/antaresenergia",
+              "https://www.linkedin.com/company/antaresenergia"
+            ]
+          })}
+        </script>
+      </Helmet>
+
+      <main className="bg-white">
+        {/* HERO */}
+        <section className="relative min-h-[90vh] flex items-center justify-center bg-antares-dark pt-32">
+          <div className="absolute inset-0">
+            <img src="https://agzxythrwhlpvptlsepv.supabase.co/storage/v1/object/public/Orlando%20Air%20cond/anatres%20banner%20site.jpg" alt="Energia Solar Nova Odessa" className="w-full h-full object-cover" />
+            <div className="absolute inset-0 bg-blue-900/90" />
           </div>
-        ))}
-
-        <div className="relative z-10 max-w-7xl mx-auto px-8 w-full text-left">
-          <article className="max-w-5xl">
-            <header className="flex items-center space-x-6 mb-8">
-              <span className="h-[2px] w-24 bg-antares-cyan"></span>
-              <span className="text-antares-cyan text-[11px] font-black tracking-[0.5em] uppercase animate-fade-in">Engenharia de Energia Integrada</span>
-            </header>
-
-            <h1 className="hero-title font-heading font-extrabold text-white mb-12 animate-fade-in">
-              Arquitetura de <br/>
-              <span className="text-gradient">Alta Performance.</span>
+          <div className="relative z-10 max-w-5xl mx-auto px-6 text-center text-white">
+            <div className="inline-flex items-center gap-2 bg-white/10 px-5 py-2 rounded-full mb-8">
+              <MapPin className="w-4 h-4 text-cyan-300" />
+              <span className="text-sm">Atuação técnica em Nova Odessa e Região Metropolitana</span>
+            </div>
+            <h1 ref={heroTitleRef} className="text-4xl md:text-6xl font-extrabold mb-6">
+              <Typewriter text="Energia Solar em Nova Odessa" /><br />
+              <span className="text-cyan-300">com Engenharia e Diagnóstico Técnico</span>
             </h1>
-
-            <p className="text-xl md:text-2xl text-gray-400 mb-14 font-light max-w-2xl leading-relaxed animate-fade-in">
-              Engenharia de precisão que integra diagnóstico estratégico, gestão de ativos e soluções energéticas sob medida.
-            </p>
-
-            {/* BOTÕES DO HERO: Tamanho reduzido para design mais fino */}
-            <div className="flex flex-col sm:flex-row gap-6 animate-fade-in">
-              <a 
-                href="#contato" 
-                className="px-8 py-3.5 bg-antares-cyan text-antares-dark font-black uppercase tracking-[0.15em] hover:bg-white transition-all duration-500 rounded-full shadow-lg text-center text-[11px] flex items-center justify-center"
-              >
-                Solicitar Diagnóstico
-              </a>
-              <a 
-                href="https://wa.me/5519996162688"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-8 py-3.5 border border-white/20 text-white font-black uppercase tracking-[0.15em] hover:border-antares-cyan hover:text-antares-cyan transition-all duration-500 backdrop-blur-md rounded-full flex items-center justify-center group text-[11px]"
-              >
-                Consultoria Executiva 
-                <div className="ml-3 bg-antares-cyan p-1 rounded-full group-hover:bg-white transition-colors">
-                  <ArrowRight className="w-3.5 h-3.5 text-antares-dark" />
-                </div>
-              </a>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      {/* 2. STATS */}
-      <section className="bg-antares-dark py-24 border-b border-white/5">
-        <div className="max-w-7xl mx-auto px-8 grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
-            {[
-              { val: "500+", label: "Usinas Instaladas" },
-              { val: "15MW", label: "Potência Total" },
-              { val: "98%", label: "Eficiência Média" },
-              { val: "R$ 20M", label: "Economia Gerada" }
-            ].map((stat, i) => (
-              <div key={i} className="group">
-                <p className={`text-4xl md:text-5xl font-black mb-4 tracking-tighter ${i%2===0 ? 'text-antares-cyan' : 'text-white'}`}>
-                  {stat.val}
-                </p>
-                <p className="text-gray-500 text-[10px] font-black uppercase tracking-[0.4em] leading-relaxed">
-                  {stat.label}
-                </p>
-              </div>
-            ))}
-        </div>
-      </section>
-
-      {/* SEÇÃO 1: Nova Odessa */}
-      <section id="engenharia" className="section-reveal py-32 bg-antares-dark overflow-hidden border-b border-white/5">
-        <div className="max-w-7xl mx-auto px-8">
-          <div className="grid lg:grid-cols-2 gap-20 items-center">
-            <div className="relative group">
-              <div className="absolute -inset-4 bg-antares-cyan/10 rounded-2xl transition-all blur-xl group-hover:bg-antares-cyan/20"></div>
-              <img 
-                src="https://agzxythrwhlpvptlsepv.supabase.co/storage/v1/object/public/Orlando%20Air%20cond/anatres%20banner%20site.jpg" 
-                alt="Engenharia de sistemas fotovoltaicos empresariais" 
-                className="relative rounded-xl shadow-2xl grayscale hover:grayscale-0 transition-all duration-700 w-full aspect-video object-cover"
-              />
-              <div className="absolute top-8 left-8 bg-antares-cyan p-4 rounded-sm shadow-2xl">
-                 <Settings className="w-8 h-8 text-antares-dark animate-spin-slow" />
-              </div>
-            </div>
-            
-            <div>
-              <header className="mb-8">
-                <span className="text-antares-cyan text-[10px] font-black tracking-[0.4em] uppercase mb-4 block">Foco Regional e Técnico</span>
-                <h2 className="text-4xl md:text-5xl font-bold text-white mb-8 leading-tight">
-                  Engenharia energética aplicada à energia solar em <span className="text-antares-cyan">Nova Odessa</span>
-                </h2>
-              </header>
-              <p className="text-xl text-gray-400 font-light leading-relaxed mb-10">
-                A Antares Energia lidera a transformação energética industrial em <strong>Nova Odessa e região</strong>. Através de um diagnóstico energético rigoroso e engenharia dedicada.
-              </p>
-              <ul className="grid sm:grid-cols-2 gap-8">
-                <li className="flex items-start gap-4">
-                  <div className="mt-1 bg-antares-cyan/10 p-2 rounded-lg"><Activity className="w-5 h-5 text-antares-cyan" /></div>
-                  <div>
-                    <h3 className="text-white font-bold text-sm uppercase tracking-wider mb-2">Diagnóstico</h3>
-                    <p className="text-gray-500 text-xs leading-relaxed">Análise granular de perfil de carga para máxima eficiência técnica.</p>
-                  </div>
-                </li>
-                <li className="flex items-start gap-4">
-                  <div className="mt-1 bg-antares-cyan/10 p-2 rounded-lg"><Factory className="w-5 h-5 text-antares-cyan" /></div>
-                  <div>
-                    <h3 className="text-white font-bold text-sm uppercase tracking-wider mb-2">Engenharia</h3>
-                    <p className="text-gray-500 text-xs leading-relaxed">Sistemas projetados para alta tensão e demandas industriais críticas.</p>
-                  </div>
-                </li>
-              </ul>
-            </div>
+            <a href="https://wa.me/5519996162688" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 bg-cyan-400 text-blue-900 px-10 py-5 rounded-full font-bold text-lg hover:bg-cyan-300 transition">
+              <Target className="w-6 h-6" /> Solicitar Diagnóstico <ArrowRight className="w-6 h-6" />
+            </a>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* SEÇÃO 3: Mercado Livre */}
-      <section id="mercado-livre" className="section-reveal py-32 bg-antares-dark relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-8 relative z-10">
-          <div className="bg-gradient-to-br from-antares-slate to-antares-dark p-12 md:p-20 rounded-[40px] border border-white/5 flex flex-col lg:flex-row gap-16 items-center shadow-2xl">
-            <div className="lg:w-1/2">
-              <header className="mb-10">
-                <span className="text-antares-cyan text-[10px] font-black tracking-[0.4em] uppercase mb-4 block">Estratégia e Operação</span>
-                <h2 className="text-4xl md:text-5xl font-bold text-white mb-10 leading-[1.1]">
-                  Energia solar e engenharia para <span className="text-antares-cyan">Mercado Livre</span> de Energia.
-                </h2>
-              </header>
-              <p className="text-xl text-gray-400 font-light leading-relaxed mb-12">
-                Especialistas em migração estratégica. Integramos sua usina fotovoltaica à operação no Mercado Livre.
-              </p>
-              
-              {/* BOTÃO MERCADO LIVRE: Mais fino e elegante */}
-              <button className="group flex items-center gap-4 bg-white text-antares-dark px-8 py-4 font-black uppercase tracking-[0.1em] rounded-full hover:bg-antares-cyan transition-all text-[11px]">
-                Estudo de Viabilidade Técnico 
-                <div className="bg-antares-dark/10 p-1 rounded-full group-hover:bg-white/20 transition-colors">
-                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </div>
-              </button>
-            </div>
-            <div className="lg:w-1/2 relative">
-               <img 
-                 src="https://agzxythrwhlpvptlsepv.supabase.co/storage/v1/object/public/Orlando%20Air%20cond/Foto%20banner%20Antares%203.jpg" 
-                 alt="Energia solar Mercado Livre" 
-                 className="relative w-full h-[400px] object-cover rounded-3xl shadow-2xl grayscale hover:grayscale-0 transition-all duration-1000"
-               />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* SEÇÃO 4: Soluções Especializadas */}
-      <section id="solucoes-tecnicas" className="section-reveal py-32 bg-antares-dark">
-        <div className="max-w-7xl mx-auto px-8">
-          <header className="mb-20 text-center">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Sistemas e <span className="text-gradient">Tecnologias</span>
+        {/* DIFERENCIAIS */}
+        <section className="py-24 bg-[#f8fbff]">
+          <div className="max-w-7xl mx-auto px-6">
+            <h2 ref={sectionTitleRef} className="text-3xl md:text-5xl font-bold text-center mb-20 text-[#3b82f6]">
+              Por que a Antares é diferente em Nova Odessa?
             </h2>
-            <div className="w-24 h-1 bg-antares-cyan mx-auto rounded-full"></div>
-          </header>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {solutionsData.map((item, idx) => (
-              <div 
-                key={idx} 
-                className="group relative flex flex-col h-full bg-antares-slate/20 border border-white/5 rounded-2xl overflow-hidden hover:border-antares-cyan/50 transition-all duration-500"
-              >
-                <div className="relative h-48 overflow-hidden">
-                  <img src={item.img} alt={item.title} className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" />
-                  <div className="absolute bottom-4 left-4 z-20 bg-antares-cyan p-2 rounded shadow-lg text-antares-dark">{item.icon}</div>
-                </div>
-
-                <div className="p-8 flex flex-col flex-grow">
-                  <h3 className="text-white font-bold text-lg mb-6 leading-tight min-h-[3rem] group-hover:text-antares-cyan transition-colors">{item.title}</h3>
-                  <ul className="space-y-4 flex-grow">
-                    {item.desc.map((bullet, bIdx) => (
-                      <li key={bIdx} className="flex items-start gap-3">
-                        <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-antares-cyan flex-shrink-0"></span>
-                        <p className="text-gray-400 text-[13px] leading-relaxed font-light">{bullet}</p>
-                      </li>
-                    ))}
-                  </ul>
-                  
-                  {/* BOTÃO "SAIBA MAIS" PROPORCIONAL AO CARD */}
-                  <div className="mt-8 pt-6 border-t border-white/5">
-                    <a href="#contato" className="inline-flex items-center text-[10px] font-black uppercase tracking-widest text-antares-cyan group/link bg-antares-cyan/5 px-5 py-2.5 rounded-full hover:bg-antares-cyan hover:text-antares-dark transition-all">
-                      Saiba mais 
-                      <div className="ml-2 bg-antares-cyan/20 p-0.5 rounded-full group-hover/link:bg-white transition-colors">
-                        <ArrowRight className="w-3 h-3 group-hover/link:translate-x-1 transition-transform" />
-                      </div>
-                    </a>
+            <div className="grid md:grid-cols-3 gap-8" ref={cardsRef}>
+              {[
+                "Empresa de engenharia energética desde 2011",
+                "Diagnóstico técnico obrigatório antes de qualquer proposta",
+                "Projetos validados em operação real",
+                "Entrega turn key com responsabilidade técnica integral",
+                "Soluções on-grid, híbridas e off-grid",
+                "Decisões energéticas orientadas ao longo prazo"
+              ].map((item, idx) => (
+                <div key={idx} className="bg-white p-10 rounded-2xl shadow-sm border border-slate-100 flex flex-col items-start gap-6 hover:shadow-md transition-shadow">
+                  <div className="w-10 h-10 rounded-full flex items-center justify-center border border-cyan-500/30">
+                    <CheckCircle2 className="w-6 h-6 text-cyan-500" />
                   </div>
+                  <p className="text-slate-700 text-lg mb-2 font-medium">{item}</p>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* FAQ SECTION */}
-      <section className="section-reveal py-32 bg-antares-dark border-t border-white/5">
-        <div className="max-w-4xl mx-auto px-8">
-          <div className="space-y-6">
-            {faqData.map((item, index) => (
-              <div key={index} className="border border-white/5 rounded-2xl overflow-hidden bg-antares-slate/30">
-                <button 
-                  onClick={() => setOpenFaqIndex(openFaqIndex === index ? null : index)} 
-                  className="w-full px-8 py-6 text-left flex justify-between items-center group"
-                >
-                  <span className="text-white font-bold tracking-wide group-hover:text-antares-cyan transition-colors">{item.question}</span>
-                  {openFaqIndex === index ? <ChevronUp className="text-antares-cyan w-5 h-5" /> : <ChevronDown className="text-white/20 w-5 h-5" />}
-                </button>
-                {openFaqIndex === index && (
-                  <div className="px-8 pb-8 animate-fade-in text-gray-400 font-light border-t border-white/5 pt-4">{item.answer}</div>
-                )}
-              </div>
-            ))}
+        {/* SOLUÇÕES */}
+        <section className="py-24 bg-[#1e293b]">
+          <div className="max-w-7xl mx-auto px-6">
+            <h2 className="text-3xl md:text-5xl font-bold text-center mb-20 text-white">
+              Soluções Energéticas em Nova Odessa
+            </h2>
+            <div className="grid md:grid-cols-2 gap-8">
+              <SolutionCard 
+                icon={<Zap className="text-white w-6 h-6" />} 
+                title="Sistemas Fotovoltaicos On-Grid" 
+                text="Redução de custos com previsibilidade." 
+              />
+              <SolutionCard 
+                icon={<BatteryCharging className="text-white w-6 h-6" />} 
+                title="Sistemas Híbridos com Armazenamento" 
+                text="Segurança para cargas críticas." 
+              />
+              <SolutionCard 
+                icon={<Shield className="text-white w-6 h-6" />} 
+                title="Sistemas Off-Grid" 
+                text="Autonomia total para locais remotos ou operações críticas." 
+              />
+              <SolutionCard 
+                icon={<Droplets className="text-white w-6 h-6" />} 
+                title="Bombeamento Solar" 
+                text="Eficiência hidráulica com custo zero de energia." 
+              />
+            </div>
           </div>
-        </div>
-      </section>
-    </div>
+        </section>
+      </main>
+    </>
   );
 };
+
+const SolutionCard = ({ icon, title, text }: { icon: React.ReactNode; title: string; text: string; }) => (
+  <div className="bg-white p-12 rounded-[2.5rem] flex flex-col gap-5 shadow-xl transition-transform hover:-translate-y-1">
+    <div className="w-14 h-14 bg-[#008eb4] rounded-2xl flex items-center justify-center mb-2">
+      {icon}
+    </div>
+    <h3 className="text-2xl font-bold text-[#1e293b] tracking-tight">{title}</h3>
+    <p className="text-slate-500 text-xl leading-relaxed font-light">{text}</p>
+  </div>
+);
+
+export default NovaOdessa;
