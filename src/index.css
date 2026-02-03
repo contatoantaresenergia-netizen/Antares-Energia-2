@@ -4,35 +4,28 @@
 
 @layer base {
   html {
-    /* Aumentado a base para que a logo e menu (rem) subam de tamanho proporcionalmente */
-    font-size: 16px; 
+    font-size: 16px;
     scroll-behavior: smooth;
   }
   
   @media (min-width: 768px) {
-    html {
-      font-size: 17px;
-    }
+    html { font-size: 17px; }
   }
   
   @media (min-width: 1024px) {
-    html {
-      font-size: 18px;
-    }
+    html { font-size: 18px; }
   }
   
   @media (min-width: 1920px) {
-    html {
-      font-size: 20px;
-    }
+    html { font-size: 20px; }
   }
-  
+
   body {
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-  
+
   * {
     margin: 0;
     padding: 0;
@@ -44,35 +37,30 @@
   .text-gradient {
     @apply bg-gradient-to-r from-cyan-400 via-blue-400 to-cyan-300 bg-clip-text text-transparent;
   }
-  
-  /* Títulos Hero - Ajustado para equilíbrio visual com o Header */
+
   .hero-title {
     font-size: clamp(2.5rem, 8vw, 5.5rem);
     line-height: 1.05;
     letter-spacing: -0.04em;
   }
-  
-  /* Títulos de Seção */
+
   .section-title {
     font-size: clamp(2rem, 5vw, 3.5rem);
     line-height: 1.1;
     letter-spacing: -0.02em;
   }
-  
-  /* Stats grandes - Ajustado para centralização e espaçamento */
+
   .stat-number {
     font-size: clamp(2.2rem, 5vw, 3.8rem);
     line-height: 1;
   }
-  
-  /* Valores da calculadora - Ajustado para evitar quebras de linha */
+
   .calculator-value {
     font-size: clamp(1.1rem, 2.5vw, 1.7rem);
     line-height: 1.2;
     white-space: nowrap;
   }
 
-  /* NOVA CLASSE: Para centralizar o texto dentro do botão Solicitar Diagnóstico */
   .btn-center {
     display: flex !important;
     align-items: center !important;
@@ -80,26 +68,12 @@
     text-align: center !important;
     line-height: 1 !important;
   }
-  
-  .animate-in {
-    animation: fadeIn 0.5s ease-in;
-  }
-  
-  .slide-in-from-left {
-    animation: slideInFromLeft 0.7s ease-out;
-  }
-  
-  .slide-in-from-bottom-12 {
-    animation: slideInFromBottom 0.7s ease-out;
-  }
-  
-  .slide-in-from-bottom-8 {
-    animation: slideInFromBottom 0.7s ease-out;
-  }
-  
-  .fade-in {
-    animation: fadeIn 1s ease-in;
-  }
+
+  .animate-in { animation: fadeIn 0.5s ease-in; }
+  .slide-in-from-left { animation: slideInFromLeft 0.7s ease-out; }
+  .slide-in-from-bottom-12 { animation: slideInFromBottom 0.7s ease-out; }
+  .slide-in-from-bottom-8 { animation: slideInFromBottom 0.7s ease-out; }
+  .fade-in { animation: fadeIn 1s ease-in; }
 }
 
 @keyframes fadeIn {
@@ -108,23 +82,11 @@
 }
 
 @keyframes slideInFromLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  from { opacity: 0; transform: translateX(-50px); }
+  to { opacity: 1; transform: translateX(0); }
 }
 
 @keyframes slideInFromBottom {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
