@@ -40,4 +40,13 @@ export const Services: React.FC = () => {
           </div>
           <div className="w-full md:w-1/2 p-6">
             <h2 className="text-3xl font-bold text-white mb-4">Solar Industrial</h2>
-            <p cl
+            <p className="text-gray-400 text-lg mb-8">Redução drástica de custos operacionais para sua empresa.</p>
+            <Link href="/contact" className="px-8 py-3 bg-antares-cyan text-antares-dark font-black uppercase hover:bg-white transition-all rounded-sm">
+              Saiba Mais
+            </Link>
+          </div>
+        </div>
+      </div> {/* Fecha a div do max-w-7xl mx-auto flex flex-col */}
+    </div> {/* Fecha a div principal bg-antares-dark */}
+  );
+};
