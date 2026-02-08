@@ -46,7 +46,9 @@ export const Services: React.FC = () => {
             </Link>
           </div>
         </div>
-      </div> {/* Fecha a div do max-w-7xl mx-auto flex flex-col */}
-    </div> {/* Fecha a div principal bg-antares-dark */}
+      </div>
+    </div>
   );
 };
+
+export default Services;
