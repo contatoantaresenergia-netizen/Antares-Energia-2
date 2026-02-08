@@ -1,16 +1,14 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import { Layout } from './components/Layout';
 
-// CORREÇÃO AQUI: Removi as chaves da Home porque ela é um export default
+// IMPORTAÇÕES DAS PÁGINAS
 import Home from './pages/Home'; 
-
 import { About } from './pages/About';
 import { Services } from './pages/Services';
 import { Projects } from './pages/Projects';
 import { Contact } from './pages/Contact';
-
-// IMPORTAÇÃO DA PÁGINA 404 QUE VOCÊ CRIOU
 import { NotFound } from './pages/NotFound'; 
 
 // IMPORTAÇÕES DE CAMARAGIBE
@@ -30,29 +28,31 @@ const ScrollToTop: React.FC = () => {
 
 const App: React.FC = () => {
   return (
-    <BrowserRouter>
-      <ScrollToTop />
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          {/* ROTAS PADRÃO */}
-          <Route index element={<Home />} />
-          <Route path="sobre" element={<About />} />
-          <Route path="servicos" element={<Services />} />
-          <Route path="projetos" element={<Projects />} />
-          <Route path="contato" element={<Contact />} />
-          
-          {/* ROTAS DE CAMARAGIBE */}
-          <Route path="camaragibe" element={<Camaragibe />} />
-          <Route path="camaragibe/sobre" element={<CamaragibeSobre />} />
-          <Route path="camaragibe/servicos" element={<CamaragibeServices />} />
-          <Route path="camaragibe/projetos" element={<CamaragibeProjects />} />
-          <Route path="camaragibe/contato" element={<CamaragibeContact />} />
+    <HelmetProvider>
+      <BrowserRouter>
+        <ScrollToTop />
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            {/* ROTAS PADRÃO */}
+            <Route index element={<Home />} />
+            <Route path="sobre" element={<About />} />
+            <Route path="servicos" element={<Services />} />
+            <Route path="projetos" element={<Projects />} />
+            <Route path="contato" element={<Contact />} />
+            
+            {/* ROTAS DE CAMARAGIBE */}
+            <Route path="camaragibe" element={<Camaragibe />} />
+            <Route path="camaragibe/sobre" element={<CamaragibeSobre />} />
+            <Route path="camaragibe/servicos" element={<CamaragibeServices />} />
+            <Route path="camaragibe/projetos" element={<CamaragibeProjects />} />
+            <Route path="camaragibe/contato" element={<CamaragibeContact />} />
 
-          {/* ROTA 404 */}
-          <Route path="*" element={<NotFound />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+            {/* ROTA 404 */}
+            <Route path="*" element={<NotFound />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </HelmetProvider>
   );
 };
 
