@@ -1,12 +1,20 @@
-// pages/_app.tsx
-import '@/styles/globals.css'
-import type { AppProps } from 'next/app'
-import { HelmetProvider } from 'react-helmet-async'
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
+import Home from './pages/Home';
+import Services from './pages/Services';
 
-export default function App({ Component, pageProps }: AppProps) {
+function App() {
   return (
     <HelmetProvider>
-      <Component {...pageProps} />
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/services" element={<Services />} />
+        </Routes>
+      </Router>
     </HelmetProvider>
-  )
+  );
 }
+
+export default App;
