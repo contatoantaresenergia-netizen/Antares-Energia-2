@@ -1,7 +1,10 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { Layout } from './components/Layout';
-import { Home } from './pages/Home';
+
+// CORREÇÃO AQUI: Removi as chaves da Home porque ela é um export default
+import Home from './pages/Home'; 
+
 import { About } from './pages/About';
 import { Services } from './pages/Services';
 import { Projects } from './pages/Projects';
@@ -45,7 +48,7 @@ const App: React.FC = () => {
           <Route path="camaragibe/projetos" element={<CamaragibeProjects />} />
           <Route path="camaragibe/contato" element={<CamaragibeContact />} />
 
-          {/* ROTA 404 - O "*" captura qualquer link que não esteja listado acima */}
+          {/* ROTA 404 */}
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
