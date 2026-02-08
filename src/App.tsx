@@ -2,15 +2,15 @@ import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { Layout } from './components/Layout';
 
-// IMPORTAÇÕES SEM CHAVES (Export Default)
-import Home from './pages/Home'; 
-import Camaragibe from './pages/Camaragibe';
-
-// IMPORTAÇÕES COM CHAVES (Named Exports)
+// Testaremos a importação com chaves, que é o padrão mais comum em Vite/React moderno
+import { Home } from './pages/Home'; 
 import { About } from './pages/About';
 import { Services } from './pages/Services';
 import { Projects } from './pages/Projects';
 import { Contact } from './pages/Contact';
+
+// IMPORTAÇÕES DE CAMARAGIBE
+import Camaragibe from './pages/Camaragibe'; 
 import { CamaragibeSobre } from './pages/CamaragibeSobre';
 import { CamaragibeServices } from './pages/CamaragibeServices';
 import { CamaragibeProjects } from './pages/CamaragibeProjects';
