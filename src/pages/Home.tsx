@@ -32,26 +32,51 @@ const NovaOdessa: React.FC = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
 
-    if (heroTitleRef.current) {
-      gsap.from(heroTitleRef.current, {
-        y: 40, opacity: 0, duration: 1, ease: 'power3.out',
-        scrollTrigger: { trigger: heroTitleRef.current, start: 'top 80%' },
-      });
-    }
+    // ✅ Aguardar o DOM estar completamente carregado
+    const initAnimations = () => {
+      if (heroTitleRef.current) {
+        gsap.from(heroTitleRef.current, {
+          y: 40, opacity: 0, duration: 1, ease: 'power3.out',
+          scrollTrigger: { 
+            trigger: heroTitleRef.current, 
+            start: 'top 80%',
+            toggleActions: 'play none none none'
+          },
+        });
+      }
 
-    if (sectionTitleRef.current) {
-      gsap.from(sectionTitleRef.current, {
-        y: 40, opacity: 0, duration: 1, ease: 'power3.out',
-        scrollTrigger: { trigger: sectionTitleRef.current, start: 'top 80%' },
-      });
-    }
+      if (sectionTitleRef.current) {
+        gsap.from(sectionTitleRef.current, {
+          y: 40, opacity: 0, duration: 1, ease: 'power3.out',
+          scrollTrigger: { 
+            trigger: sectionTitleRef.current, 
+            start: 'top 80%',
+            toggleActions: 'play none none none'
+          },
+        });
+      }
 
-    if (cardsRef.current) {
-      gsap.from(cardsRef.current.children, {
-        y: 40, opacity: 0, duration: 1, ease: 'power3.out', stagger: 0.15,
-        scrollTrigger: { trigger: cardsRef.current, start: 'top 80%' },
-      });
-    }
+      // ✅ Verificar se tem elementos filhos antes de animar
+      if (cardsRef.current && cardsRef.current.children.length > 0) {
+        gsap.from(cardsRef.current.children, {
+          y: 40, opacity: 0, duration: 1, ease: 'power3.out', stagger: 0.15,
+          scrollTrigger: { 
+            trigger: cardsRef.current, 
+            start: 'top 80%',
+            toggleActions: 'play none none none'
+          },
+        });
+      }
+    };
+
+    // ✅ Aguardar 100ms para garantir que o DOM está pronto
+    const timer = setTimeout(initAnimations, 100);
+
+    // ✅ Cleanup: Limpar todas as animações ao desmontar
+    return () => {
+      clearTimeout(timer);
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
   }, []);
 
   return (
