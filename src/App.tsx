@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
-import { HelmetProvider } from 'react-helmet-async'; // Adicionado apenas para evitar erro
+import { HelmetProvider } from 'react-helmet-async'; // Adicionado para suportar o SEO sem erro
 import { Layout } from './components/Layout';
 
-// IMPORTAÇÕES SEM CHAVES (Export Default)
-import Home from './pages/Home'; 
+// IMPORTAÇÕES
+import NovaOdessa from './pages/nova-odessa'; // Usaremos este como página principal
 import Camaragibe from './pages/Camaragibe';
 
-// IMPORTAÇÕES COM CHAVES (Named Exports)
+// IMPORTAÇÕES COM CHAVES
 import { About } from './pages/About';
 import { Services } from './pages/Services';
 import { Projects } from './pages/Projects';
@@ -16,6 +16,7 @@ import { CamaragibeSobre } from './pages/CamaragibeSobre';
 import { CamaragibeServices } from './pages/CamaragibeServices';
 import { CamaragibeProjects } from './pages/CamaragibeProjects';
 import { CamaragibeContact } from './pages/CamaragibeContact';
+import { NotFound } from './pages/NotFound';
 
 const ScrollToTop: React.FC = () => {
   const { pathname } = useLocation();
@@ -27,22 +28,27 @@ const ScrollToTop: React.FC = () => {
 
 const App: React.FC = () => {
   return (
-    <HelmetProvider> {/* Envolvendo para permitir o uso de SEO nas páginas sem quebrar o site */}
+    <HelmetProvider>
       <BrowserRouter>
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route index element={<Home />} />
+            {/* AGORA A PÁGINA INICIAL É NOVA ODESSA COM AS CORES ORIGINAIS */}
+            <Route index element={<NovaOdessa />} />
+            
             <Route path="sobre" element={<About />} />
             <Route path="servicos" element={<Services />} />
             <Route path="projetos" element={<Projects />} />
             <Route path="contato" element={<Contact />} />
             
+            {/* ROTAS DE CAMARAGIBE */}
             <Route path="camaragibe" element={<Camaragibe />} />
             <Route path="camaragibe/sobre" element={<CamaragibeSobre />} />
             <Route path="camaragibe/servicos" element={<CamaragibeServices />} />
             <Route path="camaragibe/projetos" element={<CamaragibeProjects />} />
             <Route path="camaragibe/contato" element={<CamaragibeContact />} />
+
+            <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
       </BrowserRouter>
