@@ -3,7 +3,8 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 
 import { Layout } from './components/Layout';
 import { Home } from './pages/Home';          // ✅ nomeado
-import Camaragibe from './pages/Camaragibe';  // ✅ default
+import { Camaragibe } from './pages/Camaragibe'; // ✅ named import
+
 
 import { About } from './pages/About';
 import { Services } from './pages/Services';
