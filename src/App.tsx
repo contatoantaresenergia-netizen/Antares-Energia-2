@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
-import { HelmetProvider } from 'react-helmet-async'; // Adicionado para suportar o SEO sem erro
+import { HelmetProvider } from 'react-helmet-async';
 import { Layout } from './components/Layout';
 
-// IMPORTAÇÕES
-import NovaOdessa from './pages/nova-odessa'; // Usaremos este como página principal
+// IMPORTAÇÕES (Ajustado para ler o arquivo Home.tsx que existe na sua pasta)
+import Home from './pages/Home'; 
 import Camaragibe from './pages/Camaragibe';
 
 // IMPORTAÇÕES COM CHAVES
@@ -33,15 +33,14 @@ const App: React.FC = () => {
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Layout />}>
-            {/* AGORA A PÁGINA INICIAL É NOVA ODESSA COM AS CORES ORIGINAIS */}
-            <Route index element={<NovaOdessa />} />
+            {/* A rota principal agora chama o arquivo Home.tsx corretamente */}
+            <Route index element={<Home />} />
             
             <Route path="sobre" element={<About />} />
             <Route path="servicos" element={<Services />} />
             <Route path="projetos" element={<Projects />} />
             <Route path="contato" element={<Contact />} />
             
-            {/* ROTAS DE CAMARAGIBE */}
             <Route path="camaragibe" element={<Camaragibe />} />
             <Route path="camaragibe/sobre" element={<CamaragibeSobre />} />
             <Route path="camaragibe/servicos" element={<CamaragibeServices />} />
