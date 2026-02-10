@@ -78,6 +78,7 @@ const Camaragibe: React.FC = () => {
         {/* SEO Standard */}
         <title>Antares Energia | Engenharia Solar em Camaragibe - PE</title>
         <meta name="description" content="Engenharia fotovoltaica de alta performance em Camaragibe. Projetos customizados para Pernambuco. Reduza custos com segurança." />
+        <link rel="icon" type="image/png" href="/favicon.png" />
         <link rel="canonical" href="https://www.antaresenergia.com/camaragibe" />
 
         {/* Open Graph / Social */}
