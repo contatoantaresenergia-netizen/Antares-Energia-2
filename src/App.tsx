@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 
 import { Layout } from './components/Layout';
 import { Home } from './pages/Home';
-import { Camaragibe } from './pages/Camaragibe'; // ✅ named import correto
+import { Camaragibe } from './pages/Camaragibe';
 
 import { About } from './pages/About';
 import { Services } from './pages/Services';
@@ -36,6 +36,7 @@ export default function App() {
           <Route path="projetos" element={<Projects />} />
           <Route path="contato" element={<Contact />} />
 
+          {/* Rotas Camaragibe */}
           <Route path="camaragibe" element={<Camaragibe />} />
           <Route path="camaragibe/sobre" element={<CamaragibeSobre />} />
           <Route path="camaragibe/servicos" element={<CamaragibeServices />} />
