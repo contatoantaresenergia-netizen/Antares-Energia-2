@@ -1,13 +1,10 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 
-// Importação flexível dos componentes
 import { Layout } from './components/Layout';
-import Home from './pages/Home';
-import Camaragibe from './pages/Camaragibe';
+import { Home } from './pages/Home';
+import { Camaragibe } from './pages/Camaragibe';
 
-// Se essas páginas abaixo derem erro, o problema está nelas. 
-// Por enquanto, vamos manter como estavam, mas se o site não abrir, o erro é nelas.
 import { About } from './pages/About';
 import { Services } from './pages/Services';
 import { Projects } from './pages/Projects';
@@ -18,6 +15,7 @@ import { CamaragibeSobre } from './pages/CamaragibeSobre';
 import { CamaragibeServices } from './pages/CamaragibeServices';
 import { CamaragibeProjects } from './pages/CamaragibeProjects';
 import { CamaragibeContact } from './pages/CamaragibeContact';
+
 
 const ScrollToTop: React.FC = () => {
   const { pathname } = useLocation();
