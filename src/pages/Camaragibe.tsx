@@ -42,8 +42,8 @@ export const Camaragibe: React.FC = () => {
     <>
       <Helmet>
         <title>Antares Energia | Energia Solar em Camaragibe - PE</title>
-        <link rel="icon" href="/favicon.png" />
-      </Helmet>
+        </Helmet>
+   
 
       <main className="bg-white min-h-screen">
         <section className="pt-40 pb-12">
