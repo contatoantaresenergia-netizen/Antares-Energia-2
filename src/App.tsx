@@ -2,14 +2,14 @@ import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 
 import { Layout } from './components/Layout';
-import { Home } from './pages/Home';
-import { Camaragibe } from './pages/Camaragibe';
+import { Home } from './pages/Home';                  // ✅ named export
+import { Camaragibe } from './pages/Camaragibe';      // ✅ named export
 
 import { About } from './pages/About';
 import { Services } from './pages/Services';
 import { Projects } from './pages/Projects';
 import { Contact } from './pages/Contact';
-import { NotFound } from './pages/NotFound';
+import { NotFound } from './pages/NotFound'; 
 
 import { CamaragibeSobre } from './pages/CamaragibeSobre';
 import { CamaragibeServices } from './pages/CamaragibeServices';
@@ -35,8 +35,7 @@ export default function App() {
           <Route path="servicos" element={<Services />} />
           <Route path="projetos" element={<Projects />} />
           <Route path="contato" element={<Contact />} />
-
-          {/* Rotas Camaragibe */}
+          
           <Route path="camaragibe" element={<Camaragibe />} />
           <Route path="camaragibe/sobre" element={<CamaragibeSobre />} />
           <Route path="camaragibe/servicos" element={<CamaragibeServices />} />
