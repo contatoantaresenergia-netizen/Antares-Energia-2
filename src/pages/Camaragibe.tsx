@@ -41,54 +41,97 @@ const Camaragibe: React.FC = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
 
-    if (heroTitleRef.current) {
-      gsap.from(heroTitleRef.current, {
-        y: 40, opacity: 0, duration: 1, ease: 'power3.out',
-        scrollTrigger: { trigger: heroTitleRef.current, start: 'top 80%' },
-      });
-    }
+    const initAnimations = () => {
+      if (heroTitleRef.current) {
+        gsap.from(heroTitleRef.current, {
+          y: 40, opacity: 0, duration: 1, ease: 'power3.out',
+          scrollTrigger: { trigger: heroTitleRef.current, start: 'top 80%' },
+        });
+      }
 
-    if (sectionTitleRef.current) {
-      gsap.from(sectionTitleRef.current, {
-        y: 40, opacity: 0, duration: 1, ease: 'power3.out',
-        scrollTrigger: { trigger: sectionTitleRef.current, start: 'top 80%' },
-      });
-    }
+      if (sectionTitleRef.current) {
+        gsap.from(sectionTitleRef.current, {
+          y: 40, opacity: 0, duration: 1, ease: 'power3.out',
+          scrollTrigger: { trigger: sectionTitleRef.current, start: 'top 80%' },
+        });
+      }
 
-    if (cardsRef.current) {
-      gsap.from(cardsRef.current.children, {
-        y: 40, opacity: 0, duration: 1, ease: 'power3.out', stagger: 0.15,
-        scrollTrigger: { trigger: cardsRef.current, start: 'top 80%' },
-      });
-    }
+      if (cardsRef.current && cardsRef.current.children.length > 0) {
+        gsap.from(cardsRef.current.children, {
+          y: 40, opacity: 0, duration: 1, ease: 'power3.out', stagger: 0.15,
+          scrollTrigger: { trigger: cardsRef.current, start: 'top 80%' },
+        });
+      }
+    };
+
+    const timer = setTimeout(initAnimations, 100);
+
+    return () => {
+      clearTimeout(timer);
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
   }, []);
 
   return (
     <>
       <Helmet>
+        {/* SEO Standard */}
         <title>Antares Energia | Engenharia Solar em Camaragibe - PE</title>
-        <meta name="description" content="Engenharia fotovoltaica de alta performance em Camaragibe. Projetos customizados para Pernambuco." />
+        <meta name="description" content="Engenharia fotovoltaica de alta performance em Camaragibe. Projetos customizados para Pernambuco. Reduza custos com segurança." />
+        <link rel="canonical" href="https://www.antaresenergia.com/camaragibe" />
+
+        {/* Open Graph / Social */}
         <meta property="og:title" content="Antares Energia | Energia Solar em Camaragibe - PE" />
         <meta property="og:description" content="Engenharia de alta performance e diagnóstico técnico em Pernambuco. Reduza custos com segurança." />
         <meta property="og:url" content="https://www.antaresenergia.com/camaragibe" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://images.unsplash.com/photo-1509391366360-2e959784a276" />
-        <link rel="canonical" href="https://www.antaresenergia.com/camaragibe" />
+
+        {/* JSON-LD LocalBusiness - Google SEO */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "Antares Energia - Energia Solar Camaragibe",
+            "image": "https://images.unsplash.com/photo-1509391366360-2e959784a276",
+            "@id": "https://www.antaresenergia.com/camaragibe",
+            "url": "https://www.antaresenergia.com/camaragibe",
+            "telephone": "+5519996162688",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Camaragibe",
+              "addressRegion": "PE",
+              "addressCountry": "BR"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": -8.015, 
+              "longitude": -34.982
+            },
+            "openingHours": "Mo-Fr 08:00-18:00",
+            "description": "Engenharia solar de alta performance em Camaragibe e Região Metropolitana do Recife.",
+            "sameAs": [
+              "https://www.facebook.com/antaresenergia",
+              "https://www.instagram.com/antaresenergia",
+              "https://www.linkedin.com/company/antaresenergia"
+            ]
+          })}
+        </script>
       </Helmet>
 
       <main className="bg-white">
-        {/* HERO - Utilizando bg-antares-dark e overlay blue-900/90 */}
+        {/* HERO SECTION */}
         <section className="relative min-h-[90vh] flex items-center justify-center bg-[#1e293b] pt-32">
           <div className="absolute inset-0">
-            <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276" alt="Solar" className="w-full h-full object-cover" />
+            <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276" alt="Energia Solar em Camaragibe" className="w-full h-full object-cover" />
             <div className="absolute inset-0 bg-blue-900/90" />
           </div>
           <div className="relative z-10 max-w-5xl mx-auto px-6 text-center text-white">
-            <div className="inline-flex items-center gap-2 bg-white/10 px-5 py-2 rounded-full mb-8">
+            <div className="inline-flex items-center gap-2 bg-white/10 px-5 py-2 rounded-full mb-8 border border-white/20">
               <MapPin className="w-4 h-4 text-cyan-300" />
               <span className="text-sm font-medium">Atuação técnica em Camaragibe e Região Metropolitana</span>
             </div>
-            <h1 ref={heroTitleRef} className="text-4xl md:text-6xl font-extrabold mb-6">
+            <h1 ref={heroTitleRef} className="text-4xl md:text-6xl font-extrabold mb-6 tracking-tight">
               <Typewriter text="Energia Solar em Camaragibe" /><br />
               <span className="text-cyan-300">com Engenharia e Diagnóstico Técnico</span>
             </h1>
@@ -98,7 +141,7 @@ const Camaragibe: React.FC = () => {
           </div>
         </section>
 
-        {/* DIFERENCIAIS - Fundo suave #f8fbff e títulos em azul vibrante */}
+        {/* DIFERENCIAIS SECTION */}
         <section className="py-24 bg-[#f8fbff]">
           <div className="max-w-7xl mx-auto px-6">
             <h2 ref={sectionTitleRef} className="text-3xl md:text-5xl font-bold text-center mb-20 text-[#3b82f6]">
@@ -125,7 +168,7 @@ const Camaragibe: React.FC = () => {
           </div>
         </section>
 
-        {/* SOLUÇÕES - Fundo Slate escuro para contraste */}
+        {/* SOLUÇÕES SECTION */}
         <section className="py-24 bg-[#1e293b]">
           <div className="max-w-7xl mx-auto px-6">
             <h2 className="text-3xl md:text-5xl font-bold text-center mb-20 text-white">
