@@ -65,26 +65,20 @@ const Camaragibe: React.FC = () => {
 
   return (
     <>
-<Helmet>
-  {/* 1. Título e Descrição para buscas no Google em PE */}
-  <title>Antares Energia | Engenharia Solar em Camaragibe - PE</title>
-  <meta name="description" content="Engenharia fotovoltaica de alta performance em Camaragibe. Projetos customizados para Pernambuco." />
-
-  {/* 2. Tags Open Graph - O que resolve o problema do WhatsApp */}
-  <meta property="og:title" content="Antares Energia | Energia Solar em Camaragibe - PE" />
-  <meta property="og:description" content="Engenharia de alta performance e diagnóstico técnico em Pernambuco. Reduza custos com segurança." />
-  <meta property="og:url" content="https://www.antaresenergia.com/camaragibe" />
-  <meta property="og:type" content="website" />
-  {/* Use uma imagem real do projeto de Camaragibe aqui para a prévia do link */}
-  <meta property="og:image" content="https://images.unsplash.com/photo-1509391366360-2e959784a276" />
-  
-  {/* 3. Link Canônico - Diz ao Google que esta página NÃO é duplicada de Nova Odessa */}
-  <link rel="canonical" href="https://www.antaresenergia.com/camaragibe" />
-</Helmet>
+      <Helmet>
+        <title>Antares Energia | Engenharia Solar em Camaragibe - PE</title>
+        <meta name="description" content="Engenharia fotovoltaica de alta performance em Camaragibe. Projetos customizados para Pernambuco." />
+        <meta property="og:title" content="Antares Energia | Energia Solar em Camaragibe - PE" />
+        <meta property="og:description" content="Engenharia de alta performance e diagnóstico técnico em Pernambuco. Reduza custos com segurança." />
+        <meta property="og:url" content="https://www.antaresenergia.com/camaragibe" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://images.unsplash.com/photo-1509391366360-2e959784a276" />
+        <link rel="canonical" href="https://www.antaresenergia.com/camaragibe" />
+      </Helmet>
 
       <main className="bg-white">
-        {/* HERO */}
-        <section className="relative min-h-[90vh] flex items-center justify-center">
+        {/* HERO - Utilizando bg-antares-dark e overlay blue-900/90 */}
+        <section className="relative min-h-[90vh] flex items-center justify-center bg-[#1e293b] pt-32">
           <div className="absolute inset-0">
             <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276" alt="Solar" className="w-full h-full object-cover" />
             <div className="absolute inset-0 bg-blue-900/90" />
@@ -92,19 +86,19 @@ const Camaragibe: React.FC = () => {
           <div className="relative z-10 max-w-5xl mx-auto px-6 text-center text-white">
             <div className="inline-flex items-center gap-2 bg-white/10 px-5 py-2 rounded-full mb-8">
               <MapPin className="w-4 h-4 text-cyan-300" />
-              <span className="text-sm">Atuação técnica em Camaragibe e Região Metropolitana</span>
+              <span className="text-sm font-medium">Atuação técnica em Camaragibe e Região Metropolitana</span>
             </div>
             <h1 ref={heroTitleRef} className="text-4xl md:text-6xl font-extrabold mb-6">
               <Typewriter text="Energia Solar em Camaragibe" /><br />
               <span className="text-cyan-300">com Engenharia e Diagnóstico Técnico</span>
             </h1>
-            <a href="https://wa.me/5519996162688" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 bg-cyan-400 text-blue-900 px-10 py-5 rounded-full font-bold text-lg hover:bg-cyan-300 transition">
+            <a href="https://wa.me/5519996162688" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 bg-cyan-400 text-blue-900 px-10 py-5 rounded-full font-bold text-lg hover:bg-cyan-300 transition-all shadow-lg shadow-cyan-400/20">
               <Target className="w-6 h-6" /> Solicitar Diagnóstico <ArrowRight className="w-6 h-6" />
             </a>
           </div>
         </section>
 
-        {/* DIFERENCIAIS RESTAURADOS */}
+        {/* DIFERENCIAIS - Fundo suave #f8fbff e títulos em azul vibrante */}
         <section className="py-24 bg-[#f8fbff]">
           <div className="max-w-7xl mx-auto px-6">
             <h2 ref={sectionTitleRef} className="text-3xl md:text-5xl font-bold text-center mb-20 text-[#3b82f6]">
@@ -131,7 +125,7 @@ const Camaragibe: React.FC = () => {
           </div>
         </section>
 
-        {/* SOLUÇÕES COM OS 4 CARDS ORIGINAIS */}
+        {/* SOLUÇÕES - Fundo Slate escuro para contraste */}
         <section className="py-24 bg-[#1e293b]">
           <div className="max-w-7xl mx-auto px-6">
             <h2 className="text-3xl md:text-5xl font-bold text-center mb-20 text-white">
