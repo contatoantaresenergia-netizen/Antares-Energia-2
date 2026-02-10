@@ -3,11 +3,10 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { Layout } from './components/Layout';
 
-// IMPORTAÇÕES (Ajustado para ler o arquivo Home.tsx que existe na sua pasta)
+// IMPORTAÇÕES (Nomes exatos para não dar erro na Vercel)
 import Home from './pages/Home'; 
 import Camaragibe from './pages/Camaragibe';
 
-// IMPORTAÇÕES COM CHAVES
 import { About } from './pages/About';
 import { Services } from './pages/Services';
 import { Projects } from './pages/Projects';
@@ -33,7 +32,7 @@ const App: React.FC = () => {
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Layout />}>
-            {/* A rota principal agora chama o arquivo Home.tsx corretamente */}
+            {/* Aqui a Home será o código de Nova Odessa que você renomeou */}
             <Route index element={<Home />} />
             
             <Route path="sobre" element={<About />} />
