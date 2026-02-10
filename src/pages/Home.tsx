@@ -59,6 +59,7 @@ const Home: React.FC = () => { // Nome alterado para Home
       <Helmet>
         <title>Antares Energia | Energia Solar em Nova Odessa - SP</title>
         <meta name="description" content="Engenharia solar de alta performance em Nova Odessa." />
+        <link rel="icon" type="image/png" href="/favicon.png" />
       </Helmet>
 
       <main className="bg-white">
