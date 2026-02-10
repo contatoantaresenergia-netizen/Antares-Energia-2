@@ -12,10 +12,11 @@ import { Projects } from './pages/Projects';
 import { Contact } from './pages/Contact';
 import { NotFound } from './pages/NotFound'; 
 
-import { CamaragibeSobre } from './pages/CamaragibeSobre';
-import { CamaragibeServices } from './pages/CamaragibeServices';
-import { CamaragibeProjects } from './pages/CamaragibeProjects';
-import { CamaragibeContact } from './pages/CamaragibeContact';
+<Route path="camaragibe" element={<Camaragibe />} />
+<Route path="camaragibe/sobre" element={<CamaragibeSobre />} />
+<Route path="camaragibe/servicos" element={<CamaragibeServices />} />
+<Route path="camaragibe/projetos" element={<CamaragibeProjects />} />
+<Route path="camaragibe/contato" element={<CamaragibeContact />} />
 
 
 const ScrollToTop: React.FC = () => {
