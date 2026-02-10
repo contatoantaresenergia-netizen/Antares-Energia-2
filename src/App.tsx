@@ -1,21 +1,21 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { Layout } from './components/Layout';
-
-// IMPORTAÇÕES CORRIGIDAS (Sem chaves para os componentes que são Default)
-import Home from './pages/Home'; 
-import Camaragibe from './pages/Camaragibe';
-
-// IMPORTAÇÕES COM CHAVES (Para os componentes que são Named Exports)
+import { Home } from './pages/Home';
 import { About } from './pages/About';
 import { Services } from './pages/Services';
 import { Projects } from './pages/Projects';
 import { Contact } from './pages/Contact';
+
+// IMPORTAÇÃO DA PÁGINA 404 QUE VOCÊ CRIOU
+import { NotFound } from './pages/NotFound'; 
+
+// IMPORTAÇÕES DE CAMARAGIBE
+import Camaragibe from './pages/Camaragibe';
 import { CamaragibeSobre } from './pages/CamaragibeSobre';
 import { CamaragibeServices } from './pages/CamaragibeServices';
 import { CamaragibeProjects } from './pages/CamaragibeProjects';
 import { CamaragibeContact } from './pages/CamaragibeContact';
-import { NotFound } from './pages/NotFound';
 
 const ScrollToTop: React.FC = () => {
   const { pathname } = useLocation();
@@ -45,7 +45,7 @@ const App: React.FC = () => {
           <Route path="camaragibe/projetos" element={<CamaragibeProjects />} />
           <Route path="camaragibe/contato" element={<CamaragibeContact />} />
 
-          {/* ROTA 404 */}
+          {/* ROTA 404 - O "*" captura qualquer link que não esteja listado acima */}
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
