@@ -37,7 +37,7 @@ export default function App() {
           <Route path="projetos" element={<Projects />} />
           <Route path="contato" element={<Contact />} />
           
-          <Route path="camaragibe" element={<div>Teste Camaragibe</div>} />
+          <Route path="camaragibe" element={<div>Camaragibe</div>} />
           <Route path="camaragibe/sobre" element={<CamaragibeSobre />} />
           <Route path="camaragibe/servicos" element={<CamaragibeServices />} />
           <Route path="camaragibe/projetos" element={<CamaragibeProjects />} />
