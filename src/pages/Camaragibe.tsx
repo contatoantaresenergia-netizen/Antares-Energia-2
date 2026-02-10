@@ -27,7 +27,7 @@ const Typewriter: React.FC<{ text: string }> = ({ text }) => {
   return <span ref={ref}></span>;
 };
 
-const Camaragibe: React.FC = () => {
+export const Camaragibe: React.FC = () => {
   const heroRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<HTMLDivElement>(null);
 
@@ -79,5 +79,3 @@ const Camaragibe: React.FC = () => {
     </>
   );
 };
-
-export default Camaragibe;
