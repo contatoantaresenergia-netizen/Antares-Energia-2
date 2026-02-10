@@ -1,24 +1,24 @@
 import React, { useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { MapPin, CheckCircle2, Zap, BatteryCharging, Shield, Droplets, Target } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Shield, MapPin, Target, Zap, BatteryCharging, Droplets } from 'lucide-react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
+// Typewriter simples
 const Typewriter: React.FC<{ text: string }> = ({ text }) => {
   const ref = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    el.textContent = '';
     let i = 0;
+    el.textContent = '';
     const interval = setInterval(() => {
-      if (i < text.length) {
-        el.textContent += text[i];
-        i++;
-      } else clearInterval(interval);
+      el.textContent += text[i];
+      i++;
+      if (i >= text.length) clearInterval(interval);
     }, 60);
     return () => clearInterval(interval);
   }, [text]);
@@ -26,6 +26,7 @@ const Typewriter: React.FC<{ text: string }> = ({ text }) => {
   return <span ref={ref}></span>;
 };
 
+// Componente Camaragibe
 export const Camaragibe: React.FC = () => {
   const heroTitleRef = useRef<HTMLHeadingElement>(null);
   const sectionTitleRef = useRef<HTMLHeadingElement>(null);
@@ -55,7 +56,7 @@ export const Camaragibe: React.FC = () => {
         });
       }
 
-      if (cardsRef.current && cardsRef.current.children.length > 0) {
+      if (cardsRef.current) {
         gsap.from(cardsRef.current.children, {
           y: 40,
           opacity: 0,
@@ -70,7 +71,7 @@ export const Camaragibe: React.FC = () => {
     const timer = setTimeout(initAnimations, 100);
     return () => {
       clearTimeout(timer);
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
   }, []);
 
@@ -82,25 +83,38 @@ export const Camaragibe: React.FC = () => {
         <link rel="icon" type="image/png" href="/favicon.png" />
       </Helmet>
 
-      <main className="bg-white min-h-screen">
+      <main className="bg-white">
+
+        {/* HERO */}
         <section className="relative min-h-[90vh] flex items-center justify-center bg-[#1e293b] pt-32">
           <div className="absolute inset-0">
-            <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276" alt="Energia Solar" className="w-full h-full object-cover" />
+            <img
+              src="https://images.unsplash.com/photo-1509391366360-2e959784a276"
+              alt="Energia Solar em Camaragibe"
+              className="w-full h-full object-cover"
+            />
             <div className="absolute inset-0 bg-blue-900/90" />
           </div>
+
           <div className="relative z-10 max-w-5xl mx-auto px-6 text-center text-white">
             <div className="inline-flex items-center gap-2 bg-white/10 px-5 py-2 rounded-full mb-8 border border-white/20">
               <MapPin className="w-4 h-4 text-cyan-300" />
               <span className="text-sm font-medium">Atuação técnica em Camaragibe e Região Metropolitana</span>
             </div>
+
             <h1 ref={heroTitleRef} className="text-4xl md:text-6xl font-extrabold mb-6 tracking-tight">
-              <Typewriter text="Energia Solar em Camaragibe" />
-              <br />
+              <Typewriter text="Energia Solar em Camaragibe" /><br />
               <span className="text-cyan-300">com Engenharia e Diagnóstico Técnico</span>
             </h1>
+
+            <a href="https://wa.me/5519996162688" target="_blank" rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 bg-cyan-400 text-blue-900 px-10 py-5 rounded-full font-bold text-lg hover:bg-cyan-300 transition-all shadow-lg shadow-cyan-400/20">
+              <Target className="w-6 h-6" /> Solicitar Diagnóstico <ArrowRight className="w-6 h-6" />
+            </a>
           </div>
         </section>
 
+        {/* DIFERENCIAIS */}
         <section className="py-24 bg-[#f8fbff]">
           <div className="max-w-7xl mx-auto px-6">
             <h2 ref={sectionTitleRef} className="text-3xl md:text-5xl font-bold text-center mb-20 text-[#3b82f6]">
@@ -126,6 +140,7 @@ export const Camaragibe: React.FC = () => {
             </div>
           </div>
         </section>
+
       </main>
     </>
   );
