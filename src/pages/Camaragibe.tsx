@@ -1,16 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
-import {
-  ArrowRight,
-  CheckCircle2,
-  Shield,
-  MapPin,
-  Target,
-  Zap,
-  BatteryCharging,
-  Droplets
-} from 'lucide-react';
-
+import { ArrowRight, CheckCircle2, Shield, MapPin, Target, Zap, BatteryCharging, Droplets } from 'lucide-react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
