@@ -12,17 +12,8 @@ import {
 } from 'lucide-react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-gsap.registerPlugin(ScrollTrigger);
 
-const SolutionCard = ({ icon, title, text }: { icon: React.ReactNode; title: string; text: string }) => (
-  <div className="bg-white p-12 rounded-[2.5rem] flex flex-col gap-5 shadow-xl transition-transform hover:-translate-y-1">
-    <div className="w-14 h-14 bg-[#008eb4] rounded-2xl flex items-center justify-center mb-2">
-      {icon}
-    </div>
-    <h3 className="text-2xl font-bold text-[#1e293b] tracking-tight">{title}</h3>
-    <p className="text-slate-500 text-xl leading-relaxed font-light">{text}</p>
-  </div>
-);
+gsap.registerPlugin(ScrollTrigger);
 
 const Typewriter: React.FC<{ text: string }> = ({ text }) => {
   const ref = useRef<HTMLSpanElement>(null);
@@ -32,7 +23,7 @@ const Typewriter: React.FC<{ text: string }> = ({ text }) => {
     let i = 0;
     el.textContent = "";
     const interval = setInterval(() => {
-      el.textContent = text.slice(0, i + 1);
+      el.textContent += text[i];
       i++;
       if (i >= text.length) clearInterval(interval);
     }, 60);
@@ -43,40 +34,60 @@ const Typewriter: React.FC<{ text: string }> = ({ text }) => {
 
 const Camaragibe: React.FC = () => {
   const heroTitleRef = useRef<HTMLHeadingElement>(null);
-  const sectionTitleRef = useRef<HTMLHeadingElement>(null);
-  const cardsRef = useRef<HTMLDivElement>(null);
+  const sectionTitleRef = useRef<HTMLHeadingElement>(null); 
+  const cardsRef = useRef<HTMLDivElement>(null); 
+
+  // JSON-LD seguro para build
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Antares Energia - Energia Solar Camaragibe",
+    "image": "https://images.unsplash.com/photo-1509391366360-2e959784a276",
+    "@id": "https://www.antaresenergia.com/camaragibe",
+    "url": "https://www.antaresenergia.com/camaragibe",
+    "telephone": "+5519996162688",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Camaragibe",
+      "addressRegion": "PE",
+      "addressCountry": "BR"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": -8.015, 
+      "longitude": -34.982
+    },
+    "openingHours": "Mo-Fr 08:00-18:00",
+    "description": "Engenharia solar de alta performance em Camaragibe e Região Metropolitana do Recife.",
+    "sameAs": [
+      "https://www.facebook.com/antaresenergia",
+      "https://www.instagram.com/antaresenergia",
+      "https://www.linkedin.com/company/antaresenergia"
+    ]
+  };
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    if (typeof window === 'undefined') return; // somente no client
+    window.scrollTo(0,0);
 
     const initAnimations = () => {
       if (heroTitleRef.current) {
         gsap.from(heroTitleRef.current, {
-          y: 40,
-          opacity: 0,
-          duration: 1,
-          ease: 'power3.out',
+          y: 40, opacity: 0, duration: 1, ease: 'power3.out',
           scrollTrigger: { trigger: heroTitleRef.current, start: 'top 80%' },
         });
       }
 
       if (sectionTitleRef.current) {
         gsap.from(sectionTitleRef.current, {
-          y: 40,
-          opacity: 0,
-          duration: 1,
-          ease: 'power3.out',
+          y: 40, opacity: 0, duration: 1, ease: 'power3.out',
           scrollTrigger: { trigger: sectionTitleRef.current, start: 'top 80%' },
         });
       }
 
       if (cardsRef.current && cardsRef.current.children.length > 0) {
         gsap.from(cardsRef.current.children, {
-          y: 40,
-          opacity: 0,
-          duration: 1,
-          ease: 'power3.out',
-          stagger: 0.15,
+          y: 40, opacity: 0, duration: 1, ease: 'power3.out', stagger: 0.15,
           scrollTrigger: { trigger: cardsRef.current, start: 'top 80%' },
         });
       }
@@ -96,6 +107,17 @@ const Camaragibe: React.FC = () => {
         <title>Antares Energia | Engenharia Solar em Camaragibe - PE</title>
         <meta name="description" content="Engenharia fotovoltaica de alta performance em Camaragibe. Projetos customizados para Pernambuco. Reduza custos com segurança." />
         <link rel="icon" type="image/png" href="/favicon.png" />
+        <link rel="canonical" href="https://www.antaresenergia.com/camaragibe" />
+
+        {/* Open Graph */}
+        <meta property="og:title" content="Antares Energia | Energia Solar em Camaragibe - PE" />
+        <meta property="og:description" content="Engenharia de alta performance e diagnóstico técnico em Pernambuco. Reduza custos com segurança." />
+        <meta property="og:url" content="https://www.antaresenergia.com/camaragibe" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://images.unsplash.com/photo-1509391366360-2e959784a276" />
+
+        {/* JSON-LD */}
+        <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
       </Helmet>
 
       <main className="bg-white">
@@ -181,5 +203,15 @@ const Camaragibe: React.FC = () => {
     </>
   );
 };
+
+const SolutionCard = ({ icon, title, text }: { icon: React.ReactNode; title: string; text: string; }) => (
+  <div className="bg-white p-12 rounded-[2.5rem] flex flex-col gap-5 shadow-xl transition-transform hover:-translate-y-1">
+    <div className="w-14 h-14 bg-[#008eb4] rounded-2xl flex items-center justify-center mb-2">
+      {icon}
+    </div>
+    <h3 className="text-2xl font-bold text-[#1e293b] tracking-tight">{title}</h3>
+    <p className="text-slate-500 text-xl leading-relaxed font-light">{text}</p>
+  </div>
+);
 
 export default Camaragibe;
