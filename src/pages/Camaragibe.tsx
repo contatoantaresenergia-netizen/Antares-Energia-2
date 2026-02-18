@@ -163,22 +163,36 @@ export const Camaragibe: React.FC = () => {
 
       <main className="bg-white">
         {/* HERO SECTION */}
-        <section className="relative min-h-[90vh] flex items-center justify-center bg-[#1e293b] pt-32">
-          <div className="absolute inset-0">
-            <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276" alt="Energia Solar em Camaragibe" className="w-full h-full object-cover" />
-            <div className="absolute inset-0 bg-blue-900/90" />
-          </div>
+        <section className="relative min-h-[90vh] flex items-center justify-center bg-[#0f172a] pt-32 overflow-hidden">
+          {/* Background grid texture */}
+          <div
+            className="absolute inset-0 opacity-[0.04]"
+            style={{
+              backgroundImage: `
+                linear-gradient(rgba(0,255,255,0.3) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,255,255,0.3) 1px, transparent 1px)
+              `,
+              backgroundSize: '48px 48px',
+            }}
+          />
+          {/* Ambient glow */}
+          <div className="absolute top-0 left-1/3 w-[600px] h-[500px] rounded-full bg-cyan-500/10 blur-[130px] pointer-events-none" />
+          <div className="absolute bottom-0 right-0 w-[400px] h-[350px] rounded-full bg-blue-600/10 blur-[100px] pointer-events-none" />
+
           <div className="relative z-10 max-w-5xl mx-auto px-6 text-center text-white">
-            <div className="inline-flex items-center gap-2 bg-white/10 px-5 py-2 rounded-full mb-8 border border-white/20">
+            <div className="inline-flex items-center gap-2 bg-cyan-400/10 border border-cyan-400/30 px-5 py-2 rounded-full mb-8">
               <MapPin className="w-4 h-4 text-cyan-300" />
-              <span className="text-sm font-medium">Atuação técnica em Camaragibe e Região Metropolitana</span>
+              <span className="text-sm font-medium text-cyan-300">Atuação técnica em Camaragibe e Região Metropolitana</span>
             </div>
             <h1 ref={heroTitleRef} className="text-4xl md:text-6xl font-extrabold mb-6 tracking-tight">
               <Typewriter text="Energia Solar em Camaragibe" /><br />
               <span className="text-cyan-300">com Engenharia e Diagnóstico Técnico</span>
             </h1>
-            <a href="https://wa.me/5519996162688" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 bg-cyan-400 text-blue-900 px-10 py-5 rounded-full font-bold text-lg hover:bg-cyan-300 transition-all shadow-lg shadow-cyan-400/20">
-              <Target className="w-6 h-6" /> Solicitar Diagnóstico <ArrowRight className="w-6 h-6" />
+            <p className="text-slate-400 text-lg mb-10 max-w-2xl mx-auto leading-relaxed">
+              Projetos fotovoltaicos de alta performance para residências, empresas e indústrias em Camaragibe e toda a Região Metropolitana do Recife.
+            </p>
+            <a href="https://wa.me/5519996162688" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 bg-cyan-400 text-blue-900 px-10 py-5 rounded-full font-bold text-lg hover:bg-cyan-300 transition-all shadow-lg shadow-cyan-400/20 group">
+              <Target className="w-6 h-6" /> Solicitar Diagnóstico <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
             </a>
           </div>
         </section>
