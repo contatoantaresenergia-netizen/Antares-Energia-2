@@ -43,11 +43,11 @@ const fitnessStats = [
 ];
 
 const fitnessBenefits = [
-  { icon: <Dumbbell className="w-5 h-5 text-cyan-400" />, text: 'Equipamentos de alta performance com custo energético zero' },
-  { icon: <Sun className="w-5 h-5 text-cyan-400" />, text: 'Academia 100% abastecida por painéis fotovoltaicos' },
-  { icon: <Leaf className="w-5 h-5 text-cyan-400" />, text: 'Compromisso real com sustentabilidade e futuro' },
-  { icon: <Zap className="w-5 h-5 text-cyan-400" />, text: 'Energia solar gerada e consumida no próprio local' },
-  { icon: <CheckCircle2 className="w-5 h-5 text-cyan-400" />, text: 'Projeto fotovoltaico desenvolvido pela Antares Energia' },
+  { icon: <Dumbbell className="w-5 h-5 text-cyan-400" />, text: 'Reduza o custo de energia da sua academia com projeto fotovoltaico sob medida' },
+  { icon: <Sun className="w-5 h-5 text-cyan-400" />, text: 'Operação contínua de equipamentos, ar-condicionado e iluminação com energia limpa' },
+  { icon: <Leaf className="w-5 h-5 text-cyan-400" />, text: 'Valorize sua marca com o selo de academia sustentável' },
+  { icon: <Zap className="w-5 h-5 text-cyan-400" />, text: 'Diagnóstico técnico gratuito antes de qualquer investimento' },
+  { icon: <CheckCircle2 className="w-5 h-5 text-cyan-400" />, text: 'Instalação turn key com responsabilidade técnica integral da Antares' },
 ];
 
 export const Camaragibe: React.FC = () => {
@@ -164,9 +164,14 @@ export const Camaragibe: React.FC = () => {
       <main className="bg-white">
         {/* HERO SECTION */}
         <section className="relative min-h-[90vh] flex items-center justify-center bg-[#0f172a] pt-32 overflow-hidden">
+          {/* Background photo */}
+          <div className="absolute inset-0">
+            <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276" alt="Energia Solar em Camaragibe" className="w-full h-full object-cover" />
+            <div className="absolute inset-0 bg-[#0f172a]/85" />
+          </div>
           {/* Background grid texture */}
           <div
-            className="absolute inset-0 opacity-[0.04]"
+            className="absolute inset-0 opacity-[0.06]"
             style={{
               backgroundImage: `
                 linear-gradient(rgba(0,255,255,0.3) 1px, transparent 1px),
@@ -176,8 +181,8 @@ export const Camaragibe: React.FC = () => {
             }}
           />
           {/* Ambient glow */}
-          <div className="absolute top-0 left-1/3 w-[600px] h-[500px] rounded-full bg-cyan-500/10 blur-[130px] pointer-events-none" />
-          <div className="absolute bottom-0 right-0 w-[400px] h-[350px] rounded-full bg-blue-600/10 blur-[100px] pointer-events-none" />
+          <div className="absolute top-0 left-1/3 w-[600px] h-[500px] rounded-full bg-cyan-500/15 blur-[130px] pointer-events-none" />
+          <div className="absolute bottom-0 right-0 w-[400px] h-[350px] rounded-full bg-blue-600/15 blur-[100px] pointer-events-none" />
 
           <div className="relative z-10 max-w-5xl mx-auto px-6 text-center text-white">
             <div className="inline-flex items-center gap-2 bg-cyan-400/10 border border-cyan-400/30 px-5 py-2 rounded-full mb-8">
@@ -312,16 +317,16 @@ export const Camaragibe: React.FC = () => {
               {/* RIGHT – Text */}
               <div ref={fitnessTextRef} className="flex flex-col gap-6">
                 <h2 className="text-4xl md:text-5xl font-extrabold text-white leading-tight tracking-tight">
-                  Uma academia que treina{' '}
+                  Sua academia mais forte{' '}
                   <span className="text-cyan-300">com a força do sol.</span>
                 </h2>
 
                 <p className="text-slate-400 text-lg leading-relaxed">
-                  A <strong className="text-white">Antares Fitness</strong> vai além do treino. Nossa academia em Camaragibe é abastecida 100% por energia solar fotovoltaica, desenvolvida e instalada pela <strong className="text-white">Antares Energia</strong> — garantindo operação sustentável, eficiente e com custo de energia praticamente zero.
+                  Academias consomem energia o dia inteiro — ar-condicionado, esteiras, iluminação, vestiários. Esse custo pode ser drasticamente reduzido com um sistema fotovoltaico projetado sob medida pela <strong className="text-white">Antares Energia</strong>.
                 </p>
 
                 <p className="text-slate-400 text-lg leading-relaxed">
-                  Enquanto você cuida do seu corpo, a gente cuida do planeta. Uma estrutura moderna, climatizada e iluminada pela mesma engenharia que atende empresas e indústrias em toda a Região Metropolitana do Recife.
+                  Atendemos academias em Camaragibe e toda a Região Metropolitana do Recife com diagnóstico técnico, projeto executivo e instalação completa. Sua academia opera com energia limpa, economia real e um diferencial competitivo que seus alunos vão perceber.
                 </p>
 
                 {/* Benefits list */}
@@ -343,7 +348,7 @@ export const Camaragibe: React.FC = () => {
                     className="inline-flex items-center gap-3 bg-cyan-400 text-blue-900 px-8 py-4 rounded-full font-bold text-base hover:bg-cyan-300 transition-all shadow-lg shadow-cyan-400/20 group"
                   >
                     <Dumbbell className="w-5 h-5" />
-                    Conheça a Antares Fitness
+                    Quero energia solar na minha academia
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </a>
                 </div>
