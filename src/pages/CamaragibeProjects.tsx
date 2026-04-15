@@ -13,7 +13,7 @@ export const CamaragibeProjects: React.FC = () => {
     { id: 1, title: 'Residência Lake View', cat: 'Residencial', power: '15 kWp', img: 'https://hnaezacbzcpmyfoupdec.supabase.co/storage/v1/object/public/ANTARES%20ENERGIA/RESIDENCIA%201000X1000.webp' },
     { id: 2, title: 'Centro Logístico PE', cat: 'Industrial', power: '500 kWp', img: 'https://hnaezacbzcpmyfoupdec.supabase.co/storage/v1/object/public/ANTARES%20ENERGIA/CENTRO%20LOGISTICO%201000X1000.webp' },
     { id: 3, title: 'Usina Solar Antares', cat: 'Industrial', power: '2 MW', img: 'https://agzxythrwhlpvptlsepv.supabase.co/storage/v1/object/public/Orlando%20Air%20cond/usinaantares.png' },
-    { id: 4, title: 'Centro Automotivo Camaragibe', cat: 'Comercial', power: '45 kWp', img: 'https://images.unsplash.com/photo-1487754180477-db33d3d04733?q=80&w=600&auto=format&fit=crop' },
+    { id: 4, title: 'Centro Automotivo Camaragibe', cat: 'Comercial', power: '45 kWp', img: 'https://hnaezacbzcpmyfoupdec.supabase.co/storage/v1/object/public/ANTARES%20ENERGIA/CENTRO%20AUTOMOTIVO%201000X1000.webp' },
     { id: 5, title: 'Shopping Plaza Regional', cat: 'Comercial', power: '350 kWp', img: 'https://hnaezacbzcpmyfoupdec.supabase.co/storage/v1/object/public/ANTARES%20ENERGIA/RESIDENCIA%20ALPHAVILLE%201000X1000.webp' },
     { id: 6, title: 'Estação de Carga EV', cat: 'Comercial', power: 'Mobility', img: 'https://images.unsplash.com/photo-1593941707882-a5bba14938c7?q=80&w=600&auto=format&fit=crop' },
     { id: 7, title: 'Fazenda Solar PE', cat: 'Industrial', power: '1.5 MW', img: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=600&auto=format&fit=crop' },
