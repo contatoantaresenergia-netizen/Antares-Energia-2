@@ -17,9 +17,9 @@ export const CamaragibeProjects: React.FC = () => {
     { id: 5, title: 'Shopping Plaza Regional', cat: 'Comercial', power: '350 kWp', img: 'https://hnaezacbzcpmyfoupdec.supabase.co/storage/v1/object/public/ANTARES%20ENERGIA/RESIDENCIA%20ALPHAVILE%201000X1000.webp' },
     { id: 6, title: 'Estação de Carga EV', cat: 'Comercial', power: 'Mobility', img: 'https://images.unsplash.com/photo-1593941707882-a5bba14938c7?q=80&w=600&auto=format&fit=crop' },
     { id: 7, title: 'Fazenda Solar PE', cat: 'Industrial', power: '1.5 MW', img: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=600&auto=format&fit=crop' },
-    { id: 8, title: 'Residência Alto Padrão', cat: 'Residencial', power: '20 kWp', img: 'https://hnaezacbzcpmyfoupdec.supabase.co/storage/v1/object/public/ANTARES%20ENERGIA/RESIDENCIA%20ALPHAVILE%201000X1000.webp' },
     { id: 9, title: 'Indústria Têxtil Camaragibe', cat: 'Industrial', power: '150 kWp', img: 'https://agzxythrwhlpvptlsepv.supabase.co/storage/v1/object/public/Orlando%20Air%20cond/AntaresTextil.png' },
   ];
+   
 
   const filtered = filter === 'Todos' ? allProjects : allProjects.filter(p => p.cat === filter);
 
