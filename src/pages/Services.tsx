@@ -34,7 +34,7 @@ export const Services: React.FC = () => {
         <div className="flex flex-col md:flex-row-reverse gap-8 items-center border border-white/5 p-6 rounded-2xl bg-antares-slate/10">
           <div className="w-full md:w-1/2 h-[400px] overflow-hidden rounded-lg shadow-xl">
             <img 
-              src="https://indigo-goat-999288.hostingersite.com/wp-content/uploads/2025/11/transferir-1.jpeg" 
+              src="https://hnaezacbzcpmyfoupdec.supabase.co/storage/v1/object/public/ANTARES%20ENERGIA/CENTRO%20LOGISTICO%201000X1000.webp" 
               className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
               alt="Solar Industrial"
             />
