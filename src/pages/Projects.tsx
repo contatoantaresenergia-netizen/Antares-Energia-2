@@ -11,7 +11,7 @@ export const Projects: React.FC = () => {
     { id: 5, title: 'Shopping Plaza', cat: 'Comercial', power: '350 kWp', img: 'https://agzxythrwhlpvptlsepv.supabase.co/storage/v1/object/public/Orlando%20Air%20cond/Shoppingantares.png' },
     { id: 6, title: 'Estação de Carga EV', cat: 'Comercial', power: 'Mobility', img: 'https://images.unsplash.com/photo-1593941707882-a5bba14938c7?q=80&w=600&auto=format&fit=crop' },
     { id: 7, title: 'Fazenda Solar I', cat: 'Industrial', power: '1.5 MW', img: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=600&auto=format&fit=crop' },
-    { id: 8, title: 'Residência Alphaville', cat: 'Residencial', power: '20 kWp', img: 'https://images.unsplash.com/photo-1592833159057-65a284572242?q=80&w=600&auto=format&fit=crop' },
+    { id: 8, title: 'Residência Alphaville', cat: 'Residencial', power: '20 kWp', img: 'https://hnaezacbzcpmyfoupdec.supabase.co/storage/v1/object/public/ANTARES%20ENERGIA/ALPHAVILE%201000X1000.webp' },
     { id: 9, title: 'Indústria Têxtil', cat: 'Industrial', power: '150 kWp', img: 'https://agzxythrwhlpvptlsepv.supabase.co/storage/v1/object/public/Orlando%20Air%20cond/AntaresTextil.png' },
   ];
 
