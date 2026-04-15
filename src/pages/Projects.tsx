@@ -5,7 +5,7 @@ export const Projects: React.FC = () => {
 
   const allProjects = [
     { id: 1, title: 'Residência Lake View', cat: 'Residencial', power: '15 kWp', img: 'https://indigo-goat-999288.hostingersite.com/wp-content/uploads/2025/11/transferir-3.jpeg' },
-    { id: 2, title: 'Centro Logístico SP', cat: 'Industrial', power: '500 kWp', img: 'https://indigo-goat-999288.hostingersite.com/wp-content/uploads/2025/11/transferir-1.jpeg' },
+    { id: 2, title: 'Centro Logístico SP', cat: 'Industrial', power: '500 kWp', img: 'https://hnaezacbzcpmyfoupdec.supabase.co/storage/v1/object/public/ANTARES%20ENERGIA/CENTRO%20LOGISTICO%201000X1000.webp' },
     { id: 3, title: 'Usina Solar Agreste', cat: 'Industrial', power: '2 MW', img: 'https://agzxythrwhlpvptlsepv.supabase.co/storage/v1/object/public/Orlando%20Air%20cond/usinaantares.png' },
     { id: 4, title: 'Centro Automotivo', cat: 'Comercial', power: '45 kWp', img: 'https://images.unsplash.com/photo-1487754180477-db33d3d04733?q=80&w=600&auto=format&fit=crop' },
     { id: 5, title: 'Shopping Plaza', cat: 'Comercial', power: '350 kWp', img: 'https://agzxythrwhlpvptlsepv.supabase.co/storage/v1/object/public/Orlando%20Air%20cond/Shoppingantares.png' },
